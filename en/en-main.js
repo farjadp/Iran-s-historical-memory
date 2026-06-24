@@ -1328,6 +1328,28 @@ function setupEventListeners() {
       return;
     }
 
+    if (type === 'url') {
+      const normalizeUrl = (urlStr) => {
+        if (!urlStr) return '';
+        try {
+          let decoded = decodeURIComponent(urlStr.trim());
+          return decoded.toLowerCase().replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/$/, '');
+        } catch (e) {
+          return urlStr.trim().toLowerCase().replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/$/, '');
+        }
+      };
+
+      const normalizedInput = normalizeUrl(content);
+      const duplicate = allData.events.find(e => 
+        (e.references || []).some(ref => ref.url && normalizeUrl(ref.url) === normalizedInput)
+      );
+
+      if (duplicate) {
+        const proceed = confirm(`This link has already been used for the event "${duplicate.title_en || duplicate.title}".\nAre you sure you want to process it again?`);
+        if (!proceed) return;
+      }
+    }
+
     const startBtn = $('btn-start-ingest');
     const statusContainer = $('ai-status-container');
     const logsEl = $('ai-logs');
