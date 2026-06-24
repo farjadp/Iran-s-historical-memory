@@ -1,372 +1,362 @@
 /**
  * IRAN HISTORY TIMELINE — immersive.js
- * Immersive Horizontal Exhibition View logic.
+ * Persian Exhibition View — Scroll-safe two-panel layout
  */
 
 'use strict';
 
-// ── State ──────────────────────────────────────────────────
-let allData = null;
-let activeEventId = null;
-let activeEraFilter = 'all';
-let searchQuery = '';
+// ── State ───────────────────────────────────────────────────
+let allData        = null;
 let filteredEvents = [];
+let activeEventId  = null;
+let activeEraFilter = 'all';
+let searchQuery    = '';
 
 const $ = id => document.getElementById(id);
 
-// ── Init ───────────────────────────────────────────────────
+// ── Init ────────────────────────────────────────────────────
 (async function init() {
   loadTheme();
-  
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight);
+
   try {
     const res = await fetch('data/history.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allData = await res.json();
-    
-    // Sort events initially by dateSort
     allData.events.sort((a, b) => (a.dateSort ?? 9999) - (b.dateSort ?? 9999));
-    
-    setupEraFilters();
-    applyFilterAndSearch();
-    setupEventListeners();
-    
-    // Select first event by default
-    if (filteredEvents.length > 0) {
-      selectEvent(filteredEvents[0].id);
-    }
+
+    buildEraChips();
+    applyFilter();
+    setupListeners();
   } catch (err) {
-    console.error('Error loading history data:', err);
-    $('imm-showcase-view').innerHTML = 
-      '<p style="text-align:center;padding:40px;color:var(--text-muted)">⚠️ خطا در بارگذاری داده‌های تاریخچه.</p>';
+    console.error('Error loading history:', err);
+    $('detail-content').innerHTML =
+      '<p style="color:var(--text-muted);padding:40px;text-align:center">⚠️ خطا در بارگذاری اطلاعات تاریخچه.</p>';
   }
 })();
 
-// ── Theme Management ───────────────────────────────────────
+// ── Header Height ─────────────────────────────────────────────
+function updateHeaderHeight() {
+  const h = $('persian-header');
+  if (h) {
+    document.documentElement.style.setProperty('--header-height', h.offsetHeight + 'px');
+  }
+}
+
+// ── Theme ────────────────────────────────────────────────────
 function loadTheme() {
-  const saved = localStorage.getItem('iran_history_theme') || 'dark';
-  applyTheme(saved);
+  const t = localStorage.getItem('iran_history_theme') || 'dark';
+  applyTheme(t);
 }
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme === 'light' ? 'light' : '';
-  $('btn-theme-page').textContent = theme === 'light' ? '🌙' : '☀️';
+  const btn = $('btn-theme-imm');
+  if (btn) btn.textContent = theme === 'light' ? '🌙' : '☀️';
   localStorage.setItem('iran_history_theme', theme);
 }
 
-// ── Setup Era Filters ──────────────────────────────────────
-function setupEraFilters() {
-  const sidebar = $('imm-era-filters');
-  if (!sidebar || !allData) return;
-  
-  // Clear any existing except "All"
-  const allBtn = sidebar.querySelector('[data-era="all"]');
-  sidebar.innerHTML = '';
-  sidebar.appendChild(allBtn);
-  
+// ── Era Chips ────────────────────────────────────────────────
+function buildEraChips() {
+  const bar = $('era-chips-bar');
+  if (!bar || !allData) return;
+
+  const allBtn = bar.querySelector('[data-era="all"]');
+  bar.innerHTML = '';
+  bar.appendChild(allBtn);
+
   allData.eras.forEach(era => {
-    const btn = document.createElement('button');
-    btn.className = 'imm-filter-btn';
-    btn.dataset.era = era.id;
-    btn.innerHTML = `
-      <span>${era.title}</span>
-      <span class="era-dot" style="background: ${era.color};"></span>
-    `;
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.imm-filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    const chip = document.createElement('button');
+    chip.className = 'era-chip';
+    chip.dataset.era = era.id;
+    chip.innerHTML = `<span class="era-chip-dot" style="background:${era.color}"></span>${era.title}`;
+    chip.addEventListener('click', () => {
+      bar.querySelectorAll('.era-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
       activeEraFilter = era.id;
-      applyFilterAndSearch();
+      applyFilter();
     });
-    sidebar.appendChild(btn);
+    bar.appendChild(chip);
   });
-  
-  // Re-hook All button
+
   allBtn.addEventListener('click', () => {
-    document.querySelectorAll('.imm-filter-btn').forEach(b => b.classList.remove('active'));
+    bar.querySelectorAll('.era-chip').forEach(c => c.classList.remove('active'));
     allBtn.classList.add('active');
     activeEraFilter = 'all';
-    applyFilterAndSearch();
+    applyFilter();
   });
 }
 
-// ── Filter and Search Logic ───────────────────────────────
-function applyFilterAndSearch() {
-  if (!allData) return;
-  
+// ── Filter Logic ─────────────────────────────────────────────
+function applyFilter() {
+  const term = searchQuery.toLowerCase();
+
   filteredEvents = allData.events.filter(e => {
-    const matchesEra = activeEraFilter === 'all' || e.era === activeEraFilter;
-    
-    const term = searchQuery.toLowerCase();
-    const matchesSearch = !searchQuery || 
+    const byEra = activeEraFilter === 'all' || e.era === activeEraFilter;
+    const bySearch = !term ||
       e.title.toLowerCase().includes(term) ||
-      (e.summary && e.summary.toLowerCase().includes(term)) ||
+      (e.summary  && e.summary.toLowerCase().includes(term)) ||
       (e.description && e.description.toLowerCase().includes(term)) ||
       (e.tags && e.tags.some(t => t.toLowerCase().includes(term)));
-      
-    return matchesEra && matchesSearch;
+    return byEra && bySearch;
   });
-  
-  renderTimelineTrack();
-  
-  // Select first matched event or show empty state
-  if (filteredEvents.length > 0) {
-    $('imm-event-card').style.display = 'grid';
-    // If current active is no longer in filtered, select first
-    if (!filteredEvents.some(e => e.id === activeEventId)) {
-      selectEvent(filteredEvents[0].id);
-    } else {
-      selectEvent(activeEventId);
-    }
-  } else {
-    // Show empty state
-    $('imm-event-card').style.display = 'none';
-    showToast('هیچ رویدادی با این مشخصات یافت نشد', 'warning');
+
+  renderEventList();
+
+  if (filteredEvents.length === 0) {
+    $('detail-content').style.display = 'none';
+    $('empty-state').classList.remove('hidden');
+    return;
   }
+
+  $('empty-state').classList.add('hidden');
+  $('detail-content').style.display = '';
+
+  // Keep active event if still in list, otherwise select first
+  const stillActive = filteredEvents.some(e => e.id === activeEventId);
+  selectEvent(stillActive ? activeEventId : filteredEvents[0].id, false);
 }
 
-// ── Render Timeline Bottom Track ──────────────────────────
-function renderTimelineTrack() {
-  const track = $('imm-timeline-track');
-  if (!track) return;
-  track.innerHTML = '';
-  
+// ── Render Event List ─────────────────────────────────────────
+function renderEventList() {
+  const container = $('events-list');
+  container.innerHTML = '';
+
+  if (filteredEvents.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:30px;font-size:0.85rem">رویدادی یافت نشد</p>';
+    return;
+  }
+
   filteredEvents.forEach(e => {
-    const card = document.createElement('div');
-    card.className = `imm-nav-card ${e.id === activeEventId ? 'active' : ''}`;
-    card.dataset.id = e.id;
-    
-    // Find era color
-    const era = allData.eras.find(eraObj => eraObj.id === e.era);
-    const eraColor = era ? era.color : 'var(--gold)';
-    
-    card.innerHTML = `
-      <div class="imm-nav-card-title">${escapeHtml(e.title)}</div>
-      <div class="imm-nav-card-date">${escapeHtml(e.date)}</div>
-      <div class="imm-nav-card-era" style="background: ${eraColor};"></div>
+    const era = allData.eras.find(r => r.id === e.era);
+    const eraColor = era ? era.color : 'var(--firouzeh)';
+
+    const item = document.createElement('div');
+    item.className = `ev-list-item${e.id === activeEventId ? ' active' : ''}`;
+    item.dataset.id = e.id;
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-selected', e.id === activeEventId ? 'true' : 'false');
+
+    item.innerHTML = `
+      <div class="ev-list-title">
+        <span class="ev-list-era-dot" style="background:${eraColor}"></span>
+        ${escHtml(e.title)}
+      </div>
+      <div class="ev-list-date">${escHtml(e.date)}</div>
+      ${e.summary ? `<div class="ev-list-summary">${escHtml(e.summary)}</div>` : ''}
     `;
-    
-    card.addEventListener('click', () => {
-      selectEvent(e.id);
+
+    item.addEventListener('click', () => selectEvent(e.id));
+    item.addEventListener('keydown', ev => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        selectEvent(e.id);
+      }
     });
-    
-    track.appendChild(card);
+
+    container.appendChild(item);
   });
 }
 
-// ── Select and Display Event (Immersive Transition) ───────
-function selectEvent(eventId) {
-  if (!allData) return;
+// ── Select Event ──────────────────────────────────────────────
+function selectEvent(eventId, animate = true) {
   activeEventId = eventId;
-  
-  // Update active state in bottom cards
-  document.querySelectorAll('.imm-nav-card').forEach(card => {
-    const isActive = card.dataset.id === eventId;
-    card.classList.toggle('active', isActive);
-    
+
+  // Update list active states
+  document.querySelectorAll('.ev-list-item').forEach(item => {
+    const isActive = item.dataset.id === eventId;
+    item.classList.toggle('active', isActive);
+    item.setAttribute('aria-selected', isActive ? 'true' : 'false');
     if (isActive) {
-      card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      // Scroll the list item into view within the panel
+      item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   });
-  
+
   const event = allData.events.find(e => e.id === eventId);
   if (!event) return;
-  
-  const card = $('imm-event-card');
-  // Trigger fade out
-  card.classList.add('imm-fade-hidden');
-  
-  setTimeout(() => {
-    // Populate card details
-    $('imm-event-title').textContent = event.title;
-    $('imm-event-summary').textContent = event.summary || '';
-    $('imm-event-desc').textContent = event.description || 'توضیحات بیشتری برای این رویداد ثبت نشده است.';
-    
-    // Calendar dates
-    $('imm-date-label').textContent = event.date;
-    
-    // Era badge
-    const era = allData.eras.find(eraObj => eraObj.id === event.era);
-    const eraBadge = $('imm-era-badge');
-    if (eraBadge) {
-      eraBadge.textContent = era ? era.title : '';
-      eraBadge.style.background = era ? era.color : 'var(--gold)';
-    }
-    
-    // Card Glow color
-    const glow = $('imm-card-glow');
-    if (glow && era) {
-      glow.style.backgroundColor = era.color;
-    }
-    
-    // Tags
-    const tagsBox = $('imm-event-tags');
-    tagsBox.innerHTML = '';
-    if (event.tags && event.tags.length > 0) {
-      event.tags.forEach(t => {
-        const tagSpan = document.createElement('span');
-        tagSpan.className = 'imm-tag';
-        tagSpan.textContent = `# ${t}`;
-        tagsBox.appendChild(tagSpan);
-      });
-    }
-    
-    // Flag
-    const flagBox = $('imm-flag-box');
-    const flagImg = $('imm-flag-img');
-    if (event.flagUrl) {
-      flagImg.src = event.flagUrl;
-      flagImg.alt = event.flagAlt || event.title;
-      flagBox.style.display = 'block';
-    } else {
-      flagBox.style.display = 'none';
-    }
-    
-    // Rulers list
-    const rulersBox = $('imm-rulers-box');
-    const rulersList = $('imm-rulers-list');
-    rulersList.innerHTML = '';
-    
-    if (event.rulers && event.rulers.length > 0) {
-      event.rulers.forEach(r => {
-        const rulerCard = document.createElement('div');
-        rulerCard.className = 'imm-ruler-card';
-        rulerCard.innerHTML = `
-          <div class="imm-ruler-name">👑 ${escapeHtml(r.name)}</div>
-          <div class="imm-ruler-reign">${escapeHtml(r.reign)}</div>
-          ${r.note ? `<div class="imm-ruler-note">${escapeHtml(r.note)}</div>` : ''}
-        `;
-        rulersList.appendChild(rulerCard);
-      });
-      rulersBox.style.display = 'block';
-    } else {
-      rulersBox.style.display = 'none';
-    }
-    
-    // References
-    const refsSection = $('imm-event-refs-section');
-    const refsGrid = $('imm-event-refs');
-    refsGrid.innerHTML = '';
-    
-    if (event.references && event.references.length > 0) {
-      event.references.forEach(ref => {
-        const refLink = document.createElement('a');
-        refLink.className = 'imm-ref-link';
-        refLink.href = ref.url || '#';
-        refLink.target = ref.url ? '_blank' : '_self';
-        
-        let icon = '🌐';
-        if (ref.type === 'book') icon = '📚';
-        else if (ref.type === 'video') icon = '🎬';
-        else if (ref.type === 'image') icon = '🖼';
-        else if (ref.type === 'article') icon = '📄';
-        
-        refLink.innerHTML = `
-          <span>${icon}</span>
-          <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-            ${escapeHtml(ref.title)} ${ref.author ? `(${escapeHtml(ref.author)})` : ''}
-          </span>
-        `;
-        
-        refsGrid.appendChild(refLink);
-      });
-      refsSection.style.display = 'block';
-    } else {
-      refsSection.style.display = 'none';
-    }
-    
-    // Trigger fade in
-    card.classList.remove('imm-fade-hidden');
-  }, 180);
+
+  const content = $('detail-content');
+
+  if (animate) {
+    content.classList.add('fading');
+    setTimeout(() => {
+      populateDetail(event);
+      content.classList.remove('fading');
+      // Scroll detail panel back to top
+      $('detail-panel').scrollTop = 0;
+    }, 200);
+  } else {
+    populateDetail(event);
+  }
 }
 
-// ── Event Listeners ────────────────────────────────────────
-function setupEventListeners() {
-  
-  // Theme Toggle
-  $('btn-theme-page').addEventListener('click', () => {
-    const current = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+// ── Populate Detail ───────────────────────────────────────────
+function populateDetail(event) {
+  const era = allData.eras.find(r => r.id === event.era);
+  const eraColor = era ? era.color : 'var(--firouzeh)';
+
+  // Meta
+  const badge = $('detail-era-badge');
+  badge.textContent = era ? era.title : '';
+  badge.style.background = eraColor;
+  badge.style.boxShadow = `0 2px 12px ${eraColor}55`;
+
+  $('detail-date').textContent = event.date || '';
+  $('detail-title').textContent = event.title || '';
+
+  // Summary
+  const summaryEl = $('detail-summary');
+  summaryEl.textContent = event.summary || '';
+  summaryEl.style.borderColor = eraColor;
+  summaryEl.style.background = `${eraColor}18`;
+
+  // Description
+  $('detail-desc').textContent = event.description || 'توضیحات کاملی برای این رویداد ثبت نشده است.';
+
+  // Tags
+  const tagsEl = $('detail-tags');
+  tagsEl.innerHTML = '';
+  (event.tags || []).forEach(tag => {
+    const span = document.createElement('span');
+    span.className = 'd-tag';
+    span.textContent = `# ${tag}`;
+    tagsEl.appendChild(span);
   });
-  
+
+  // Rulers
+  const rulersSection = $('rulers-section');
+  const rulersGrid = $('rulers-grid');
+  rulersGrid.innerHTML = '';
+
+  if (event.rulers && event.rulers.length > 0) {
+    event.rulers.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'ruler-item';
+      div.innerHTML = `
+        <div class="ruler-name">👑 ${escHtml(r.name)}</div>
+        ${r.reign ? `<div class="ruler-reign">${escHtml(r.reign)}</div>` : ''}
+        ${r.note  ? `<div class="ruler-note">${escHtml(r.note)}</div>` : ''}
+      `;
+      rulersGrid.appendChild(div);
+    });
+    rulersSection.classList.remove('hidden');
+  } else {
+    rulersSection.classList.add('hidden');
+  }
+
+  // References
+  const refsSection = $('refs-section');
+  const refsList = $('refs-list');
+  refsList.innerHTML = '';
+
+  if (event.references && event.references.length > 0) {
+    const iconMap = { book: '📚', video: '🎬', website: '🌐', image: '🖼', article: '📄' };
+
+    event.references.forEach(ref => {
+      const a = document.createElement('a');
+      a.className = 'ref-item';
+      a.href = ref.url || '#';
+      a.target = ref.url ? '_blank' : '_self';
+      a.rel = 'noopener noreferrer';
+
+      const icon = iconMap[ref.type] || '🌐';
+      const label = [ref.title, ref.author ? `(${ref.author})` : ''].filter(Boolean).join(' ');
+
+      a.innerHTML = `
+        <span class="ref-icon">${icon}</span>
+        <span class="ref-title">${escHtml(label)}</span>
+      `;
+      refsList.appendChild(a);
+    });
+    refsSection.classList.remove('hidden');
+  } else {
+    refsSection.classList.add('hidden');
+  }
+
+  // Nav arrows
+  updateNavButtons();
+}
+
+// ── Nav Buttons ───────────────────────────────────────────────
+function updateNavButtons() {
+  const idx = filteredEvents.findIndex(e => e.id === activeEventId);
+  const total = filteredEvents.length;
+
+  const prevBtn = $('btn-prev-event'); // next chronologically (earlier)
+  const nextBtn = $('btn-next-event'); // prev chronologically (later)
+  const counter = $('nav-counter');
+
+  prevBtn.disabled = (idx >= total - 1);
+  nextBtn.disabled = (idx <= 0);
+  counter.textContent = `${idx + 1} از ${total}`;
+}
+
+// ── Event Listeners ───────────────────────────────────────────
+function setupListeners() {
+  // Theme toggle
+  $('btn-theme-imm').addEventListener('click', () => {
+    const cur = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  });
+
   // Search
-  $('imm-search').addEventListener('input', (e) => {
+  $('imm-search').addEventListener('input', e => {
     searchQuery = e.target.value.trim();
-    applyFilterAndSearch();
+    applyFilter();
   });
-  
-  // Bottom track arrow navigation
-  $('btn-scroll-right').addEventListener('click', () => {
-    $('imm-timeline-track').scrollBy({ left: 240, behavior: 'smooth' });
+
+  // Nav buttons
+  $('btn-prev-event').addEventListener('click', () => {
+    const idx = filteredEvents.findIndex(e => e.id === activeEventId);
+    if (idx < filteredEvents.length - 1) selectEvent(filteredEvents[idx + 1].id);
   });
-  
-  $('btn-scroll-left').addEventListener('click', () => {
-    $('imm-timeline-track').scrollBy({ left: -240, behavior: 'smooth' });
+
+  $('btn-next-event').addEventListener('click', () => {
+    const idx = filteredEvents.findIndex(e => e.id === activeEventId);
+    if (idx > 0) selectEvent(filteredEvents[idx - 1].id);
   });
-  
-  // Keyboard Arrow navigation (ArrowLeft & ArrowRight)
+
+  // Keyboard arrows
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    
-    if (filteredEvents.length === 0) return;
-    
-    const currentIndex = filteredEvents.findIndex(ev => ev.id === activeEventId);
-    if (currentIndex === -1) return;
-    
-    if (e.key === 'ArrowLeft') {
-      // Next event chronologically
-      const nextIndex = Math.min(currentIndex + 1, filteredEvents.length - 1);
-      selectEvent(filteredEvents[nextIndex].id);
-    } else if (e.key === 'ArrowRight') {
-      // Previous event chronologically
-      const prevIndex = Math.max(currentIndex - 1, 0);
-      selectEvent(filteredEvents[prevIndex].id);
+    const idx = filteredEvents.findIndex(ev => ev.id === activeEventId);
+    if (idx === -1) return;
+
+    if (e.key === 'ArrowLeft') {  // next in RTL = left
+      const next = Math.min(idx + 1, filteredEvents.length - 1);
+      selectEvent(filteredEvents[next].id);
+    } else if (e.key === 'ArrowRight') { // prev in RTL = right
+      const prev = Math.max(idx - 1, 0);
+      selectEvent(filteredEvents[prev].id);
     }
   });
 }
 
-// ── Toast Utility ──────────────────────────────────────────
-function showToast(msg, type = 'success') {
-  const container = document.body;
+// ── Toast ─────────────────────────────────────────────────────
+function showToast(msg, type = 'info') {
+  const container = $('imm-toast-container');
   const toast = document.createElement('div');
-  toast.style.position = 'fixed';
-  toast.style.bottom = '20px';
-  toast.style.right = '20px';
-  toast.style.padding = '12px 24px';
-  toast.style.borderRadius = '8px';
-  toast.style.zIndex = '999';
-  toast.style.direction = 'rtl';
-  toast.style.fontFamily = 'inherit';
-  toast.style.fontSize = '0.9rem';
-  toast.style.fontWeight = '600';
-  toast.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-  toast.style.transition = 'all 300ms ease';
-  
-  if (type === 'error') {
-    toast.style.background = '#e57373';
-    toast.style.color = '#fff';
-  } else if (type === 'warning') {
-    toast.style.background = '#ffb74d';
-    toast.style.color = '#000';
-  } else {
-    toast.style.background = '#81c784';
-    toast.style.color = '#fff';
-  }
-  
+  toast.className = 'imm-toast';
   toast.textContent = msg;
+  if (type === 'error') toast.style.borderColor = 'var(--crimson)';
   container.appendChild(toast);
-  
   setTimeout(() => {
     toast.style.opacity = '0';
+    toast.style.transition = 'opacity 300ms';
     setTimeout(() => toast.remove(), 320);
-  }, 2500);
+  }, 2800);
 }
 
-// Helper to escape HTML tags
-function escapeHtml(str) {
+// ── Util ──────────────────────────────────────────────────────
+function escHtml(str) {
   if (!str) return '';
   return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
