@@ -2171,3 +2171,100 @@ select.form-control {
 .ql-snow .ql-fill { fill: var(--text-secondary); }
 .ql-snow .ql-picker { color: var(--text-secondary); }
 .ql-editor { min-height: 150px; text-align: right; direction: rtl; line-height: 1.7; }
+
+/* ============================================================
+   BLOODY DEY 1404 THEME
+   ============================================================ */
+.bloody-dey-quote {
+  display: none;
+  font-family: var(--font-nastaliq);
+  font-size: 1.8rem;
+  text-align: center;
+  color: #ff2a2a;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  margin: 20px 0;
+  line-height: 1.5;
+  animation: pulse-blood 3s infinite alternate;
+}
+
+.bloody-dey-theme .bloody-dey-quote {
+  display: block;
+}
+
+.bloody-dey-theme .panel-inner {
+  background: linear-gradient(180deg, #1a0000 0%, #330000 100%);
+  border-color: #660000;
+  box-shadow: -10px 0 50px rgba(255, 0, 0, 0.2);
+}
+
+[dir="rtl"] .bloody-dey-theme .panel-inner {
+  box-shadow: 10px 0 50px rgba(255, 0, 0, 0.2);
+}
+
+.bloody-dey-theme .panel-title {
+  color: #ff4d4d;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+.bloody-dey-theme .panel-summary {
+  color: #ffb3b3;
+}
+
+.bloody-dey-theme .panel-description {
+  color: #ffcccc;
+}
+
+.bloody-dey-theme .panel-divider {
+  background: linear-gradient(90deg, transparent, #800000, transparent);
+}
+
+.bloody-dey-theme .panel-era-badge {
+  background: #800000 !important;
+  color: #ffcccc;
+  border: 1px solid #ff4d4d;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.bloody-dey-theme .panel-tag {
+  background: rgba(128, 0, 0, 0.3);
+  border-color: rgba(255, 0, 0, 0.3);
+  color: #ff9999;
+}
+
+.bloody-dey-theme .ref-item {
+  background: rgba(51, 0, 0, 0.5);
+  border-color: rgba(128, 0, 0, 0.5);
+}
+
+.bloody-dey-theme .ref-title {
+  color: #ffcccc;
+}
+
+.bloody-dey-theme .ref-link {
+  color: #ff6666;
+}
+
+.bloody-dey-theme .ref-link:hover {
+  color: #ff3333;
+}
+
+.bloody-dey-theme .panel-close:hover {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.bloody-dey-theme::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+.bloody-dey-theme::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+@keyframes pulse-blood {
+  0% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); transform: scale(1); }
+  50% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.4); transform: scale(1.02); }
+  100% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); transform: scale(1); }
+}

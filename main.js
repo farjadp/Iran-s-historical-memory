@@ -557,6 +557,13 @@ function openPanel(eventId) {
   document.querySelectorAll('.event-card.active, .node-dot.active').forEach(el => el.classList.remove('active'));
   document.querySelectorAll(`[data-id="${eventId}"]`).forEach(el => el.classList.add('active'));
 
+  // Bloody Dey 1404 Theme Check
+  if (eventId === 'user_1782328116866') {
+    sidePanelEl.classList.add('bloody-dey-theme');
+  } else {
+    sidePanelEl.classList.remove('bloody-dey-theme');
+  }
+
   // Open
   sidePanelEl.classList.add('open');
   sidePanelEl.setAttribute('aria-hidden', 'false');
