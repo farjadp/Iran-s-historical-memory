@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
 </head>
 <body>
 
@@ -213,7 +215,7 @@
           </div>
           <div class="form-group">
             <label for="ev-description">توضیحات کامل</label>
-            <textarea id="ev-description" class="form-control" rows="5" placeholder="توضیحات تفصیلی..."></textarea>
+            <div id="ev-description-quill"></div>
           </div>
           <div class="form-group">
             <label for="ev-tags">برچسب‌ها (با کاما جدا کنید)</label>
@@ -282,7 +284,7 @@
                 </div>
                 <div class="form-group">
                   <label>توضیحات کامل</label>
-                  <textarea id="pro-ev-description" class="form-control" rows="6"></textarea>
+                  <div id="pro-ev-description-quill"></div>
                 </div>
                 <div class="form-group">
                   <label>برچسب‌ها (با کاما جدا کنید)</label>

@@ -40,6 +40,41 @@ const sidePanelEl       = $('side-panel');
 const noResultsEl       = $('no-results');
 const searchInput       = $('search-input');
 const eraFilterBar      = $('era-filter-bar');
+
+// Quill instances
+let quillAdd, quillEdit;
+const quillToolbar = [
+  ['bold', 'italic', 'underline', 'strike'],
+  ['blockquote'],
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'direction': 'rtl' }],
+  ['link'],
+  ['clean']
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof Quill !== 'undefined') {
+    if (document.getElementById('ev-description-quill')) {
+      quillAdd = new Quill('#ev-description-quill', {
+        theme: 'snow',
+        placeholder: 'توضیحات تفصیلی (پشتیبانی از فرمت متن)...',
+        modules: { toolbar: quillToolbar }
+      });
+      quillAdd.format('direction', 'rtl');
+      quillAdd.format('align', 'right');
+    }
+    
+    if (document.getElementById('pro-ev-description-quill')) {
+      quillEdit = new Quill('#pro-ev-description-quill', {
+        theme: 'snow',
+        modules: { toolbar: quillToolbar }
+      });
+      quillEdit.format('direction', 'rtl');
+      quillEdit.format('align', 'right');
+    }
+  }
+});
+
 const adminDialog       = $('admin-dialog');
 const toastContainer    = $('toast-container');
 
@@ -496,7 +531,14 @@ function openPanel(eventId) {
 
   panelTitle.textContent   = event.title;
   panelSummary.textContent = event.summary;
-  panelDesc.textContent    = event.description || '';
+  
+  const descRaw = event.description || '';
+  if (descRaw.includes('<p>') || descRaw.includes('<br>')) {
+    panelDesc.innerHTML = descRaw;
+  } else {
+    panelDesc.innerHTML = descRaw.replace(/\n/g, '<br>');
+  }
+
 
   // Tags
   panelTagsEl.innerHTML = (event.tags || [])
@@ -677,7 +719,11 @@ function loadEventIntoProEditor(eventId) {
   $('pro-ev-datesort').value    = ev.dateSort || '';
   $('pro-ev-era').value         = ev.era;
   $('pro-ev-summary').value     = ev.summary;
-  $('pro-ev-description').value = ev.description || '';
+  
+  if (quillEdit) {
+    quillEdit.root.innerHTML = ev.description || '';
+  }
+
   $('pro-ev-tags').value        = (ev.tags || []).join(', ');
 
   const statusEl = $('pro-save-status');
@@ -755,7 +801,7 @@ async function proSaveEvent() {
     dateSort:    parseInt($('pro-ev-datesort').value) || ev.dateSort || 9999,
     era:         $('pro-ev-era').value,
     summary:     $('pro-ev-summary').value.trim(),
-    description: $('pro-ev-description').value.trim(),
+    description: quillEdit ? quillEdit.root.innerHTML.trim() : '',
     tags:        $('pro-ev-tags').value.split(',').map(t => t.trim()).filter(Boolean),
   };
 
@@ -885,7 +931,7 @@ function handleEventFormSubmit(e) {
     date,
     dateSort:    parseInt($('ev-datesort').value) || 9999,
     summary,
-    description: $('ev-description').value.trim(),
+    description: quillAdd ? quillAdd.root.innerHTML.trim() : '',
     tags:        $('ev-tags').value.split(',').map(t => t.trim()).filter(Boolean),
     references:  [],
     _userAdded:  true,

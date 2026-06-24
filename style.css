@@ -1877,6 +1877,7 @@ select.form-control {
   scrollbar-width: thin;
   scrollbar-color: var(--border-subtle) transparent;
   gap: 0;
+  min-height: 0; /* Fixes grid item overflow scrolling */
 }
 
 .pro-editor-empty {
@@ -2140,3 +2141,24 @@ select.form-control {
   border-color: var(--gold);
   transform: translateY(-1px);
 }
+
+/* ── QUILL EDITOR DARK THEME OVERRIDES ── */
+.ql-toolbar.ql-snow, .ql-container.ql-snow {
+  border-color: var(--border-input);
+  font-family: inherit;
+}
+.ql-toolbar.ql-snow {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  direction: ltr; /* keep toolbar ltr so icons align properly */
+}
+.ql-container.ql-snow {
+  background: var(--bg-input);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+.ql-snow .ql-stroke { stroke: var(--text-secondary); }
+.ql-snow .ql-fill { fill: var(--text-secondary); }
+.ql-snow .ql-picker { color: var(--text-secondary); }
+.ql-editor { min-height: 150px; text-align: right; direction: rtl; line-height: 1.7; }
