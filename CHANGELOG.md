@@ -8,6 +8,13 @@ Format: `[version] — YYYY-MM-DD`
 
 ## [v0.6.0] — 2026-06-24
 
+### 🕊️ Memorial Theme & AI Safeguards
+- Created a custom elegant, dark memorial theme for the "Bloody Dey 1404" event card (`bloody-dey-theme`).
+- Replaced bright red harsh colors with a mournful dark aesthetic (`#0a0a0a` background, muted crimson text).
+- Added fade-in animation for memorial quotes ("فرزند ایران و جان فدای میهن").
+- Added duplicate URL detection and warning modal to the AI Ingest panel to prevent redundant content processing.
+- Fixed the scroll bug inside the Admin Pro Editor panel by refactoring the flexbox layout of `.admin-dialog` and `.admin-inner`.
+
 ### 🌍 Bilingual Support (FA / EN)
 - Added full **English version** at `/en/` with separate routing
 - Translated all **62 historical events** + **7 eras** to English via Gemini AI
