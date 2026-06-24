@@ -35,18 +35,27 @@
   <!-- Main Container -->
   <main style="flex: 1; padding: 40px 20px; max-width: 800px; margin: 0 auto; width: 100%;">
     <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-card); position: relative; overflow: hidden;">
-      
+
+      <!-- Iran Map Background -->
+      <div style="position: absolute; inset: 0; pointer-events: none; z-index: 0;">
+        <img src="iran_map.png" alt="" aria-hidden="true"
+          style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); width: 85%; max-width: 600px; opacity: 0.055; filter: saturate(0.8);" />
+      </div>
+
       <!-- Top Glow -->
       <div style="position: absolute; top: -100px; left: -100px; width: 250px; height: 250px; background: rgba(200, 137, 58, 0.08); border-radius: 50%; filter: blur(50px); pointer-events: none;"></div>
       <div style="position: absolute; bottom: -100px; right: -100px; width: 250px; height: 250px; background: rgba(92, 158, 106, 0.06); border-radius: 50%; filter: blur(50px); pointer-events: none;"></div>
 
-      <div style="text-align: center; margin-bottom: 30px;">
-        <span style="font-size: 4rem;">👨‍💻</span>
+      <div style="text-align: center; margin-bottom: 30px; position: relative; z-index: 1;">
+        <!-- Flag -->
+        <div style="display: flex; justify-content: center; margin-bottom: 18px;">
+          <img src="iran_flag.png" alt="پرچم شیر و خورشید" title="پرچم شیر و خورشید"
+            style="width: 140px; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);" />
+        </div>
+        <span style="font-size: 3.5rem;">👨‍💻</span>
         <h1 style="font-size: 2.2rem; font-weight: 800; margin: 10px 0 5px; color: var(--text-primary);">فرجاد پورمحمد</h1>
-        <p style="font-size: 1rem; color: var(--gold-light); font-weight: 700; margin-bottom: 4px; letter-spacing: 1px;">❤️ عاشق وطن</p>
-        <p style="font-size: 1.1rem; color: var(--gold-light); font-weight: 600; margin-bottom: 5px;">CTO، معمار سیستم‌ها و استراتژیست محصول</p>
-
-
+        <p style="font-size: 1rem; color: var(--gold-light); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px;">❤️ عاشق وطن</p>
+        <p style="font-size: 1.1rem; color: var(--gold-light); font-weight: 600; margin-bottom: 0;">کارآفرین | استراتژیست استارتاپ | معمار سیستم‌های هوش مصنوعی</p>
       </div>
 
       <div class="panel-divider" style="margin: 25px 0;"></div>

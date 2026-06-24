@@ -4,7 +4,6 @@ __pycache__/
 .vscode/
 .idea/
 *.webp
-*.png
 *.mp4
 
 # Secrets — never commit
@@ -12,3 +11,7 @@ __pycache__/
 
 # Runtime data (ephemeral on Railway)
 data/feedback.json
+
+# Allow project image assets
+!iran_flag.png
+!iran_map.png
