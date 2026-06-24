@@ -192,7 +192,9 @@ class LoginData(BaseModel):
 
 @app.post("/api/login")
 async def login_admin(payload: LoginData):
-    correct_password = os.getenv("ADMIN_PASSWORD", "admin123")
+    correct_password = os.getenv("ADMIN_PASSWORD")
+    if not correct_password:
+        raise HTTPException(status_code=503, detail="پیکربندی سرور ناقص است: ADMIN_PASSWORD تنظیم نشده")
     if payload.password == correct_password:
         return {"status": "success", "token": "admin-session-token"}
     raise HTTPException(status_code=401, detail="رمز عبور وارد شده نادرست است")
