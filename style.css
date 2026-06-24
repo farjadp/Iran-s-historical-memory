@@ -2173,98 +2173,119 @@ select.form-control {
 .ql-editor { min-height: 150px; text-align: right; direction: rtl; line-height: 1.7; }
 
 /* ============================================================
-   BLOODY DEY 1404 THEME
+   BLOODY DEY 1404 THEME (Mournful & Elegant)
    ============================================================ */
 .bloody-dey-quote {
   display: none;
   font-family: var(--font-nastaliq);
   font-size: 1.8rem;
   text-align: center;
-  color: #ff2a2a;
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-  margin: 20px 0;
-  line-height: 1.5;
-  animation: pulse-blood 3s infinite alternate;
+  color: #d32f2f;
+  margin: 25px 0;
+  line-height: 1.6;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
 }
 
 .bloody-dey-theme .bloody-dey-quote {
   display: block;
+  animation: fade-in-quote 2s ease-in-out;
 }
 
 .bloody-dey-theme .panel-inner {
-  background: linear-gradient(180deg, #1a0000 0%, #330000 100%);
-  border-color: #660000;
-  box-shadow: -10px 0 50px rgba(255, 0, 0, 0.2);
+  background: #0a0a0a;
+  border-color: #2c0b0b;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
 }
 
 [dir="rtl"] .bloody-dey-theme .panel-inner {
-  box-shadow: 10px 0 50px rgba(255, 0, 0, 0.2);
+  box-shadow: 5px 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.bloody-dey-theme .panel-header {
+  border-bottom: 1px solid #2c0b0b;
+  background: rgba(15, 0, 0, 0.6);
 }
 
 .bloody-dey-theme .panel-title {
-  color: #ff4d4d;
-  text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  color: #e53935;
+  font-weight: 700;
 }
 
 .bloody-dey-theme .panel-summary {
-  color: #ffb3b3;
+  color: #e0e0e0;
+  border-right: 3px solid #b71c1c;
+  background: rgba(30, 5, 5, 0.4);
+  padding: 10px 15px;
 }
 
 .bloody-dey-theme .panel-description {
-  color: #ffcccc;
+  color: #cccccc;
+  line-height: 1.8;
 }
 
 .bloody-dey-theme .panel-divider {
-  background: linear-gradient(90deg, transparent, #800000, transparent);
+  background: linear-gradient(90deg, transparent, #4a1414, transparent);
+  height: 1px;
 }
 
 .bloody-dey-theme .panel-era-badge {
-  background: #800000 !important;
-  color: #ffcccc;
-  border: 1px solid #ff4d4d;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  background: #1a0505 !important;
+  color: #ef5350;
+  border: 1px solid #b71c1c;
+  box-shadow: none;
 }
 
 .bloody-dey-theme .panel-tag {
-  background: rgba(128, 0, 0, 0.3);
-  border-color: rgba(255, 0, 0, 0.3);
-  color: #ff9999;
+  background: #140505;
+  border-color: #3e1212;
+  color: #ef9a9a;
 }
 
 .bloody-dey-theme .ref-item {
-  background: rgba(51, 0, 0, 0.5);
-  border-color: rgba(128, 0, 0, 0.5);
+  background: #110404;
+  border-color: #2c0b0b;
 }
 
 .bloody-dey-theme .ref-title {
-  color: #ffcccc;
+  color: #e0e0e0;
 }
 
 .bloody-dey-theme .ref-link {
-  color: #ff6666;
+  color: #e53935;
 }
 
 .bloody-dey-theme .ref-link:hover {
-  color: #ff3333;
+  color: #ff5252;
+}
+
+.bloody-dey-theme .panel-close {
+  background: rgba(255, 255, 255, 0.05);
+  color: #9e9e9e;
+  border-color: #333;
 }
 
 .bloody-dey-theme .panel-close:hover {
-  background: rgba(255, 0, 0, 0.2);
-  border-color: #ff4d4d;
-  color: #ff4d4d;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  background: rgba(229, 57, 53, 0.1);
+  border-color: #e53935;
+  color: #e53935;
+  box-shadow: none;
 }
 
 .bloody-dey-theme::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 0, 0.3);
+  background: #3e1212;
 }
 
 .bloody-dey-theme::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 0, 0, 0.5);
+  background: #5c1a1a;
 }
 
-@keyframes pulse-blood {
-  0% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); transform: scale(1); }
-  50% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.4); transform: scale(1.02); }
-  100% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); transform: scale(1); }
+.bloody-dey-theme .panel-backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes fade-in-quote {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0.9; transform: translateY(0); }
 }
