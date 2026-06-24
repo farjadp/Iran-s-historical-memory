@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ایران — سرزمین تمدن و فرهنگ</title>
+  <meta name="description" content="آشنایی جامع با ایران: تاریخ، فرهنگ، جغرافیا، هنر، زبان و بزرگان این سرزمین کهن" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    const savedTheme = localStorage.getItem('iran_history_theme') || 'dark';
+    if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
+  </script>
+  <style>
+    /* Page-specific styles */
+    .iran-page { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* Hero */
+    .iran-hero {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 60px;
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .iran-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('iran_persepolis.png') center/cover no-repeat;
+    }
+    .iran-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,10,18,0.95) 0%, rgba(8,10,18,0.5) 50%, rgba(8,10,18,0.15) 100%);
+    }
+    .iran-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 50px 50px 50px;
+      width: 100%;
+    }
+    .iran-hero-flag {
+      width: 90px;
+      border-radius: 5px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .iran-hero-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .iran-hero-title {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -2px;
+    }
+    .iran-hero-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      max-width: 550px;
+    }
+
+    /* Quick stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1px;
+      background: var(--border-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+    .stat-block {
+      background: var(--bg-card);
+      padding: 22px 20px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .stat-block:hover { background: var(--bg-card-hover); }
+    .stat-icon { font-size: 1.5rem; margin-bottom: 6px; }
+    .stat-value { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); display: block; }
+    .stat-label { font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; }
+
+    /* Section titles */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(200,137,58,0.3);
+      color: var(--gold-light);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .section-title-main {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      text-align: justify;
+    }
+    .section-body p { margin-bottom: 16px; }
+
+    /* Image card */
+    .img-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+    .img-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .img-card:hover img { transform: scale(1.03); }
+    .img-caption {
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Two-column */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .two-col.reverse { direction: ltr; }
+    .two-col.reverse > * { direction: rtl; }
+
+    /* Divider */
+    .page-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 60px 0;
+    }
+    .page-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-active), transparent);
+    }
+    .page-divider-gem {
+      color: var(--gold);
+      font-size: 1rem;
+      filter: drop-shadow(0 0 6px var(--gold));
+    }
+
+    /* Poets grid */
+    .poets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .poet-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .poet-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+    .poet-emoji { font-size: 2rem; margin-bottom: 10px; }
+    .poet-name { font-weight: 800; font-size: 1rem; color: var(--text-primary); margin-bottom: 4px; }
+    .poet-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
+    .poet-era { font-size: 0.7rem; color: var(--gold-light); font-weight: 700; margin-top: 6px; }
+
+    /* Blockquote */
+    .persian-blockquote {
+      border-right: 4px solid var(--gold);
+      padding: 20px 24px;
+      background: var(--gold-dim);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 30px 0;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.8;
+      font-style: italic;
+    }
+    .persian-blockquote cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    /* Fact pills */
+    .facts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .fact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .fact-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .fact-title { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); }
+    .fact-detail { font-size: 0.82rem; color: var(--text-secondary); margin-top: 3px; line-height: 1.5; }
+
+    /* Wonders grid */
+    .wonders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .wonder-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 14px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .wonder-card:hover {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .wonder-emoji { font-size: 2rem; margin-bottom: 8px; }
+    .wonder-name { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
+    .wonder-loc { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+      .iran-hero-content { padding: 30px 24px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body style="min-height:100vh; background: var(--bg-base); color: var(--text-primary);">
+
+  <!-- Header -->
+  <header class="site-header" style="position: static; height: auto; padding: 18px 0;">
+    <div class="header-inner" style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+      <a href="index.html" class="header-brand" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 1.5rem;">🦁</span>
+        <div>
+          <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary);">تاریخ ایران</span>
+          <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0;">بازگشت به تایم‌لاین</p>
+        </div>
+      </a>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="about-developer.html" style="font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border-subtle); padding: 6px 14px; border-radius: 50px;">👨‍💻 سازنده</a>
+        <button id="btn-theme-iran" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 50%; color: var(--text-primary); cursor: pointer; width: 38px; height: 38px; font-size: 1.1rem;">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="iran-page">
+
+    <!-- ===== HERO ===== -->
+    <div class="iran-hero">
+      <div class="iran-hero-bg"></div>
+      <div class="iran-hero-overlay"></div>
+      <div class="iran-hero-content">
+        <img src="iran_flag.png" alt="پرچم شیر و خورشید" class="iran-hero-flag" />
+        <p class="iran-hero-eyebrow">سرزمین کهن · مهد تمدن</p>
+        <h1 class="iran-hero-title">ایران</h1>
+        <p class="iran-hero-subtitle">سرزمینی با بیش از سه‌هزار سال تاریخ مکتوب، خاستگاه یکی از بزرگ‌ترین امپراتوری‌های جهان، و گهواره ادب، هنر و فلسفه بشری.</p>
+      </div>
+    </div>
+
+    <!-- ===== QUICK STATS ===== -->
+    <div class="stats-bar">
+      <div class="stat-block">
+        <div class="stat-icon">🌍</div>
+        <span class="stat-value">۱٬۶۴۸٬۱۹۵</span>
+        <span class="stat-label">کیلومتر مربع مساحت</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">👥</div>
+        <span class="stat-value">۸۷ میلیون</span>
+        <span class="stat-label">جمعیت تقریبی</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">🏛️</div>
+        <span class="stat-value">۲۷۰۰+ سال</span>
+        <span class="stat-label">تاریخ مکتوب</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">🗣️</div>
+        <span class="stat-value">فارسی</span>
+        <span class="stat-label">زبان رسمی</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">🏙️</div>
+        <span class="stat-value">تهران</span>
+        <span class="stat-label">پایتخت</span>
+      </div>
+      <div class="stat-block">
+        <div class="stat-icon">🏔️</div>
+        <span class="stat-value">۵٬۶۱۰ متر</span>
+        <span class="stat-label">بلندی دماوند</span>
+      </div>
+    </div>
+
+    <!-- ===== GEOGRAPHY ===== -->
+    <div class="two-col" style="margin-bottom: 60px;">
+      <div>
+        <span class="section-badge">🗺️ جغرافیا</span>
+        <h2 class="section-title-main">سرزمینی در قلب جهان</h2>
+        <div class="section-body">
+          <p>ایران در جنوب‌غربی آسیا و در قلب خاورمیانه قرار دارد. این کشور با مساحتی بالغ بر ۱٬۶۴۸٬۱۹۵ کیلومتر مربع، هفدهمین کشور بزرگ جهان است.</p>
+          <p>از شمال به دریای خزر و کوه‌های البرز، از جنوب به خلیج فارس و دریای عمان، از شرق به افغانستان و پاکستان، و از غرب به عراق و ترکیه محدود است.</p>
+        </div>
+        <div class="facts-list">
+          <div class="fact-item">
+            <span class="fact-icon">🏔️</span>
+            <div>
+              <div class="fact-title">دماوند — بلندترین قله ایران و خاورمیانه</div>
+              <div class="fact-detail">آتشفشان خاموش با ارتفاع ۵٬۶۱۰ متر در رشته البرز</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🌊</span>
+            <div>
+              <div class="fact-title">دریای خزر — بزرگترین دریاچه جهان</div>
+              <div class="fact-detail">ایران ۷۴۰ کیلومتر ساحل با این دریاچه بزرگ دارد</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🏜️</span>
+            <div>
+              <div class="fact-title">دشت کویر و لوت</div>
+              <div class="fact-detail">دشت لوت با دمای ۷۰.۷ درجه، گرم‌ترین نقطه کره زمین</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="iran_nature.png" alt="طبیعت متنوع ایران" />
+        <div class="img-caption">🌿 تنوع شگفت‌انگیز طبیعت ایران — از جنگل‌های شمال تا بیابان‌های مرکزی</div>
+      </div>
+    </div>
+
+    <div class="page-divider">
+      <span class="page-divider-line"></span>
+      <span class="page-divider-gem">◆</span>
+      <span class="page-divider-line"></span>
+    </div>
+
+    <!-- ===== HISTORY ===== -->
+    <div class="two-col" style="margin-bottom: 60px;">
+      <div class="img-card">
+        <img src="iran_persepolis.png" alt="تخت جمشید" />
+        <div class="img-caption">🏛️ تخت‌جمشید — پایتخت تشریفاتی امپراتوری هخامنشی، ۵۱۵ ق.م</div>
+      </div>
+      <div>
+        <span class="section-badge">📜 تاریخ</span>
+        <h2 class="section-title-main">از ماد تا امروز</h2>
+        <div class="section-body">
+          <p>ایران از نخستین خاستگاه‌های تمدن بشری است. حدود ۳۵۰۰ سال پیش از میلاد، تمدن‌های پیشرفته‌ای در این سرزمین شکل گرفتند.</p>
+          <p>امپراتوری هخامنشی (۵۵۰–۳۳۰ ق.م) به رهبری کوروش بزرگ، اولین امپراتوری جهانی تاریخ بود که از هند تا مصر امتداد داشت و منشور کوروش اولین منشور حقوق بشر در تاریخ شناخته می‌شود.</p>
+          <p>پس از هخامنشیان، سلسله‌های اشکانی و ساسانی ایران را به اوج شکوه رساندند. با ورود اسلام، ایران هویت فرهنگی خود را حفظ کرد و در قرون میانه مرکز علم، فلسفه و هنر جهان شد.</p>
+        </div>
+        <div class="persian-blockquote">
+          «من کوروش، شاه جهانم... هیچ‌کس را از دارایی‌اش محروم نخواهم کرد. هیچ خانه‌ای را ویران نخواهم کرد.»
+          <cite>— کوروش بزرگ، منشور ۵۳۹ ق.م</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-divider">
+      <span class="page-divider-line"></span>
+      <span class="page-divider-gem">◆</span>
+      <span class="page-divider-line"></span>
+    </div>
+
+    <!-- ===== ART & ARCHITECTURE ===== -->
+    <div class="two-col" style="margin-bottom: 60px;">
+      <div>
+        <span class="section-badge">🎨 هنر و معماری</span>
+        <h2 class="section-title-main">معماری که نفس را بند می‌آورد</h2>
+        <div class="section-body">
+          <p>هنر ایرانی یکی از غنی‌ترین سنت‌های هنری جهان است. از کاشی‌کاری‌های فیروزه‌ای اصفهان تا نقش‌برجسته‌های تخت‌جمشید، هر اثر داستانی از عظمت بشری دارد.</p>
+          <p>مسجد امام اصفهان با گنبد آبی فیروزه‌ای‌اش، یکی از شاهکارهای معماری جهان است. باغ‌های ایرانی (پردیس) الهام‌بخش باغ‌سازی در سراسر دنیا شدند.</p>
+        </div>
+        <div class="facts-list">
+          <div class="fact-item">
+            <span class="fact-icon">🕌</span>
+            <div>
+              <div class="fact-title">مسجد امام (شاه) اصفهان</div>
+              <div class="fact-detail">شاهکار معماری صفوی، ثبت‌شده در یونسکو</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🖼️</span>
+            <div>
+              <div class="fact-title">مینیاتور ایرانی</div>
+              <div class="fact-detail">هنر نقاشی ظریف با رنگ‌های طبیعی و طلا</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <span class="fact-icon">🏺</span>
+            <div>
+              <div class="fact-title">قالی ایرانی</div>
+              <div class="fact-detail">گران‌قیمت‌ترین فرش‌های دستباف جهان از ایران</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img src="iran_isfahan.png" alt="مسجد امام اصفهان" />
+        <div class="img-caption">🕌 مسجد امام اصفهان — اثری از هزار سال هنر ایرانی</div>
+      </div>
+    </div>
+
+    <div class="page-divider">
+      <span class="page-divider-line"></span>
+      <span class="page-divider-gem">◆</span>
+      <span class="page-divider-line"></span>
+    </div>
+
+    <!-- ===== LANGUAGE & POETRY ===== -->
+    <section style="margin-bottom: 60px;">
+      <span class="section-badge">📖 زبان و ادبیات</span>
+      <h2 class="section-title-main">فارسی؛ زبانی که دنیا را مسحور کرد</h2>
+      <div class="section-body" style="margin-bottom: 32px;">
+        <p>زبان فارسی یکی از کهن‌ترین زبان‌های زنده جهان است که قدمتش به بیش از ۲۵۰۰ سال می‌رسد. این زبان به خط فارسی-عربی نوشته می‌شود و زبان مادری حدود ۱۱۰ میلیون نفر در ایران، افغانستان و تاجیکستان است.</p>
+        <p>ادبیات فارسی یکی از غنی‌ترین ادبیات‌های جهان است. شاعران ایرانی بر ادبیات عثمانی، هندی، و حتی اروپایی تأثیر عمیق گذاشتند.</p>
+      </div>
+
+      <div class="persian-blockquote">
+        بشنو این نی چون شکایت می‌کند &nbsp;&nbsp; از جدایی‌ها حکایت می‌کند
+        <cite>— مولانا جلال‌الدین رومی، مثنوی معنوی</cite>
+      </div>
+
+      <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin: 30px 0 0;">بزرگان شعر و اندیشه ایران</h3>
+
+      <div class="poets-grid">
+        <div class="poet-card">
+          <div class="poet-emoji">✍️</div>
+          <div class="poet-name">فردوسی</div>
+          <div class="poet-desc">حماسه‌سرای ملی ایران، خالق شاهنامه</div>
+          <div class="poet-era">۹۴۰ – ۱۰۲۰ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">🌹</div>
+          <div class="poet-name">حافظ شیرازی</div>
+          <div class="poet-desc">غزل‌سرای بی‌بدیل، دیوان حافظ در هر خانه</div>
+          <div class="poet-era">۱۳۲۵ – ۱۳۸۹ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">🎋</div>
+          <div class="poet-name">مولانا</div>
+          <div class="poet-desc">عارف بزرگ، خالق مثنوی معنوی</div>
+          <div class="poet-era">۱۲۰۷ – ۱۲۷۳ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">🍷</div>
+          <div class="poet-name">عمر خیام</div>
+          <div class="poet-desc">ریاضی‌دان، ستاره‌شناس و شاعر رباعیات</div>
+          <div class="poet-era">۱۰۴۸ – ۱۱۳۱ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">🌺</div>
+          <div class="poet-name">سعدی شیرازی</div>
+          <div class="poet-desc">خالق گلستان و بوستان، حکیم شیراز</div>
+          <div class="poet-era">۱۲۱۰ – ۱۲۹۱ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">🔭</div>
+          <div class="poet-name">ابن سینا</div>
+          <div class="poet-desc">پزشک و فیلسوف، پدر پزشکی نوین</div>
+          <div class="poet-era">۹۸۰ – ۱۰۳۷ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">⚗️</div>
+          <div class="poet-name">محمد بن زکریا رازی</div>
+          <div class="poet-desc">پدر شیمی و کشف الکل، پزشک بزرگ</div>
+          <div class="poet-era">۸۵۴ – ۹۲۵ م</div>
+        </div>
+        <div class="poet-card">
+          <div class="poet-emoji">🗺️</div>
+          <div class="poet-name">ابوریحان بیرونی</div>
+          <div class="poet-desc">دانشمند عصر طلایی اسلام، جغرافیدان</div>
+          <div class="poet-era">۹۷۳ – ۱۰۴۸ م</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-divider">
+      <span class="page-divider-line"></span>
+      <span class="page-divider-gem">◆</span>
+      <span class="page-divider-line"></span>
+    </div>
+
+    <!-- ===== WONDERS ===== -->
+    <section style="margin-bottom: 60px;">
+      <span class="section-badge">🌟 شگفتی‌ها</span>
+      <h2 class="section-title-main">عجایب ایران — ثبت‌شده در یونسکو</h2>
+      <p class="section-body">ایران با ۲۷ اثر ثبت‌شده در فهرست میراث جهانی یونسکو، یکی از ثروتمندترین کشورهای جهان از نظر میراث فرهنگی و طبیعی است.</p>
+
+      <div class="wonders-grid">
+        <div class="wonder-card">
+          <div class="wonder-emoji">🏛️</div>
+          <div class="wonder-name">تخت‌جمشید</div>
+          <div class="wonder-loc">فارس</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">🕌</div>
+          <div class="wonder-name">میدان نقش جهان</div>
+          <div class="wonder-loc">اصفهان</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">🏰</div>
+          <div class="wonder-name">ارگ بم</div>
+          <div class="wonder-loc">کرمان</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">🌿</div>
+          <div class="wonder-name">باغ‌های ایرانی</div>
+          <div class="wonder-loc">۹ باغ در ایران</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">🏺</div>
+          <div class="wonder-name">شوش</div>
+          <div class="wonder-loc">خوزستان</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">💧</div>
+          <div class="wonder-name">شهر تاریخی یزد</div>
+          <div class="wonder-loc">یزد</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">🦁</div>
+          <div class="wonder-name">پاسارگاد</div>
+          <div class="wonder-loc">آرامگاه کوروش</div>
+        </div>
+        <div class="wonder-card">
+          <div class="wonder-emoji">🌋</div>
+          <div class="wonder-name">دشت لوت</div>
+          <div class="wonder-loc">گرم‌ترین نقطه زمین</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-divider">
+      <span class="page-divider-line"></span>
+      <span class="page-divider-gem">◆</span>
+      <span class="page-divider-line"></span>
+    </div>
+
+    <!-- ===== IDENTITY ===== -->
+    <section style="margin-bottom: 60px;">
+      <span class="section-badge">🎭 فرهنگ و هویت</span>
+      <h2 class="section-title-main">هویتی که هزار سال مقاومت کرد</h2>
+      <div class="section-body">
+        <p>ایران با وجود تهاجمات مکرر — از اسکندر مقدونی تا اعراب، مغول‌ها تا تیموریان — نه تنها هویت فرهنگی خود را حفظ کرد، بلکه مهاجمان را هم به تدریج ایرانی کرد. این ظرفیت شگفت‌انگیز «ایرانی‌سازی» نشانه عمق فرهنگ این ملت است.</p>
+        <p><strong style="color: var(--text-primary);">نوروز</strong> — جشن بهار ایرانی — با قدمتی بیش از ۳۰۰۰ سال، در ۳۰۰ میلیون نفر در آسیای مرکزی، قفقاز، بالکان و خاورمیانه جشن گرفته می‌شود و در یونسکو ثبت شده است.</p>
+        <p>موسیقی ایرانی با دستگاه‌های هفتگانه، سینمای ایران با جوایز بین‌المللی، شعر کلاسیک فارسی که در پنج قاره خوانده می‌شود — همه نشانه‌های یک فرهنگ زنده و پویاست.</p>
+      </div>
+
+      <div class="facts-list" style="margin-top: 24px;">
+        <div class="fact-item">
+          <span class="fact-icon">🎊</span>
+          <div>
+            <div class="fact-title">نوروز — جشن ملی و جهانی</div>
+            <div class="fact-detail">اول فروردین (۲۱ مارس)، ثبت یونسکو، جشن ۳۰۰ میلیون نفر</div>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🍽️</span>
+          <div>
+            <div class="fact-title">آشپزی ایرانی</div>
+            <div class="fact-detail">چلوکباب، غذاهای زعفرانی، قرمه‌سبزی، و صدها غذای اصیل منطقه‌ای</div>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🎬</span>
+          <div>
+            <div class="fact-title">سینمای ایران</div>
+            <div class="fact-detail">برنده اسکار، نخل طلای کن، و ده‌ها جایزه بین‌المللی</div>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">♟️</span>
+          <div>
+            <div class="fact-title">شطرنج — اختراع ایرانی</div>
+            <div class="fact-detail">بازی شطرنج از ایران به هند و سپس به جهان رفت</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLOSING QUOTE ===== -->
+    <div style="background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover)); border: 1px solid var(--border-active); border-radius: var(--radius-lg); padding: 50px 40px; text-align: center; position: relative; overflow: hidden; margin-bottom: 40px;">
+      <div style="position: absolute; inset: 0; opacity: 0.03; background: url('iran_map.png') center/contain no-repeat; pointer-events: none;"></div>
+      <img src="iran_flag.png" alt="پرچم شیر و خورشید" style="width: 70px; margin: 0 auto 20px; display: block; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+      <p style="font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: var(--text-primary); line-height: 1.8; font-style: italic; margin-bottom: 16px;">
+        «ایران کشور نیست، ایران یک ایده است — ایده‌ای که هزار سال است زنده مانده.»
+      </p>
+      <p style="font-size: 0.85rem; color: var(--gold-light); font-weight: 700;">— از دل تاریخ</p>
+    </div>
+
+    <!-- Back links -->
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a href="index.html" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;">🏠 تایم‌لاین اصلی</a>
+      <a href="immersive.html" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;">🎭 نمای فیروزه‌ای</a>
+      <a href="about-project.html" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;">ℹ️ درباره پروژه</a>
+    </div>
+
+  </div><!-- /iran-page -->
+
+  <!-- Footer -->
+  <footer class="site-footer" style="padding: 24px 0; margin-top: 40px;">
+    <p>تایم‌لاین تاریخ ایران · ساخته شده با ❤️ برای وطن</p>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('btn-theme-iran');
+    function applyTheme(t) {
+      document.documentElement.dataset.theme = t === 'light' ? 'light' : '';
+      btn.textContent = t === 'light' ? '🌙' : '☀️';
+      localStorage.setItem('iran_history_theme', t);
+    }
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+    btn.textContent = document.documentElement.dataset.theme === 'light' ? '🌙' : '☀️';
+  </script>
+</body>
+</html>
