@@ -4,50 +4,57 @@
       "id": "bastan",
       "title": "ایران باستان",
       "color": "#C8893A",
-      "textColor": "#fff3e0"
+      "textColor": "#fff3e0",
+      "title_en": "Ancient Iran"
     },
     {
       "id": "eslami-avval",
       "title": "اسلامی اولیه",
       "color": "#5C9E6A",
-      "textColor": "#e8f5e9"
+      "textColor": "#e8f5e9",
+      "title_en": "Early Islamic Period"
     },
     {
       "id": "eslami-miani",
       "title": "قرون میانه",
       "color": "#6B85C8",
-      "textColor": "#e3f2fd"
+      "textColor": "#e3f2fd",
+      "title_en": "Medieval Period"
     },
     {
       "id": "safaviyeh",
       "title": "صفوی و افشاری",
       "color": "#9C5EBC",
-      "textColor": "#f3e5f5"
+      "textColor": "#f3e5f5",
+      "title_en": "Safavid and Afsharid Periods"
     },
     {
       "id": "qajar",
       "title": "قاجار و مشروطه",
       "color": "#C85E5E",
-      "textColor": "#fce4ec"
+      "textColor": "#fce4ec",
+      "title_en": "Qajar and Constitutional Period"
     },
     {
       "id": "pahlavi",
       "title": "پهلوی",
       "color": "#C89A3A",
-      "textColor": "#fff8e1"
+      "textColor": "#fff8e1",
+      "title_en": "Pahlavi Period"
     },
     {
       "id": "moaser",
       "title": "معاصر",
       "color": "#3AAAC8",
-      "textColor": "#e0f7fa"
+      "textColor": "#e0f7fa",
+      "title_en": "Contemporary Period"
     }
   ],
   "events": [
     {
       "id": "prehistoric",
       "era": "bastan",
-      "title": "دوران غارنشینی و پیش از تاریخ فلات ایران",
+      "title": "دوران غارنشینی و پیش از تاریخ ایران",
       "date": "حدود ۱۰۰,۰۰۰ – ۱۰,۰۰۰ سال پیش",
       "dateSort": -100000,
       "summary": "نخستین شواهد سکونت انسان‌های اولیه (از جمله نئاندرتال‌ها) در غارها و محوطه‌های تاریخی فلات ایران.",
@@ -67,7 +74,10 @@
         "نوسنگی",
         "نئاندرتال"
       ],
-      "_userAdded": true
+      "_userAdded": true,
+      "title_en": "Cave Dwelling and Prehistoric Era of Iran",
+      "summary_en": "The first evidence of early human (including Neanderthal) settlement in caves and historical sites on the Iranian Plateau.",
+      "description_en": "The prehistoric era in Iran includes the Paleolithic, Mesolithic, and Neolithic periods. The oldest signs of human settlement on the Iranian Plateau have been found in sites such as Kashafrud in Khorasan and Shanidar Cave. With the beginning of the Neolithic Revolution approximately 10,000 years ago, humans transitioned from cave dwelling and hunting to agriculture and animal domestication, a historical transformation evidenced by ancient mounds like Ganj Dareh and Chogha Golan."
     },
     {
       "id": "pishdadiyan",
@@ -146,7 +156,10 @@
         "جمشید",
         "فریدون"
       ],
-      "_userAdded": true
+      "_userAdded": true,
+      "title_en": "Pishdadian Dynasty (Mythical Era)",
+      "summary_en": "The first royal dynasty of Iran in the Avesta, Shahnameh, and Iranian mythology, founded by Kayumars.",
+      "description_en": "The Pishdadians are the first royal dynasty in the mythical history of Iran, preceding the Kayanids. The Pishdadian kingship was founded by Kayumars. The word Pishdad means 'first law-giver.' According to the Avesta and Shahnameh, the kings of this dynasty include famous figures such as Hushang (discoverer of iron and fire), Tahmuras (demon-binder), Jamshid (possessor of Nowruz and the Cup of Jamshid), Zahhak the Arab (serpent-shouldered), Fereydun (who imprisoned Zahhak in Mount Damavand), Manuchehr, Nowzar, and Zav. The era of this kingship ended with the death of Zav or Garshasp and transitioned into the Kayanid era."
     },
     {
       "id": "elam",
@@ -189,7 +202,10 @@
         "عصر مفرغ",
         "زیگورات"
       ],
-      "_userAdded": true
+      "_userAdded": true,
+      "title_en": "Ancient Elamite Civilization",
+      "summary_en": "One of the earliest and oldest urban civilizations in the world, located in the southwestern Iranian Plateau with Susa as its center.",
+      "description_en": "The Elamite civilization was one of the oldest organized civilizations of the ancient world in modern-day southwestern Iran (Khuzestan and Ilam provinces). The Elamites possessed their own script, laws, advanced metal industries, and astonishing architecture. Their greatest surviving architectural work is the Chogha Zanbil temple (the Ziggurat of Dur-Untash). This civilization was eventually weakened by Assyrian invasions and was absorbed into the empire of Cyrus the Great with the rise of the Achaemenids."
     },
     {
       "id": "aryan_migration",
@@ -219,7 +235,10 @@
         "پارس",
         "پارت"
       ],
-      "_userAdded": true
+      "_userAdded": true,
+      "title_en": "Migration of Aryan Tribes to the Iranian Plateau",
+      "summary_en": "The arrival of Indo-European tribes (Aryans) from Central Asia to various regions of the Iranian Plateau.",
+      "description_en": "Around the second millennium BCE, the movement and migration of Aryan tribes began from the plains of Central Asia towards the south and the Iranian Plateau. These peoples gradually settled in various regions and divided into three main branches: the Medes (in the west and northwest), the Persians (in the south and center), and the Parthians (in the northeast). This migration formed the demographic, linguistic, and cultural foundation of modern-day Iran."
     },
     {
       "id": "mada",
@@ -259,7 +278,10 @@
           "reign": "۵۸۵ – ۵۵۰ ق.م",
           "note": "آخرین پادشاه ماد و پدربزرگ مادری کوروش بزرگ، که توسط کوروش سرنگون شد و به سلطنت ماد پایان داد."
         }
-      ]
+      ],
+      "title_en": "Median Empire",
+      "summary_en": "The first Iranian empire that helped unify the territories of the Iranian plateau. Deioces was the founder of this state.",
+      "description_en": "The first Iranian state that formed after the unification of Median tribes against repeated Assyrian invasions, with its capital at Ecbatana. The Medes, especially under the leadership of Deioces and then Cyaxares, gradually gained power. By defeating the Scythians and allying with the Babylonians, they brought an end to the Assyrian Empire and conquered Nineveh. This kingdom functioned more as a confederacy of independent kingdoms rather than a centralized empire. Ultimately, with the rebellion of Cyrus the Great of Persia and the defeat of Astyages, the last Median king, the Median territory became part of the Achaemenid Empire."
     },
     {
       "id": "fall-assyrian-empire",
@@ -298,7 +320,10 @@
         "سقوط امپراتوری",
         "اتحاد ماد و بابل"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Fall of the Assyrian Empire and the Rise of Neo-Babylonian and Median Powers",
+      "summary_en": "An alliance of Medes led by Cyaxares and Babylonians led by Nabopolassar ended the Assyrian Empire by defeating the Assyrians and conquering Nineveh.",
+      "description_en": "After the collapse of the Bronze Age and the weakening of kingdoms like the Hittites and Egypt, the Assyrian Empire gradually became the dominant power in Mesopotamia. However, in the 7th century BCE, Median tribes in western Iran and the Babylonians in the south united against Assyrian dominance. The Babylonian Nabopolassar revolted against the Assyrians in 626 BCE and established the Neo-Babylonian Empire. Cyaxares, the Median king, after reorganizing his army and expelling the Scythians, allied with Nabopolassar. In 614 BCE, the Medes captured and destroyed the city of Assur, the ancient capital of Assyria. The culmination of this alliance occurred in 612 BCE with the siege and fall of Nineveh, the magnificent capital of Assyria, to the combined forces of the Medes and Babylonians. This event effectively ended the powerful Assyrian Empire and paved the way for the rise of new regional powers, including Media and Babylonia. Subsequently, Ashur-uballit II, the last king of Assyria, along with Egyptian forces, made attempts to reclaim Harran and other areas but was ultimately defeated in 605 BCE. Nebuchadnezzar II, son of Nabopolassar, was crowned king of Babylon and strengthened the alliance with the Medes by marrying Amytis, daughter of Cyaxares."
     },
     {
       "id": "cyrus-the-great-rise",
@@ -339,7 +364,10 @@
         "هخامنشی",
         "بنیان‌گذار"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Childhood and Rise of Cyrus the Great",
+      "summary_en": "Mythological accounts of Cyrus's childhood (born to Mandane and Cambyses, entrusted to a shepherd) and the beginning of his rise to power in Anshan after succeeding his father.",
+      "description_en": "Cyrus the Great, founder of the Achaemenid Empire, was born, according to Greek accounts (Herodotus, Xenophon), from the marriage of Mandane, daughter of Astyages (King of Media) and Cambyses I (King of Anshan). Astyages, after having a dream that his grandson would overcome him, ordered his minister Harpagus to kill the infant. Harpagus refused and entrusted the child to a shepherd to abandon him in the mountains, but the shepherd and his wife raised Cyrus as their own son. At the age of ten, Cyrus revealed his true identity through children's games and his resemblance to Astyages. Astyages, upon realizing the truth, punished Harpagus but sent Cyrus to Persia, to his parents. Cyrus was educated among the nobility in Persia and gained fame for his knowledge and noble conduct. After his father, Cambyses I, stepped down in 559 BCE, Cyrus ascended to the throne of Anshan and began to unite the Persian tribes under his leadership, expanding his territory to Susa. This period marked the peak of his preparation for confrontation with his grandfather, Astyages, which led to the foundation of the greatest empire of the ancient world. The accounts of his childhood contain common mythological themes found in ancient cultures, and their historical accuracy is debated."
     },
     {
       "id": "cyrus-the-great-reign-legacy",
@@ -375,7 +403,10 @@
         "منشور حقوق بشر",
         "حکمرانی"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Reign and Legacy of Cyrus the Great",
+      "summary_en": "Cyrus the Great, founder of the Achaemenid Empire, during his reign administered a vast empire with an approach based on justice, respect for cultures, and peaceful coexistence, leaving behind a lasting legacy.",
+      "description_en": "After consolidating power in 559 BCE, Cyrus the Great dedicated the initial nine years of his reign to organizing and administering his vast empire. During this period, his reputation as a great and just ruler spread so widely that by 535 BCE, many countries beyond the Euphrates and Arab tribes of the peninsula declared their loyalty to him, recognizing him as their Great King. Cyrus introduced a new method of governance, treating the defeated with kindness and generosity instead of cruelty. Unlike Assyrian kings who mutilated their enemies, he welcomed them into his circle of advisors. Instead of destroying conquered cities, he utilized them as capitals and involved local populations in the administration of their territories. He respected the gods and temples of conquered lands, rebuilding them, and released the Babylonian captives, returning them to their homelands. This approach by Cyrus established a new order in the ancient world and provided a different model of governance for future kings, based on justice, tolerance, and respect for cultures."
     },
     {
       "id": "median-persian-war",
@@ -417,7 +448,10 @@
         "سقوط ماد",
         "هخامنشی"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "The Median-Persian War and the Fall of Astyages",
+      "summary_en": "Cyrus the Great's revolt against his grandfather Astyages, King of Media, which led to the Persian victory in the battles of Hyrba and Pasargadae and the overthrow of the Median Kingdom.",
+      "description_en": "As Cyrus gained power in Persia, dissatisfied with the tyranny and corruption of Astyages, the Median king, he rebelled against his grandfather at the suggestion of Harpagus, the former Median vizier. Harpagus colluded with Cyrus and garnered the support of the Median nobility for him. In 551 BCE, Cyrus sent a message to his father, Cambyses, urging him to raise an army and march towards Media, while Cyrus himself escaped from Ecbatana. Astyages marched towards Persia with a vast army. The decisive battles between the Persians and Medes took place in 551 BCE at Hyrba (the Border Battle) and then at Pasargadae. In the Battle of Hyrba, despite the numerical superiority of the Medes, Cyrus's tactics and the bravery of the Persians led to heavy losses for the Medes and an initial Persian victory, although the Persian fortress fell, and Cambyses was captured and later died. In the second battle at Pasargadae, Cyrus, with an intelligent military formation and the use of camels to frighten the Median cavalry horses, shattered Astyages' army. Astyages was captured by his own officers and surrendered to Cyrus. Cyrus treated his grandfather with generosity and maintained him in a high position. With the fall of Ecbatana in 550 BCE, the Median Kingdom came to an end. Cyrus preserved the city as his second capital and added the Median territory to the nascent Achaemenid Empire."
     },
     {
       "id": "hakhamaneshi",
@@ -464,7 +498,10 @@
           "reign": "۵۵۹ – ۵۳۰ ق.م",
           "note": "بنیان‌گذار و اولین شاهنشاه امپراتوری هخامنشی، که با سرنگونی ماد، لیدیه و بابل، بزرگترین امپراتوری زمان خود را پایه‌گذاری کرد."
         }
-      ]
+      ],
+      "title_en": "The Achaemenid Empire",
+      "summary_en": "The largest empire of the ancient world. Cyrus the Great founded it and issued the Charter of Human Rights.",
+      "description_en": "The Achaemenid Empire began with Cyrus the Great, who, by conquering Media, Lydia, and Babylon, established the most extensive empire in history. Darius the Great instituted administrative reforms, satrapies, and the Royal Road. Persepolis (Takht-e Jamshid) is the enduring symbol of this era. Alexander the Great overthrew it in 330 BCE."
     },
     {
       "id": "cyrus-conquest-lydia",
@@ -504,7 +541,10 @@
         "فتح",
         "جنگ"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Cyrus's Western Campaigns: The Conquest of Lydia and Sardis",
+      "summary_en": "Cyrus the Great extended his empire to western Anatolia by defeating Croesus, King of Lydia, in the Battle of Thymbra and capturing Sardis.",
+      "description_en": "After the fall of the Median Kingdom, Croesus, King of Lydia, concerned by Cyrus's growing power, allied with Babylon, Egypt, and Sparta. Trusting an oracle from Delphi that stated, 'if Croesus crosses the Halys River, he will destroy a great empire,' he attacked Cappadocia in 547 BCE. Cyrus responded with unprecedented speed and engaged the Lydians in the indecisive Battle of Pteria. As winter approached, Croesus dismissed his army, believing Cyrus would also retreat. However, Cyrus, with a daring decision, continued his advance into Anatolia in the depth of winter, completely surprising Croesus. In the decisive Battle of Thymbra (547 BCE), Cyrus, ingeniously using camels in the front line of his army, caused panic among the Lydian cavalry horses and nullified the enemy's numerical superiority. He also achieved a decisive victory by deploying his cavalry on the flanks to encircle the enemy. After this battle, Cyrus marched towards Sardis, the Lydian capital, and besieged it. After a 14-day siege, a Persian soldier found a secret path into the city, and Sardis fell in 546 BCE. Cyrus treated Croesus generously, making him one of his close advisors. This victory expanded the Achaemenid Empire to the Aegean Sea and paved the way for future conflicts with the Greek city-states."
     },
     {
       "id": "death-of-cyrus-the-great",
@@ -555,7 +595,10 @@
         "لشکرکشی",
         "پاسارگاد"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "The Death of Cyrus the Great",
+      "summary_en": "Cyrus the Great, the 70-year-old Achaemenid king, was killed during his final campaign against the nomadic Massagetae (or Derbices) tribes in the east and was buried in Pasargadae.",
+      "description_en": "In 530 BCE, Cyrus the Great, at the age of seventy, donned his armor for the last time to protect his empire against the predatory raids of the nomadic Scythian tribes known as the Massagetae, who had crossed the Syr Darya River and attacked the eastern borders. To prevent war, Cyrus initially proposed marriage to Tomyris, the queen of the Massagetae (widow of their late king), but she refused. With the rejection of his peace offer, Cyrus began his campaign. Crossing the Syr Darya and with the advice of Croesus, he laid a cunning trap for the Massagetae. He left a portion of his army with abundant spoils and wine in an insufficiently guarded camp and lay in ambush with his main force. Tomyris's son, Prince Spargapises, attacked the camp with a third of her forces, defeated the Persian soldiers, and with his companions, became intoxicated with wine and began to feast and revel. Cyrus suddenly attacked with his main force, routed the drunken Massagetae, killing or capturing many, including Prince Spargapises. After regaining consciousness and realizing his mistake, Spargapises committed suicide. Furious, Tomyris rushed with all her forces to battle Cyrus. According to Herodotus, this battle was the greatest and bloodiest in which Cyrus participated. In this ferocious battle, a significant portion of the Persian army was annihilated, and Cyrus the Great was among the fallen.\nCyrus's fate has been a subject of historical debate. Herodotus and Xenophon offer different accounts of his death. Herodotus claims he died in battle against the Massagetae, while Xenophon asserts that Cyrus died peacefully in his bed. However, modern historians consider Ctesias' account to be closer to the truth. According to Ctesias, Cyrus participated in a battle against the Derbices tribe and their Indian allies. In this battle, Cyrus's horse bolted upon seeing the Indian war elephants, throwing him to the ground. An Indian warrior struck him in the thigh. His Immortal Guards rescued him, but his wound was fatal. Nevertheless, with the arrival of Amorges, Cyrus's Scythian ally, the enemies were defeated and fled, and Cyrus emerged victorious but succumbed to his wounds. Before his death, Cyrus summoned his sons, Cambyses and Bardiya. He designated Cambyses as his successor and granted Bardiya the satrapy of certain lands to prevent conflict between the brothers. Cyrus the Great died on December 4, 530 BCE, and his body was transported to Pasargadae and buried in the tomb he had prepared for himself."
     },
     {
       "id": "alexander",
@@ -601,7 +644,10 @@
         "سلوکی",
         "اسکندر",
         "هلنیسم"
-      ]
+      ],
+      "title_en": "Seleucid Period",
+      "summary_en": "Following the conquest by Alexander the Great, the Seleucids ruled over Iran. This era was marked by the blending of Greek and Iranian cultures.",
+      "description_en": "Alexander the Great, after defeating Darius III, burned Persepolis and overthrew the Achaemenid Empire. Following Alexander's death, Seleucus I Nicator gained control over Iran. This period is characterized by the blending of Iranian and Hellenistic cultures."
     },
     {
       "id": "frataraka-dynasty",
@@ -628,7 +674,10 @@
         "زرتشتی",
         "آناهیتا"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Frataraka Dynasty in Persis",
+      "summary_en": "A dynasty of local rulers in Persis who, after the fall of the Achaemenids and during the Seleucid and early Parthian periods, maintained their connection to Zoroastrian and Achaemenid heritage.",
+      "description_en": "Following Alexander's invasion and the destruction of Persepolis, the city of Istakhr gained importance, and the Anahita Temple there was revered. The title 'Frataraka' (meaning 'Keeper of the Fire' or 'Kindler of the Fire') was given to local rulers of Persis, who were initially subordinate to the Seleucids but later declared independence. These Zoroastrian kings minted coins depicting the king before a sacred fire. By adopting Achaemenid names and making their countenances resemble ancient rulers, they kept alive the memory of the Achaemenid heritage. The territory of the Fratarakas was absorbed into the Parthian Empire between 140 and 130 BCE, but local rulers from this dynasty maintained power in Persis until the Sasanian era. Ultimately, Gochihr of the Bazrangi dynasty, a descendant of this lineage, was overthrown by Papak (Ardashir's father)."
     },
     {
       "id": "ashkani",
@@ -755,7 +804,10 @@
         "ارشک",
         "پارت",
         "روم"
-      ]
+      ],
+      "title_en": "Parthian Empire",
+      "summary_en": "The Parthians, by defeating the Seleucids, restored Iran's independence and resisted Rome.",
+      "description_en": "Throughout its existence, the Parthian Empire was engaged in numerous conflicts with the Roman Empire, particularly over control of Armenia, a strategically important region. One of the most significant of these confrontations occurred in the early 1st century CE during the reign of Artabanus III. Artabanus III (known as the King of Kings), taking advantage of political crises and the weakening position of Emperor Tiberius in Rome, pursued an ambitious and aggressive foreign policy. He first installed his son Arsaces on the throne of Armenia and then demanded the return of territories that once belonged to the empires of Cyrus and Alexander, effectively presenting himself as the legitimate heir to these great empires. These actions provoked the anger of the Romans and the dissatisfaction of some Parthian nobles who opposed expansionist policies and tense relations with Rome.\nTiberius, the Roman Emperor, supported rival Parthian princes, Phraates (son of Phraates IV) and later Tiridates III (grandson of Phraates IV), and also enlisted the cooperation of the kingdoms of Iberia and Albania in the Caucasus, implementing a complex plan to overthrow Artabanus. In 35 CE, Arsaces in Armenia was poisoned through a conspiracy by the Romans and Iberians, and Mithridates, brother of the King of Iberia, was placed on the Armenian throne. Artabanus sent another son, Ard, with an army to Armenia, but he was defeated in a decisive battle in 36 CE by Pharasmanes, King of Iberia.\nConcurrently with the conflict in Armenia, Lucius Vitellius, Governor of Syria, launched a campaign into Mesopotamia and garnered support from disaffected Parthian nobles, including Abdaegeses (likely from the House of Suren), bringing Tiridates III to the Parthian capital, Ctesiphon. Tiridates was crowned in 36 CE with the support of the Western-leaning and Hellenistic faction of the Parthians. However, Artabanus, relying on the support of the Eastern-leaning and traditionalist faction of the Parthians, and by displaying garments reminiscent of the nomadic era, managed to gain popular support and that of the Dahae tribes, swiftly reclaiming power. Tiridates was forced to flee to Syria.\nFollowing these developments, Rome and Artabanus again sat down for negotiations. According to the peace agreement beside the Euphrates, the border between the two empires was confirmed, and Artabanus renounced interference in Armenian affairs, sending his son Darius as a hostage to Rome. In return, Rome also pledged not to support rival Parthian princes. This period demonstrates the peak of Artabanus III's assertion of power and, at the same time, the internal and external complexities of the Parthian Empire in the face of growing Roman power, where Iranian traditions confronted Hellenic and Roman influence."
     },
     {
       "id": "ardashir-i-rise",
@@ -799,7 +851,10 @@
         "بازرنگی",
         "خیزش"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "The Rise of Ardashir Papakan and the Founding of the Sasanian Empire",
+      "summary_en": "Ardashir Papakan, son of the high priest of the Anahita Temple and ruler of Darabgird, laid the foundations of the Sasanian Empire in Persis by overthrowing King Gochihr of the Bazrangi dynasty and defeating his brothers.",
+      "description_en": "Ardashir Papakan, son of Papak (the high priest of the Anahita Temple in Istakhr) and grandson of Sasan, after being educated in Darabgird and serving as its argbad (military commander/governor), began to expand his influence. Taking advantage of the Parthians' preoccupation with the Romans, he first conquered areas around Darabgird (such as Gopana and Konos). He then requested his father Papak to overthrow Gochihr, the king of the Bazrangi dynasty in Persis. Papak complied, killed Gochihr, and himself took control of the kingdom of Persis between 200 and 205 CE. After Papak's death, his son Shapur succeeded him, but Ardashir mysteriously eliminated Shapur and declared himself king of Persis. He suppressed conspiracies by his brothers and then consolidated his power through conquests in Kerman, Khuzestan, and along the Persian Gulf coast. Ardashir founded the city of Ardashir-Khwarrah and, claiming the 'Farr' or divine royal glory, declared himself Shahanshah (King of Kings) and confronted the Parthians."
     },
     {
       "id": "sasani",
@@ -877,7 +932,10 @@
         "انوشیروان",
         "زرتشت",
         "تیسفون"
-      ]
+      ],
+      "title_en": "Sasanian Empire",
+      "summary_en": "The last Iranian empire before Islam. A peak of Iranian art, architecture, and culture. A period of Zoroastrian fire worship.",
+      "description_en": "The Sasanian Empire, the last Iranian empire before Islam, was founded by Ardashir I (Ardashir Babakan) in 224 CE. Ardashir, son of the high priest of the Anahita temple in Istakhr and argbad (commander of the citadel) of Darabgerd, ended the Parthian Empire by overthrowing King Gochihr of the Bazrangids in Pars (Persis) and then defeating Artabanus IV, the last Parthian king, at the Battle of Hormizdgan. In 226 CE, he was crowned in Ctesiphon, declaring himself 'Shahanshah of Iran' and naming his realm 'Eran-shahr,' symbolizing the revival of ancient Iranian heritage and the link between Zoroastrianism and the state. Ardashir implemented three fundamental reforms: establishing a centralized monarchy to prevent the weaknesses of the Parthian era, linking religious authority with the monarchy, and appointing a clear successor (Shapur) to avoid civil wars. After Ardashir's death in 242 CE, his son Shapur I ruled as Shahanshah of Iran, continuing his father's conquests in the east and west, including decisive victories over the Romans (at the Battle of Mesiche) and the Kushans, expanding the empire's borders and earning him the title 'Shahanshah of Iran and Non-Iran'."
     },
     {
       "id": "hormizdgan-battle",
@@ -904,7 +962,10 @@
         "ساسانیان",
         "اردشیرخوره"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "The Battle of Hormizdgan and the Fall of the Parthian Empire",
+      "summary_en": "The decisive battle between Ardashir I and Artabanus IV of Parthia on the plain of Hormizdgan, which led to the Sasanian victory, Artabanus's death, and the end of the Parthian Empire.",
+      "description_en": "After Ardashir's expansion of power in Pars and his declaration as Shahanshah, Artabanus IV, the Parthian Shahanshah, grew enraged and confronted Ardashir on April 28, 224 CE, on the plain of Hormizdgan. Ardashir gained a superior position by employing intelligent military tactics, including controlling water sources (the plain's spring) and digging trenches around his encampment. In this battle, Ardashir personally killed Artabanus IV, and his son Shapur I also killed Dadbandad, the commander of the Parthian vanguard. With the king's death, the Parthian army disintegrated, and this battle led to the end of nearly five centuries of Parthian rule and the beginning of the Sasanian Empire. To commemorate this victory, Ardashir constructed a massive rock relief at Ardashir-Khurrah, depicting the battle scene and the Sasanian triumph, which is considered the first Sasanian rock relief."
     },
     {
       "id": "ardashir-i-reforms",
@@ -931,7 +992,10 @@
         "جانشینی",
         "ایرانشهر"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Reforms of Ardashir I and the Structure of the Sasanian State",
+      "summary_en": "To consolidate Sasanian power, Ardashir I implemented three fundamental reforms in the state: establishing a centralized monarchy, linking religion and government, and designating a clear successor to prevent civil war.",
+      "description_en": "Ardashir I, learning from the weaknesses of the Parthian state, implemented three fundamental reforms in the structure of the Sasanian Empire. First, he centralized the monarchy, largely abolishing or subordinating the semi-independent kingdoms of the Parthian era; provincial rulers were now chosen from the Sasanian family and directly appointed by the Shahanshah. Second, he linked religious authority to the monarchy; although the official state religion was not fully established in the early stages, Ardashir's Zoroastrian religious inclinations were evident in naming his realm 'Iran' and in his rock reliefs (such as receiving the crown from Ahura Mazda). Third, to prevent the devastating Parthian civil wars, he clarified the issue of succession by designating a prominent heir (Shapur I) from the outset, ensuring both the preservation of his legacy and the prevention of another destructive civil war."
     },
     {
       "id": "ardashir-i-shahanshah-coronation",
@@ -965,7 +1029,10 @@
         "اهورامزدا",
         "زرتشتی"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "The Coronation of Ardashir I as Shahanshah of Iran",
+      "summary_en": "After his victory at the Battle of Hormizdgan, Ardashir I entered Ctesiphon and officially declared himself 'Shahanshah of Iran,' a title signifying the revival of ancient Iranian heritage.",
+      "description_en": "After defeating Artabanus IV and consolidating his power, Ardashir entered Ctesiphon, the former Parthian capital, in 226 CE, where he was crowned and officially proclaimed himself 'Shahanshah of Iran.' To commemorate this event, he commissioned a new rock relief at Naqsh-e Rustam, near the tombs of the Achaemenid kings. This relief depicts Ardashir receiving the royal diadem from Ahura Mazda, while Artabanus IV is shown beneath Ardashir's horse, and Ahriman (Angra Mainyu) beneath Ahura Mazda's horse. By doing so, Ardashir equated his victory with the triumph of good over evil. More significantly, he named himself 'Shahanshah of Iran'; the name 'Iran,' which had previously only been used in the Avesta and in a mythological sense, was now applied to the borders of the newly established Sasanian Empire, presenting his rule as an earthly reflection of the sacred Zoroastrian world."
     },
     {
       "id": "shapur-i-early-campaigns",
@@ -999,7 +1066,10 @@
         "تجارت ابریشم",
         "سلوکیه"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Shapur I's Campaigns in Northern Mesopotamia",
+      "summary_en": "Shapur I, son and successor of Ardashir I, successfully recaptured important fortresses and cities in Northern Mesopotamia, including Nisibis, Carrhae, Dura-Europos, and Hatra, from the Romans and Arabs.",
+      "description_en": "In 235 CE, Shapur I, at the command of his father Ardashir I, took leadership of the army to conquer the northern regions of Mesopotamia. He launched his campaign in 236 CE, bypassing the fortified city of Hatra and first advancing towards Nisibis. After a year-long siege, he captured Nisibis in 237 CE. Subsequently, the cities of Carrhae (238 CE) and Dura-Europos (239 CE) also fell to the Sasanian forces. After securing control over all surrounding territories, Shapur besieged Hatra in 239 CE. Following a lengthy siege, intertwined with legends concerning the betrayal by Nazira, daughter of Sanatruq (King of Hatra), Hatra fell in 240 CE and was subsequently destroyed by Shapur's order. These conquests restored Persia's monopoly over the silk trade, eliminated border threats, and demonstrated Shapur's worthiness as Ardashir I's successor."
     },
     {
       "id": "battle-of-misiche",
@@ -1043,7 +1113,10 @@
         "رومیان",
         "کعبه زرتشت"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "The Battle of Misiche (244 CE)",
+      "summary_en": "Decisive victory of the Sasanian Shapur I over the Roman army led by Emperor Gordian III at Misiche, which resulted in Gordian's death and cemented Sasanian control over Northern Mesopotamia.",
+      "description_en": "In 242 CE, the Roman Emperor Gordian III, accompanied by his father-in-law Timesitheus, arrived in Antioch to confront the Sasanians. After initial Roman successes in recapturing Nisibis, Carrhae, and Edessa, Shapur I, who had been occupied in the East, returned to Ctesiphon. With the death of Timesitheus, the Roman army reached Misiche (modern Meshan) in the winter of 244 CE and clashed with Shapur's forces. On February 3, 244 CE, Shapur, employing intelligent cavalry tactics (combining archers and heavy cataphracts), crushed the Roman army. Emperor Gordian III was killed in this battle (the precise cause of death is uncertain; some attribute it to Shapur, others to Philip the Arab). Following the Roman defeat, Philip the Arab, who ascended to the emperorship, was compelled to cede the northern regions of Mesopotamia to the Sasanians and pay an indemnity of 500,000 dinars, along with an annual payment for the maintenance of fortresses in the Caucasus. Shapur commemorated this victory by renaming Misiche to Peroz-Shapur and having it inscribed on the Ka'ba-ye Zartosht inscription."
     },
     {
       "id": "shapur-i-eastern-conquests",
@@ -1077,7 +1150,10 @@
         "هند",
         "شاه شاهان ایران و غیرایران"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Shapur I's Eastern Conquests and the Annexation of Kushan Territory",
+      "summary_en": "Following his victory over Rome, Shapur I campaigned in the East, bringing all semi-independent tributary kingdoms under direct Sasanian control and capturing Peshawar, the Kushan capital.",
+      "description_en": "Following the decisive victory at the Battle of Misiche and the peace agreement with Rome, Shapur I utilized the spoils of war to finance his eastern campaigns. He brought the semi-independent kingdoms, which had merely paid tribute during his father Ardashir I's reign, under direct Sasanian rule and appointed his son Narseh as King of Sakastan (Sistan). Shapur then attacked the territories of the Eastern Kushans and succeeded in conquering Peshawar, the powerful capital of the Kushan Empire. With these conquests, vast regions of Central Asia and Northern India, including Tashkent, Sogdia, Kashgar, and northern India, came under Sasanian control. This significant expansion in the East led Shapur to change his title from 'King of Kings of Iran' to 'King of Kings of Iran and Non-Iran' to reflect the extent of his new domain."
     },
     {
       "id": "shapur-i-valerian-wars",
@@ -1116,7 +1192,10 @@
         "سلاح شیمیایی",
         "کاپادوکیه"
       ],
-      "color": "#C8893A"
+      "color": "#C8893A",
+      "title_en": "Shapur I's Wars with Valerian and the Capture of Antioch",
+      "summary_en": "Shapur I achieved significant victories in his wars against the Roman Emperor Valerian, including the destruction of a 60,000-strong Roman army at Barbalissus, the capture of Antioch, and the conquest of Dura-Europos using chemical weapons.",
+      "description_en": "In 252 CE, following Shapur's conquest of Armenia and its annexation into the Sasanian Empire, Valerian, the new Roman Emperor, campaigned to reclaim it. The Romans initially recaptured Nisibis, Edessa, and Dura-Europos. Shapur retaliated by attacking and re-capturing Nisibis, then decisively defeated the Roman army at Barbalissus (in Syria), claiming to have annihilated 60,000 Romans and subsequently plundered Syria. He captured Antioch, one of the most important Roman cities in the East, and deported many of its inhabitants to Eranshahr. His campaigns also extended into Cappadocia and Cilicia. In 256 CE, Shapur besieged Dura-Europos, employing advanced engineering tactics, including tunneling beneath the walls and deploying incendiary mixtures containing sulfur and bitumen, thereby capturing and devastating the city. This tactic is considered one of the earliest recorded instances of chemical warfare on the battlefield. These victories solidified Shapur's authority as King of Kings of Iran and Non-Iran."
     },
     {
       "id": "fat-h-eslam",
@@ -1158,7 +1237,10 @@
         "نهاوند",
         "یزدگرد",
         "اسلام"
-      ]
+      ],
+      "title_en": "The Arab Conquest of Persia",
+      "summary_en": "Following the Battles of Qadisiyyah and Nahavand, Persia joined the realm of the Islamic Caliphate, marking the beginning of the Islamic era.",
+      "description_en": "In the Battle of Qadisiyyah (637 CE), the Sasanian army suffered a heavy defeat. The Battle of Nahavand (642 CE), known as 'Fath al-Futuh' (The Victory of Victories), signified the end of the Sasanian Empire. Yazdegerd III, the last Sasanian Shahanshah, was killed in 651 CE. Iranians gradually embraced Islam."
     },
     {
       "id": "omaviyan",
@@ -1205,7 +1287,10 @@
         "ابومسلم",
         "موالی",
         "شعوبیه"
-      ]
+      ],
+      "title_en": "The Umayyad Era",
+      "summary_en": "Persia came under the dominion of the Umayyad Caliphate. Iranians resisted Arab discrimination, leading to the emergence of Iranian movements.",
+      "description_en": "During the Umayyad era, Iranians faced severe discrimination, particularly as Mawali (non-Arab converts). The Shu'ubiyya movements celebrated the values of Iranian culture. Abu Muslim Khorasani, from Persia, orchestrated the overthrow of the Umayyad Caliphate, paving the way for the Abbasids."
     },
     {
       "id": "abbasiyyan",
@@ -1258,7 +1343,10 @@
         "ابن‌سینا",
         "خوارزمی",
         "بیت‌الحکمه"
-      ]
+      ],
+      "title_en": "The Abbasid Caliphate and the Iranian Renaissance",
+      "summary_en": "A golden age of Islamic science and philosophy, characterized by the prominent role of Iranians in Abbasid science, literature, and bureaucracy.",
+      "description_en": "During the Abbasid era, Iranian families such as the Barmakids played a pivotal role. The House of Wisdom (Bayt al-Hikma) in Baghdad became a central hub for translation and scholarship. Notable figures like Avicenna (Abu Ali Sina), Al-Khwarizmi, Al-Biruni, and Al-Farabi emerged from this period. Iranian dynasties, including the Tahirids, Saffarids, and Samanids, enjoyed relative autonomy."
     },
     {
       "id": "samaniyyan",
@@ -1306,7 +1394,10 @@
         "رودکی",
         "فارسی",
         "شاهنامه"
-      ]
+      ],
+      "title_en": "The Samanids and the Revival of Persian",
+      "summary_en": "The first independent Iranian state after the Islamic conquest. This period saw the revival of the Persian language through the patronage of poets like Rudaki, Ferdowsi, and Daqiqi.",
+      "description_en": "The Samanids were the first dynasty to declare Persian as the official language of their court. Rudaki, often called the 'Father of Persian Poetry,' was a prominent figure at the Samanid court. Daqiqi began the monumental work of the Shahnameh (Book of Kings). Bukhara, the Samanid capital, flourished as a center of science and literature. Avicenna also lived and worked during this period."
     },
     {
       "id": "ghaznaviyyan",
@@ -1359,7 +1450,10 @@
         "خیام",
         "نظام‌الملک",
         "بیرونی"
-      ]
+      ],
+      "title_en": "The Ghaznavids and the Seljuks",
+      "summary_en": "Turks in power, but Persian culture remained dominant. Mahmud of Ghazni's court and his patronage of Ferdowsi and Biruni.",
+      "description_en": "Mahmud of Ghazni invited Ferdowsi to his court but did not provide adequate reward. Abu Rayhan Biruni wrote unparalleled scientific works during this period. The Seljuks later brought Iran under their dominion. Nizam al-Mulk, the great Seljuk vizier, established the Nizamiyya schools. Omar Khayyam lived during this era."
     },
     {
       "id": "mongol",
@@ -1412,7 +1506,10 @@
         "هلاکو",
         "ایلخانی",
         "ویرانی"
-      ]
+      ],
+      "title_en": "The Mongol Invasion",
+      "summary_en": "The most devastating event in Iranian history. Genghis Khan and Hulegu Khan killed millions. Baghdad and Khorasan were destroyed.",
+      "description_en": "In 1219 CE, Genghis Khan invaded Iran. Samarkand, Bukhara, Nishapur, Merv, and Herat were devastated. Hulegu Khan conquered Baghdad in 1258 CE and killed the Abbasid Caliph. The Ilkhanids (Mongols of Iran) later embraced Islam. Rashid al-Din Fazlullah wrote the Jami' al-Tawarikh."
     },
     {
       "id": "timurid",
@@ -1460,7 +1557,10 @@
         "هرات",
         "بهزاد",
         "الغ‌بیگ"
-      ]
+      ],
+      "title_en": "The Timurids",
+      "summary_en": "Timur (Tamerlane) conquered with violence, but his grandchildren created a brilliant era of art and literature.",
+      "description_en": "Timur (Tamerlane) marched from Samarkand and devastated Iran. However, the era of his successors (Shahrokh, Ulugh Beg) was a pinnacle of art and science. Ulugh Beg built an observatory in Samarkand. Herat became the capital of science and art. Behzad is the great painter of this period."
     },
     {
       "id": "safaviyeh",
@@ -1528,7 +1628,10 @@
         "اصفهان",
         "شیعه",
         "نقش‌جهان"
-      ]
+      ],
+      "title_en": "The Safavids — Unification of Iran",
+      "summary_en": "Shah Ismail I unified Iran and made Twelver Shi'ism the official religion. Isfahan became 'Half the World' during the reign of Shah Abbas I.",
+      "description_en": "Shah Ismail I unified Iran in 1501 CE and established Twelver Shi'ism as the official religion. Shah Abbas I marks the zenith of the Safavid era. He made Isfahan the capital, built Naqsh-e Jahan Square, established relations with Europe, and reformed the Qizilbash army. The architecture of this period represents the peak of Iranian art."
     },
     {
       "id": "afshariyeh",
@@ -1570,7 +1673,10 @@
         "نادرشاه",
         "هند",
         "کوه‌نور"
-      ]
+      ],
+      "title_en": "Afsharids — Nader Shah",
+      "summary_en": "Nader Shah Afshar, the last great Iranian conqueror. Conquered India and brought back the Koh-i-Noor diamond. His death plunged Iran into chaos.",
+      "description_en": "Nader Qoli Afshar was initially a minister to the Safavids, then became Shah himself. He conquered Hindustan (India) and brought back the Peacock Throne and the Koh-i-Noor diamond. His conquests temporarily strengthened Iran, but his heavy taxes and violence created widespread discontent. After his assassination, Iran disintegrated."
     },
     {
       "id": "agha-mohammad-khan-qajar-rise",
@@ -1599,7 +1705,10 @@
         "ترور",
         "بنیان‌گذار قاجار"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "The Rise of Agha Mohammad Khan Qajar and the Foundation of the Qajar Dynasty",
+      "summary_en": "After a period of exile in Shiraz, Agha Mohammad Khan Qajar united the Qajar tribes, defeated the Zands and other claimants, founded the Qajar monarchy, and violently consolidated central power.",
+      "description_en": "Agha Mohammad Khan, son of Mohammad Hassan Khan, was born after the death of Nader Shah in 1747. He was castrated by Adil Shah in childhood, and after his father's defeat in 1759, he lived for 16 years as a guest/prisoner at the court of Karim Khan Zand in Shiraz. During this period, Karim Khan recognized his intelligence and sagacity and consulted with him. After Karim Khan's health deteriorated in 1779, Agha Mohammad Khan escaped to Isfahan, and with the onset of the Zand civil wars, he spent a decade fighting to unite the Qajar tribes and expand his influence in northern Iran. He moved his capital from Sari to Tehran and ascended to the throne in 1789, although he had not yet formally been crowned, appointing his nephew, Baba Khan (the future Fath-Ali Shah), as his heir apparent. In 1781, he engaged with a Russian naval expedition led by Count Voynovich near Ashraf and forced them to retreat by capturing Russian officers. In 1791, with the betrayal of Haji Ebrahim Kalantar in Shiraz, he besieged Lotf Ali Khan Zand and, in 1794 in Kerman, massacred and blinded the population with unprecedented violence, capturing Lotf Ali Khan and sending him to Tehran to be tortured and executed, thus ending the Zand era. Agha Mohammad Khan then invaded Georgia, conquered Tbilisi in the Battle of Krtsanisi in 1795, massacring and enslaving its inhabitants. On his return journey through the Mughan Plain, he formally declared himself 'Shah of Iran' and was crowned in Tehran. He then marched on Mashhad to reclaim Khorasan as part of the Safavid legacy. In response to these actions and the loyalty of the Khans of the Caucasus to Russia, Catherine the Great sent an army to the Caucasus, but with Catherine's death and the ascension of Paul I, the Russian army was recalled. Agha Mohammad Khan attacked Shusha, the capital of the Karabakh Khanate, in 1797 and conquered it. Finally, on June 16, 1797, he was assassinated in Shusha due to an incident (or by his servants), and his body was initially moved to Shusha, then Tehran, and ultimately to Najaf."
     },
     {
       "id": "zandieh",
@@ -1641,7 +1750,10 @@
         "کریم‌خان",
         "شیراز",
         "وکیل‌الرعایا"
-      ]
+      ],
+      "title_en": "The Zands",
+      "summary_en": "Karim Khan Zand restored a period of peace and prosperity to Iran. Shiraz became the capital.",
+      "description_en": "Karim Khan Zand did not take the title of Shah, instead calling himself 'Vakil-ol-Ro'aya' (Regent of the People). His reign was characterized by relative peace, reduced taxes, and thriving trade. Shiraz flourished during this period. The Karim Khan Citadel stands as a symbol of this era."
     },
     {
       "id": "qajar",
@@ -1719,7 +1831,10 @@
         "ناصرالدین‌شاه",
         "روسیه",
         "استعمار"
-      ]
+      ],
+      "title_en": "The Qajars",
+      "summary_en": "An era of territorial losses to Russia and Britain. Colonial concessions and national struggle.",
+      "description_en": "The Qajar dynasty was founded by Agha Mohammad Khan, who was crowned in 1789. After defeating Lotf Ali Khan Zand and unifying Iran, he chose Tehran as his capital. The Qajar era began with Agha Mohammad Khan's campaigns in the Caucasus and Khorasan, as well as extreme violence in the conquests of Kerman and Tbilisi. After Agha Mohammad Khan's assassination in 1797, Fath-Ali Shah came to power, and his reign was marked by internal challenges, including revolts by his brothers and claimants to the throne, as well as the execution of his powerful Grand Vizier, Haji Ebrahim Kalantar. This period is known for widespread confrontations with European powers, especially Russia and Britain. Two periods of Russo-Persian Wars (1804-1813 and 1826-1828) led to heavy defeats for Iran and the signing of the Treaties of Gulistan (1813) and Turkmanchay (1828), through which Iran lost vast territories in the Caucasus (including present-day Georgia, Armenia, and Azerbaijan) and saw its unquestioned sovereignty over the Caspian Sea undermined. These defeats prompted Abbas Mirza, Fath-Ali Shah's Crown Prince, to undertake military reforms and send students to Europe. Subsequently, Mohammad Shah Qajar (1834-1848) ascended to the throne with the influence of Qaim Maqam Farahani, but Qaim Maqam was also executed soon after. During his reign, the unsuccessful siege of Herat and the war with Britain in the Persian Gulf (1856-1857) over Afghanistan led to Iran losing its position in the region, a status solidified by the Treaty of Paris (1857). Furthermore, the emergence of the Bábí movement occurred during this period. Naser al-Din Shah (1848-1896) had the longest reign of the Qajar dynasty; he initially implemented extensive administrative, military, and educational reforms (founding Dar al-Funun) with the help of Amir Kabir, but later also assassinated Amir Kabir and became an absolute ruler. He traveled to Europe three times, and in the later years of his reign, he provoked widespread discontent by granting numerous concessions to foreigners (such as the Reuter Concession and the Tobacco Concession), which led to a popular uprising and the Tobacco Movement (1890-1892). This period also witnessed Russian expansionism in Central Asia and the imposition of the Akhal Treaty (1881), which fixed Iran's northern borders. Naser al-Din Shah was assassinated by Mirza Reza Kermani in 1896. Mozaffar al-Din Shah and Mohammad Ali Shah subsequently faced internal pressures for reform and external interference, which ultimately led to the Constitutional Revolution (1905-1911) and the establishment of a legislative assembly, ending the absolute power of the Shah. The dynasty was finally overthrown in 1925 by Reza Shah Pahlavi."
     },
     {
       "id": "russo-persian-wars-19c",
@@ -1757,7 +1872,10 @@
         "عقب‌ماندگی",
         "اصلاحات اولیه"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "The Russo-Persian Wars and Their Consequences",
+      "summary_en": "Successive defeats of Persia against Tsarist Russia, which led to the signing of the Treaties of Gulistan and Turkmenchay, the loss of parts of the Caucasus, and marked a turning point in Persia's understanding of its backwardness compared to the West.",
+      "description_en": "The Russo-Persian Wars comprised two major conflicts. The first war (1804–1813 CE), which began during the reign of Fath-Ali Shah and followed Russia's annexation of Georgia, was marked by Russian attacks on Ganja (which led to the assassination of Javad Khan Qajar) and numerous engagements in Erivan and Karabakh. Although Persian forces led by Abbas Mirza initially showed resistance and even won the Battle of Sultanabad, ultimately, with the defeat at Aslanduz and the fall of Lankaran fortress, Persia was forced to sign the Treaty of Gulistan (1813). According to this treaty, Persia ceded vast territories in the Caucasus (including Georgia, Dagestan, Baku, Shirvan, Shaki, Karabakh, and parts of Talesh) to Russia and lost the right to military navigation in the Caspian Sea. The treaty also included a clause guaranteeing the succession of Abbas Mirza. The second Russo-Persian War (1826–1828 CE) began after repeated violations of the Treaty of Gulistan by the Russians and was incited by Persian clerics calling for jihad. Persian forces, led by Abbas Mirza, initially managed to reclaim lost territories and liberate important cities such as Baku and Lankaran. However, due to weak command, the betrayal of some officials, and the superior weaponry and logistics of Russia under the command of Ivan Paskevich, Persian forces were defeated, and important cities like Erivan and Tabriz fell to the Russians. This war led to the signing of the Treaty of Turkmenchay (1828), according to which Persia was forced to cede the Khanates of Erivan and Nakhchivan (comprising present-day Armenia and Nakhchivan) to Russia and pay a heavy indemnity of 500,000 tomans. The treaty also granted extensive consular and commercial rights to Russia and led to the emigration of Armenians from Persia to the North Caucasus. The consequences of these wars included the loss of significant parts of Persian territory and the emergence of strong anti-Russian sentiments (which led to the attack on the Russian embassy and the murder of Griboyedov). It also reinforced Persia's realization of its military and political backwardness compared to the West and prompted Crown Prince Abbas Mirza to consider reforms and send students to Europe."
     },
     {
       "id": "abbas-mirza-reforms",
@@ -1796,7 +1914,10 @@
         "قاجار",
         "تجددخواهی"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "The Beginning of Abbas Mirza's Military and Intellectual Reforms",
+      "summary_en": "Following defeats against Russia, Abbas Mirza, Crown Prince to Fath-Ali Shah, initiated efforts to modernize the army and send students to Europe, with the help of advisors such as Qa'em-Maqam Farahani, laying the foundation for modernism in Persia.",
+      "description_en": "After Persia's heavy defeats in the first Russo-Persian War and the signing of the Treaty of Gulistan (1813), Abbas Mirza, Crown Prince to Fath-Ali Shah Qajar, became acutely aware of Persia's military backwardness and structural weaknesses in confronting European powers. Influenced by the military reforms of Sultan Selim III in the Ottoman Empire, he decided to create a modern army independent of the Qajar tribal forces. With the help of advisors such as Qa'em-Maqam Farahani and under the support of Britain and France (prior to changes in European relations), he began efforts to modernize the army and send students to Europe. In 1811 and 1815, two groups of students were dispatched to Britain to study military sciences, engineering, and medicine. Furthermore, in 1812, printing presses were established in Tabriz for the publication of European military manuals, and a gunpowder factory and an ammunition depot were built. Most military training was conducted by English advisors, focusing on infantry and artillery. Abbas Mirza's new army achieved successes in the war with the Ottoman Empire (1821–1823) and demonstrated the improved skills of its forces in the Battle of Erzurum. These reforms laid the foundations of modernism in Persia and are recognized as the cornerstone of the formation of modern Qajar Persia, even though they ultimately failed in the second Russo-Persian War due to insufficient support and the superior weaponry of the Russians. After the defeats of the second war with Russia, Abbas Mirza lost much of his enthusiasm for further military reforms and died in Khorasan in 1833."
     },
     {
       "id": "mohammad-shah-qajar-reign",
@@ -1832,7 +1953,10 @@
         "میرزا تقی خان",
         "دوران قاجار"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "The Reign of Mohammad Shah Qajar and Internal and External Challenges",
+      "summary_en": "The reign of Mohammad Shah Qajar was marked by internal uprisings and rebellions, the assassination of Grand Vizier Qa'em-Maqam Farahani, the unsuccessful siege of Herat, and the beginning of increasing British and Russian influence in Persian affairs.",
+      "description_en": "Mohammad Shah, son of Abbas Mirza, ascended the throne in 1834 after the death of his grandfather, Fath-Ali Shah. He took power with the diplomatic support of Russia and Britain and suppressed initial challenges from his uncles (Ali Mirza Zell-e Soltan and Hossein-Ali Mirza Farmanfarma). Qa'em-Maqam Farahani, his powerful Grand Vizier, who played a crucial role in his ascension to the throne, was executed in 1835 by order of the Shah on charges of conspiracy, and Hajji Mirza Aghasi replaced him. The most significant event of this period was the unsuccessful siege of Herat between 1837 and 1838. Herat, considered by Britain as a buffer zone between Persia and India, was not conquered despite the efforts of Mohammad Shah and Russian advisors, due to the resistance of the people of Herat and British pressure (including the occupation of Kharg Island in the Persian Gulf), forcing Mohammad Shah to retreat. These events led to greater British influence in the Afghanistan region and increased Persia's vulnerability to naval threats. During this period, border disputes with the Ottoman Empire were also resolved through negotiations that led to the Second Treaty of Erzurum (1847); Mirza Taqi Khan Farahani (the future Amir Kabir) played a significant role in these negotiations. Mohammad Shah's reign witnessed the resurgence of Sufi activities and also the emergence of the Babi movement led by Sayyed Ali Mohammad Shirazi (the Báb) in 1844, with whom the Shah initially adopted a lenient approach but later resulted in the Báb's exile. In 1847, under British pressure, the Shah abolished the slave trade through the Persian Gulf. Mohammad Shah died in 1848 at the age of 40 from gout, and his son Naser al-Din Shah succeeded him."
     },
     {
       "id": "naseral-din-shah-reign",
@@ -1868,7 +1992,10 @@
         "میرزا رضای کرمانی",
         "قزاقخانه"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "The Reign of Naser al-Din Shah Qajar and the Era of Reforms and Concessions",
+      "summary_en": "Naser al-Din Shah, who had the longest reign of any Qajar monarch, initially undertook extensive reforms with the help of Amir Kabir, but later became an absolute ruler. His granting of concessions to foreigners and the expansionism of Russia and Britain provoked popular discontent and reform movements.",
+      "description_en": "Naser al-Din Shah ascended to the throne in 1848, after the death of his father Mohammad Shah, with the support of Mirza Taqi Khan Farahani (Amir Kabir). Amir Kabir, in the first two and a half years of his premiership, initiated significant reforms, including the establishment of Dar ul-Funun (Persia's first modern polytechnic), the publication of the Vaqaye'-e Ettefaqiyeh newspaper, and reforms in financial, military, and social affairs. He also worked to reduce foreign influence in internal affairs and encourage foreign trade, but due to opposition from courtiers, the Shah's mother, and some rivals, he was dismissed in October 1851 and assassinated in Kashan in January 1852 by order of the Shah. After Amir Kabir, Mirza Aqa Khan Nuri became prime minister, and during his tenure, the second Herat crisis and the Anglo-Persian War (1856–1857) in the Persian Gulf occurred. Pursuant to the Treaty of Paris (1857), Persia relinquished its claims to Herat and its interference in Afghanistan. These wars demonstrated Britain's technological superiority and led to the spread of Anglophobia in Persia. Naser al-Din Shah traveled to Europe three times during his reign and, influenced by Western reforms and advancements, gradually became an absolute ruler. During this period, Russian expansionism continued in Central Asia, and with the conquest of Tashkent, Bukhara, Samarkand, and Khiva, Russia imposed the Treaty of Akhal (1881) on Persia, whereby the Atrak River was recognized as the new border, and Persia relinquished its claims to vast territories in Turkmenistan and Transoxiana. Among the most significant events of this period was the granting of numerous concessions to foreigners, including the Reuter Concession (1872) for railways and natural resources, which was canceled due to protests, but later led to the Imperial Bank of Persia concession in 1889. The most prominent popular protest was the Tobacco Movement (1890–1892), which, in response to the granting of an exclusive tobacco concession to the British company Talbot, transformed into a national boycott with a fatwa by Ayatollah Mirza Shirazi, forcing the Shah to cancel it. This movement is recognized as a turning point in the history of modern Persian nationalism. Naser al-Din Shah also undertook measures such as introducing the telegraph and postal services, road construction, and establishing the Persian Cossack Brigade. He was finally assassinated on May 1, 1896, by Mirza Reza Kermani at the shrine of Shah Abdol-Azim."
     },
     {
       "id": "mostashar-al-dowleh-yak-kalameh",
@@ -1896,7 +2023,10 @@
         "اصلاحات",
         "فکر مشروطه"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "Mirza Yusuf Mostashar al-Dowleh's treatise \"Yak Kalameh\"",
+      "summary_en": "Mirza Yusuf Mostashar al-Dowleh, a diplomat and intellectual during the reign of Naser al-Din Shah, wrote an influential treatise titled \"Yak Kalameh\" (A Single Word), in which he identified the main problem of Iran as the absence of \"law\" and proposed the conditionalization of the Shah's absolute power as the solution.",
+      "description_en": "Mirza Yusuf Mostashar al-Dowleh, one of the pioneering diplomats and intellectuals of the Qajar era under Naser al-Din Shah, authored a treatise titled \"Yak Kalameh\" (published in 1871 CE) after traveling to Europe and observing Western advancements. In this treatise, he identified the root of all Iran's problems as the absence of \"law\" and the rule of absolute despotism, proposing the conditionalization of the Shah's power and the establishment of a lawful system as the solution. He presented one of the first drafts of a constitution for Iran. His ideas, emphasizing the necessity of limiting the absolute power of the monarch and establishing justice through law, became foundational intellectual pillars of the Constitutional Movement. Due to these ideas and reformist efforts, Mostashar al-Dowleh met a tragic end; his properties were confiscated, and he died in prison."
     },
     {
       "id": "mashruteh",
@@ -1958,7 +2088,10 @@
         "ستارخان",
         "مجلس",
         "قانون اساسی"
-      ]
+      ],
+      "title_en": "The Constitutional Revolution",
+      "summary_en": "The first constitutional revolution in the Middle East. Iran established the first legislature in Asia.",
+      "description_en": "The Iranian Constitutional Revolution, encompassing a wide range of ideas and objectives including the establishment of law, popular governance, social justice, resistance against foreign aggression, and economic independence, had its intellectual roots in the reforms of Naser al-Din Shah's era and the exposure of some Iranians to European advancements. The actions of grand viziers like Qa'em Maqam Farahani, Amir Kabir, and Mirza Hossein Khan Sepahsalar, along with the activities of thinkers such as Sayyed Jamal al-Din Asadabadi and Mirza Malkam Khan, laid the groundwork for this transformation. The first sign of public awakening emerged in the Tobacco Protest (1890-1892). With the increasing financial problems of Mozaffar al-Din Shah's government and the unsuccessful customs reforms by the Belgian Joseph Naus, which stirred discontent among merchants and the general populace, the spark of the revolution was ignited. Following the punishment of two sugar merchants by Ala al-Dawlah, the governor of Tehran, merchants went on strike, and people, led by prominent clerics Sayyed Abdollah Behbahani and Sayyed Mohammad Tabatabai, staged a sit-in at the Shrine of Shah Abdol-Azim. The main demands included the dismissal of Ain al-Dawlah (Grand Vizier) and Joseph Naus, and the establishment of a House of Justice (Adalatkhaneh). As protests escalated and clerics migrated to Qom, the decisive event was the widespread sit-in by merchants and various segments of the public (reaching 14,000 people) at the British Embassy in the summer of 1906. During this sit-in, the demand for the establishment of a \"National Consultative Assembly\" (Majlis-e Shora-ye Melli) was raised for the first time. Mozaffar al-Din Shah, having no choice but to concede, dismissed Ain al-Dawlah on July 19, 1906 (28 Tir 1285 Solar Hijri) and ultimately granted the right to establish the National Consultative Assembly. A draft constitution, based on Belgian and French laws, was prepared and signed in September 1906 (Shahrivar 1285 Solar Hijri), and in October of the same year, the first National Consultative Assembly of Iran was inaugurated. Thus, Iran became the first Asian country with a legislature, ending the absolute power of the Shah."
     },
     {
       "id": "russo-japanese-war-impact",
@@ -1986,7 +2119,10 @@
         "روشنفکری",
         "بیداری"
       ],
-      "color": "#C85E5E"
+      "color": "#C85E5E",
+      "title_en": "The Russo-Japanese War (1905) and its Impact on Iran",
+      "summary_en": "Japan's unexpected victory over Tsarist Russia in the 1905 war inspired Iranian intellectuals and the populace, demonstrating that an Asian country could defeat a major European power, which helped accelerate the Iranian Constitutional Revolution.",
+      "description_en": "In 1905 CE, a war broke out between the Russian Empire and the Empire of Japan, which ended with a decisive Japanese victory. This defeat of a major European power by an Asian power created a profound shock and inspiration worldwide, especially in Iran. For Iranian intellectuals, who had suffered for years from Iran's backwardness compared to Europe, Japan's victory demonstrated that reforms and modernization could empower a nation, creating hope for overcoming despotism and foreign influence. This event, which occurred just one year before the signing of the Constitutional Decree in Iran, directly contributed to accelerating and strengthening the Constitutional Movement in Iran and became one of the important external factors in the awakening and movement of the Iranian nation towards change."
     },
     {
       "id": "pahlavi1",
@@ -2019,7 +2155,10 @@
         "مدرنیزاسیون",
         "راه‌آهن",
         "دانشگاه"
-      ]
+      ],
+      "title_en": "Reza Shah Pahlavi",
+      "summary_en": "Founding of modern Iran. University of Tehran, Trans-Iranian Railway, compulsory unveiling, and Iranian nationalism.",
+      "description_en": "Reza Khan Sardar Sepah led a coup in 1920 (1299 Solar Hijri) and became Shah in 1925 (1304 Solar Hijri). He undertook extensive reforms: a modern army, the Trans-Iranian Railway, the University of Tehran, civil registration (birth certificates, identity cards), and compulsory unveiling. The name \"Iran\" officially replaced \"Persia.\" In 1941 (1320 Solar Hijri), he was deposed by the Allies due to his perceived cooperation with Germany."
     },
     {
       "id": "mossadegh",
@@ -2062,7 +2201,10 @@
         "کودتا",
         "CIA",
         "ملی‌شدن"
-      ]
+      ],
+      "title_en": "Mossadegh and the Nationalization of Oil",
+      "summary_en": "Mohammad Mossadegh nationalized Iran's oil. The 28 Mordad coup, supported by the CIA and MI6, overthrew him.",
+      "description_en": "In 1330 (1951 CE), Mossadegh nationalized Iran's oil from the British company. This action created a wave of nationalism globally. Britain and the United States began sanctions on Iranian oil. In 1332 (1953 CE), a coup (Operation Ajax/Boot) was carried out against Mossadegh. Mossadegh remained under house arrest until the end of his life."
     },
     {
       "id": "pahlavi2",
@@ -2095,7 +2237,10 @@
         "SAVAK",
         "انقلاب سفید",
         "نفت"
-      ]
+      ],
+      "title_en": "Mohammad Reza Shah — The White Revolution",
+      "summary_en": "The White Revolution, land reforms, oil-driven economic growth, SAVAK's security environment, and social tensions.",
+      "description_en": "Mohammad Reza Shah consolidated power after the 28 Mordad coup. The White Revolution of 1341 (1963 CE) included land reforms, women's suffrage, and literacy programs. Oil revenue growth accelerated after 1352 (1973 CE). SAVAK (the intelligence organization) suppressed opponents. The 2,500-year celebration of the Persian Empire was held in 1350 (1971 CE)."
     },
     {
       "id": "iran-nuclear-atoms-for-peace",
@@ -2126,7 +2271,10 @@
         "محمدرضا شاه",
         "فناوری"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "Beginning of Iran's Nuclear Program (Atoms for Peace)",
+      "summary_en": "Iran's nuclear program began with U.S. support under the 'Atoms for Peace' initiative, which was a civilian program.",
+      "description_en": "In 1967, Iran acquired the Tehran Research Reactor, supplied by the United States under the 'Atoms for Peace' program. This civilian program initiated Iran's path in the field of nuclear energy and continued until the 1357 (1979 CE) revolution, laying the initial foundations for the country's nuclear program."
     },
     {
       "id": "enghelab",
@@ -2178,7 +2326,10 @@
         "۵۷",
         "خمینی",
         "جمهوری اسلامی"
-      ]
+      ],
+      "title_en": "The 1979 Revolution",
+      "summary_en": "A broad coalition of people overthrew the Shah. Khomeini established the Islamic Republic.",
+      "description_en": "The 1357 (1979 CE) Revolution was one of the most significant events in Iran's contemporary history, leading to the overthrow of Mohammad Reza Pahlavi's monarchy. After the Shah's departure from Iran, Ayatollah Ruhollah Khomeini returned to Tehran in February 1979 and founded the Islamic Republic. This period was accompanied by the seizure of the U.S. Embassy in November 1979 by students and the beginning of the 444-day hostage crisis, which severely impacted Iran-U.S. relations and laid the groundwork for subsequent developments in the region."
     },
     {
       "id": "iran-nuclear-revolution-natanz",
@@ -2204,7 +2355,10 @@
         "تحریم",
         "انقلاب"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "Suspension and Resumption of the Nuclear Program After the Revolution and the Natanz Disclosure",
+      "summary_en": "Following the 1979 Revolution, Iran's nuclear program was halted under international pressure, and subsequently, the Natanz facility was disclosed in 2002.",
+      "description_en": "Following the 1979 Revolution and the seizure of the U.S. Embassy in 1979, Iran's nuclear program was suspended under international pressure. However, in August 2002, Western intelligence agencies and an Iranian opposition group revealed the secret uranium enrichment facility at Natanz, marking a turning point in the escalation of nuclear tensions between Iran and the international community, and leading to serious concerns about the nature of Iran's nuclear program."
     },
     {
       "id": "jang",
@@ -2247,7 +2401,10 @@
         "صدام",
         "خرمشهر",
         "شیمیایی"
-      ]
+      ],
+      "title_en": "The Iran-Iraq War",
+      "summary_en": "An eight-year war of attrition, resulting in over one million dead and wounded. It began with Iraq's invasion.",
+      "description_en": "Saddam Hussein invaded Iran in September 1980. The eight-year war concluded with Iran's acceptance of UN Security Council Resolution 598. Khorramshahr was occupied and subsequently liberated. Key features of this war included the Tanker War, missile attacks on cities, and the use of chemical weapons. Iran's economy suffered severe damage."
     },
     {
       "id": "eslah",
@@ -2284,7 +2441,10 @@
         "خاتمی",
         "مطبوعات",
         "جامعه مدنی"
-      ]
+      ],
+      "title_en": "The Reform Era",
+      "summary_en": "Mohammad Khatami became president with the slogans of civil society and the Dialogue Among Civilizations. A period of relative press freedom ensued.",
+      "description_en": "Mohammad Khatami was elected president by a large margin in 1997. His presidency was marked by a flourishing press, the 'Dialogue Among Civilizations' initiative at the United Nations, and a relative opening of the political sphere. However, parallel power institutions obstructed fundamental reforms. The student movement of July 9, 1999, was suppressed."
     },
     {
       "id": "iran-nuclear-e3-talks-ahmadinejad",
@@ -2317,7 +2477,10 @@
         "اروپا",
         "تحریم"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "Nuclear Negotiations with the E3 and Resumption of Enrichment During the Ahmadinejad Presidency",
+      "summary_en": "Iran's nuclear negotiations with the three European countries (E3) commenced but were halted following the election of Mahmoud Ahmadinejad and the resumption of enrichment.",
+      "description_en": "In 2003, the United Kingdom, France, and Germany (the E3 group) initiated nuclear negotiations with Iran, leading to Iran's suspension of enrichment under international pressure by October of that year. However, in February 2006, following the election of hardline president Mahmoud Ahmadinejad, Iran resumed enrichment, and the E3 negotiations ceased. This period, which lasted until 2009, saw an intensification of international concerns regarding Iran's nuclear program and the issuance of sanction resolutions by the UN Security Council."
     },
     {
       "id": "sabz",
@@ -2365,7 +2528,10 @@
         "انتخابات",
         "اعتراض",
         "۸۸"
-      ]
+      ],
+      "title_en": "Green Movement",
+      "summary_en": "Following the controversial 2009 election, millions took to the streets, chanting 'Where is my vote?'",
+      "description_en": "The Green Movement began in 2009 (1388 Solar Hijri calendar) following the controversial presidential election in Iran. In this election, Mahmoud Ahmadinejad was announced as president for a second term, amidst widespread accusations of fraud in the results. Millions of people took to the streets, chanting 'Where is my vote?' These widespread and nationwide protests were met with violent suppression by security forces and became one of the biggest challenges to the Islamic Republic system."
     },
     {
       "id": "iran-nuclear-jcpoa-negotiation-signing",
@@ -2399,7 +2565,10 @@
         "مذاکرات",
         "دیپلماسی"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "Negotiation and Signing of the Nuclear Deal (JCPOA)",
+      "summary_en": "Years of secret diplomacy and direct negotiations between the U.S. and Iran in Oman led to the comprehensive nuclear agreement (JCPOA) in July 2015.",
+      "description_en": "In October 2009, during the presidency of Barack Obama, the U.S. and Iran slowly opened back-channel communications for exchanging messages through the Sultanate of Oman. This secret diplomacy led to direct face-to-face negotiations in Oman in July 2012, which laid the diplomatic groundwork for the final agreement. Ultimately, in July 2015, world powers (P5+1) and Iran signed the Joint Comprehensive Plan of Action (JCPOA), which limited Tehran's uranium enrichment program in exchange for the lifting of international sanctions, aiming to prevent Iran from acquiring nuclear weapons."
     },
     {
       "id": "protests-dey96",
@@ -2426,7 +2595,10 @@
         "مشهد",
         "تورم"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "Dey 1396 Protests",
+      "summary_en": "A wave of widespread and nationwide protests across various Iranian cities, which initially began with economic grievances but quickly took on a political character, with slogans chanted against the entire Islamic Republic system.",
+      "description_en": "In December 2017 and January 2018 (Dey 1396), various cities across Iran witnessed the start of a new wave of widespread popular protests. These protests, which began in Mashhad with economic slogans against high prices and corruption, quickly spread to other cities and took on a political nature. Protesters chanted slogans against the Leader and the government, demanding fundamental changes in the structure of governance. The government responded to these protests with violent suppression, widespread arrests of protesters, and temporary internet shutdowns, which resulted in the killing and injury of a number of citizens."
     },
     {
       "id": "iran-nuclear-jcpoa-withdrawal-escalation",
@@ -2461,7 +2633,10 @@
         "ایران-آمریکا",
         "خرابکاری"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "U.S. Withdrawal from the JCPOA and Escalation of Nuclear Tensions",
+      "summary_en": "Trump's unilateral withdrawal from the JCPOA in 2018 led to Iran's rollback of its commitments and an escalation of tensions, including sabotage attacks and increased uranium enrichment.",
+      "description_en": "On May 8, 2018, U.S. President Donald Trump unilaterally withdrew his country from the JCPOA, calling it 'the worst deal in history' and promising tougher conditions on missiles and proxies. In May 2019, in response to this action, Iran announced that it would gradually roll back its commitments under the agreement. This was followed by a series of regional and maritime attacks for which Tehran was blamed. In January 2020, a U.S. drone strike assassinated General Qassem Soleimani in Baghdad, and Iran retaliated with a barrage of missiles. In July 2020, a mysterious explosion destroyed a centrifuge production plant in Natanz, with Iran blaming Israel. In April 2021, with Vienna talks to revive the nuclear deal stalled and a second attack on Natanz (again, likely carried out by Israel), Iran raised uranium enrichment to 60%, its highest purity at the time and a technical step away from weapons-grade, significantly escalating international concerns."
     },
     {
       "id": "protests-aban98",
@@ -2488,7 +2663,10 @@
         "قطعی اینترنت",
         "کشتار آبان"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "November 2019 Protests (Gasoline Price Hike)",
+      "summary_en": "Following the sudden announcement of a three-fold increase in gasoline prices, a widespread wave of protests erupted in over 100 cities across Iran, which was met with severe suppression and a complete internet shutdown.",
+      "description_en": "In November 2019 (Aban 1398), following the government's sudden decision to triple the price of gasoline, widespread and intense protests began in over 100 cities and towns across Iran. These protests quickly took on an anti-government character, accompanied by violent clashes and the destruction of public and government property. In response to these protests, the Islamic Republic completely shut down the country's internet for several days and suppressed protestors using live ammunition. According to reports, hundreds to thousands of people were killed and wounded during this suppression, and a large number were arrested. This event is recognized as one of the bloodiest government crackdowns in contemporary Iranian history."
     },
     {
       "id": "mahsa",
@@ -2517,7 +2695,10 @@
           "url": "https://kayhan.london/1404/10/28/394984/"
         }
       ],
-      "_userAdded": true
+      "_userAdded": true,
+      "title_en": "Woman, Life, Freedom Revolution",
+      "summary_en": "The death of Mahsa Amini ignited nationwide protests. Woman, Life, Freedom — the slogan of a new generation.",
+      "description_en": "The death of Mahsa Amini while in the custody of the morality police in September 2022 sparked the \"Woman, Life, Freedom\" movement. In this movement, women, youth, and Generation Z circumvented censorship and, inspired by global digital culture, took to the streets. Through slogans and civil actions, they challenged compulsory hijab and the entire structure of the Islamic Republic. This movement faced violent government suppression, but as one of the first Generation Z revolutions globally, it laid the groundwork for subsequent protests and led to deep cultural changes in Iranian society, with many women refusing to wear the hijab. This wave of protests became a model for subsequent popular uprisings in Iran, which continue to this day."
     },
     {
       "id": "iran-regional-tensions-direct-attacks",
@@ -2547,7 +2728,25 @@
         "حملات مستقیم",
         "ترور"
       ],
-      "color": "#3AAAC8"
+      "color": "#3AAAC8",
+      "title_en": "Escalation of Regional Tensions and Direct Iran-Israel Attacks",
+      "summary_en": "Since 2022, Iran has been involved in escalating regional tensions, including supplying drones to Russia, supporting Hamas in its attack on Israel, Houthi attacks in the Red Sea, and the first direct attacks between Iran and Israel and vice versa.",
+      "description_en": "This period witnessed an unprecedented escalation of regional and international tensions. In 2022, with the start of Russia's full-scale invasion of Ukraine, Moscow became heavily reliant on Iranian drones and missiles. On October 7, 2023, Hamas's attack on Israel from Gaza severely intensified regional tensions, and Iran, which supported Hamas, played a significant role in this conflict. In November 2023, Iranian-backed Houthi rebels seized the ship Galaxy Leader and began attacks on shipping in the Red Sea, which the United States described as its most intense combat engagements since World War II. On April 14, 2024, Iran carried out its first direct attack on Israel with over 300 missiles and drones, which were mostly intercepted by Israel and a US-led coalition. A few days later, a suspected Israeli attack struck an air defense site in Isfahan. From July to October 2024, a wave of assassinations occurred, including the killings of Hamas leaders (Ismail Haniyeh and Yahya Sinwar) and the head of Hezbollah (Hassan Nasrallah). On October 26, 2024, Iran launched its second direct attack on Israel, and Israel, for the first time, openly attacked Iranian air defense sites and missile program."
+    },
+    {
+      "id": "user_1782328030812",
+      "era": "moaser",
+      "title": "جنگ دوازده روزه",
+      "date": "۱۴۰۴",
+      "dateSort": 2025,
+      "summary": "جنگ دوازده‌روزه درگیری مسلحانه‌ای میان ایران و اسرائیل بود که از ۲۳ خرداد تا ۳ تیر ۱۴۰۴ به طول انجامید. نیروهای اسرائیلی با انجام مجموعه‌ای از حملات غافلگیرکننده، برخی از فرماندهان ارشد نظامی، دانشمندان هسته‌ای و سیاستمداران ایران را ترور کردند و به سامانه‌های پدافند هوایی و برخی تأسیسات هسته‌ای و نظامی ایران آسیب رساندند یا آن‌ها را تخریب کردند. ایران در پاسخ موشک‌هایی را به سوی پایگاه‌های نظامی و شهرهای اسرائیل پرتاب کرد. حوثی‌های یمن نیز چندین موشک به سمت اسرائیل پرتاب کردند. ایالات متحده آمریکا علاوه بر دفاع از اسرائیل در برابر موشک‌ها و پهپادهای ایرانی، در روز نهم جنگ با حمله به سه سایت هسته‌ای ایران اقدام تهاجمی انجام داد. حوثی‌ها حملات آمریکا را «اعلان جنگ» تلقی کرده و به‌صورت یک‌جانبه آتش‌بس خود با آمریکا را لغو کردند. سرانجام ایران و اسرائیل با میانجی‌گری آمریکا و قطر با یک آتش‌بس دوجانبه در ۳ تیر ۱۴۰۴ موافقت کردند.",
+      "description": "جنگ دوازده‌روزه درگیری مسلحانه‌ای میان ایران و اسرائیل بود که از ۲۳ خرداد تا ۳ تیر ۱۴۰۴ به طول انجامید. نیروهای اسرائیلی با انجام مجموعه‌ای از حملات غافلگیرکننده، برخی از فرماندهان ارشد نظامی، دانشمندان هسته‌ای و سیاستمداران ایران را ترور کردند و به سامانه‌های پدافند هوایی و برخی تأسیسات هسته‌ای و نظامی ایران آسیب رساندند یا آن‌ها را تخریب کردند. ایران در پاسخ موشک‌هایی را به سوی پایگاه‌های نظامی و شهرهای اسرائیل پرتاب کرد. حوثی‌های یمن نیز چندین موشک به سمت اسرائیل پرتاب کردند. ایالات متحده آمریکا علاوه بر دفاع از اسرائیل در برابر موشک‌ها و پهپادهای ایرانی، در روز نهم جنگ با حمله به سه سایت هسته‌ای ایران اقدام تهاجمی انجام داد. حوثی‌ها حملات آمریکا را «اعلان جنگ» تلقی کرده و به‌صورت یک‌جانبه آتش‌بس خود با آمریکا را لغو کردند. سرانجام ایران و اسرائیل با میانجی‌گری آمریکا و قطر با یک آتش‌بس دوجانبه در ۳ تیر ۱۴۰۴ موافقت کردند. این جنگ، به دلیل نشان دادن آسیب‌پذیری حکومت، نقش مهمی در از بین بردن ترس مردم از جمهوری اسلامی و تشدید اعتراضات بعدی ایفا کرد.",
+      "tags": [],
+      "references": [],
+      "_userAdded": true,
+      "title_en": "The Twelve-Day War",
+      "summary_en": "The Twelve-Day War was an armed conflict between Iran and Israel that lasted from June 13 to June 23, 2025. Israeli forces carried out a series of surprise attacks, assassinating several senior military commanders, nuclear scientists, and politicians in Iran, and damaging or destroying air defense systems and some of Iran's nuclear and military facilities. In response, Iran launched missiles toward Israeli military bases and cities. Yemen's Houthis also launched several missiles toward Israel. In addition to defending Israel against Iranian missiles and drones, the United States took offensive action on the ninth day of the war by attacking three Iranian nuclear sites. The Houthis considered the US attacks an \"act of war\" and unilaterally canceled their ceasefire with the US. Ultimately, Iran and Israel, with the mediation of the US and Qatar, agreed to a bilateral ceasefire on June 23, 2025.",
+      "description_en": "The Twelve-Day War was an armed conflict between Iran and Israel that lasted from June 13 to June 23, 2025. Israeli forces carried out a series of surprise attacks, assassinating several senior military commanders, nuclear scientists, and politicians in Iran, and damaging or destroying air defense systems and some of Iran's nuclear and military facilities. In response, Iran launched missiles toward Israeli military bases and cities. Yemen's Houthis also launched several missiles toward Israel. In addition to defending Israel against Iranian missiles and drones, the United States took offensive action on the ninth day of the war by attacking three Iranian nuclear sites. The Houthis considered the US attacks an \"act of war\" and unilaterally canceled their ceasefire with the US. Ultimately, Iran and Israel, with the mediation of the US and Qatar, agreed to a bilateral ceasefire on June 23, 2025. This war, by demonstrating the vulnerability of the government, played a significant role in eradicating public fear of the Islamic Republic and intensifying subsequent protests."
     },
     {
       "id": "iran-us-israel-war-2026",
@@ -2614,32 +2813,17 @@
         "پهپاد",
         "موشک"
       ],
-      "color": "#3AAAC8"
-    },
-    {
-      "id": "user_1782328030812",
-      "era": "moaser",
-      "title": "جنگ دوازده روزه",
-      "date": "۱۴۰۴",
-      "dateSort": 9999,
-      "summary": "جنگ دوازده‌روزه درگیری مسلحانه‌ای میان ایران و اسرائیل بود که از ۲۳ خرداد تا ۳ تیر ۱۴۰۴ به طول انجامید.[۱۸][۱۹][۲۰][۲۱] نیروهای اسرائیلی با انجام مجموعه‌ای از حملات غافلگیرکننده، برخی از فرماندهان ارشد نظامی، دانشمندان هسته‌ای[۲۲] و سیاستمداران ایران[۲۳][۲۴] را ترور کردند و به سامانه‌های پدافند هوایی و برخی تأسیسات هسته‌ای و نظامی ایران آسیب رساندند یا آن‌ها را تخریب کردند.[۲۵] ایران در پاسخ موشک‌هایی را به سوی پایگاه‌های نظامی و شهرهای اسرائیل پرتاب کرد.[۲۶][۲۷] حوثی‌های یمن نیز چندین موشک به سمت اسرائیل پرتاب کردند.[۲۸] ایالات متحده آمریکا علاوه بر دفاع از اسرائیل در برابر موشک‌ها و پهپادهای ایرانی، در روز نهم جنگ با حمله به سه سایت هسته‌ای ایران اقدام تهاجمی انجام داد.[۲۹][۳۰] حوثی‌ها حملات آمریکا را «اعلان جنگ» تلقی کرده و به‌صورت یک‌جانبه آتش‌بس خود با آمریکا را لغو کردند.[۳۱] سرانجام ایران و اسرائیل با میانجی‌گری آمریکا و قطر با یک آتش‌بس دوجانبه در ۳ تیر ۱۴۰۴ موافقت کردند.",
-      "description": "جنگ دوازده‌روزه درگیری مسلحانه‌ای میان ایران و اسرائیل بود که از ۲۳ خرداد تا ۳ تیر ۱۴۰۴ به طول انجامید. نیروهای اسرائیلی با انجام مجموعه‌ای از حملات غافلگیرکننده، برخی از فرماندهان ارشد نظامی، دانشمندان هسته‌ای و سیاستمداران ایران را ترور کردند و به سامانه‌های پدافند هوایی و برخی تأسیسات هسته‌ای و نظامی ایران آسیب رساندند یا آن‌ها را تخریب کردند. ایران در پاسخ موشک‌هایی را به سوی پایگاه‌های نظامی و شهرهای اسرائیل پرتاب کرد. حوثی‌های یمن نیز چندین موشک به سمت اسرائیل پرتاب کردند. ایالات متحده آمریکا علاوه بر دفاع از اسرائیل در برابر موشک‌ها و پهپادهای ایرانی، در روز نهم جنگ با حمله به سه سایت هسته‌ای ایران اقدام تهاجمی انجام داد. حوثی‌ها حملات آمریکا را «اعلان جنگ» تلقی کرده و به‌صورت یک‌جانبه آتش‌بس خود با آمریکا را لغو کردند. سرانجام ایران و اسرائیل با میانجی‌گری آمریکا و قطر با یک آتش‌بس دوجانبه در ۳ تیر ۱۴۰۴ موافقت کردند. این جنگ، به دلیل نشان دادن آسیب‌پذیری حکومت، نقش مهمی در از بین بردن ترس مردم از جمهوری اسلامی و تشدید اعتراضات بعدی ایفا کرد.",
-      "tags": [],
-      "references": [
-        {
-          "type": "website",
-          "title": "نسل‌کشی زیر تاریکی دیجیتال؛ ساندی تایمز به نقل از منابعی درون ایران از کشته شدن ۱۶ هزار و ۵۰۰ معترض خبر داد",
-          "url": "https://kayhan.london/1404/10/28/394984/"
-        }
-      ],
-      "_userAdded": true
+      "color": "#3AAAC8",
+      "title_en": "US and Israel War with Iran (2026)",
+      "summary_en": "This widespread war, which lasted from late Esfand 1404 (February/March 2026) to Khordad 1405 (May/June 2026), involved joint US and Israeli attacks against Iran and its regional allies. It led to the assassination of senior Iranian leaders, including Ali Khamenei, and retaliatory Iranian attacks against Israel and US bases.",
+      "description_en": "This widespread war, which lasted from late Esfand 1404 (February/March 2026) to Khordad 1405 (May/June 2026) and involved joint US and Israeli attacks against Iran and its regional allies, ultimately concluded with an agreement presented by the Trump administration as a victory, but which was, in reality, perceived as an American surrender to Iran. Despite significant damage sustained by Iran from US and Israeli military actions, the war ended with the survival of the Iranian regime and the increased power of the Islamic Revolutionary Guard Corps (IRGC). The primary US objectives, including regime change and complete nuclear disarmament of Iran, were not achieved. According to the terms of the agreement, many sanctions were lifted, and billions of dollars of frozen Iranian assets were released. Furthermore, Iran retained its drone and missile capabilities and remained able to support terrorist groups. The Strait of Hormuz also remained under Iranian influence, and Trump's claim of its toll-free opening was deemed ineffective. This agreement, despite Iran's damages, transformed it into a more powerful political actor that had resisted a broad American assault. Benjamin Netanyahu, the Israeli Prime Minister, who had encouraged the war, was excluded from the negotiations and felt humiliated by this failure. Moreover, this agreement led to a ceasefire in the region, including Lebanon, and Trump even urged Israel to exercise restraint against minor Hezbollah attacks to avoid disrupting the negotiation process. The claim of containing Iran's nuclear program was also considered baseless, as Iran had previously committed under the Joint Comprehensive Plan of Action (JCPOA) not to pursue nuclear weapons and was not close to building a bomb at the time the war began; this claim was merely an attempt to cover up the Trump administration's failure to achieve its main goal of regime change."
     },
     {
       "id": "user_1782328116866",
       "era": "moaser",
       "title": "دی ماه خونین ۱۴۰۴",
       "date": "1404",
-      "dateSort": 9999,
+      "dateSort": 2026,
       "summary": "کشتارهای دی ۱۴۰۴ ایران به مجموعه‌ای از گزارش‌ها دربارهٔ کشته شدن گستردهٔ غیرنظامیان به‌دست نیروهای امنیتی جمهوری اسلامی ایران و شبه‌نظامیان خارجی تحت حمایت نظام جمهوری اسلامی ایران در جریان خیزش ۱۴۰۴ ایران اشاره دارد.[۱] تا تاریخ ۵ بهمن ۱۴۰۴، برآوردها از شمار جان‌باختگان از ۲۹۸۶ آمار دولتی جمهوری اسلامی تا ۶٬۴۸۸ تن کمترین تا بیش از ۴۳٬۰۰۰ تن را دربر می‌گرفت،[۲] که شامل ۲۰۹ فرد نظامی و غیرنظامی وابسته به حکومت می‌شد،[۳] و این رویدادها را به یکی از بزرگ‌ترین کشتارها در تاریخ معاصر ایران تبدیل می‌کن",
       "description": "کشتارهای دی ۱۴۰۴ ایران به مجموعه‌ای گسترده و بی‌سابقه از گزارش‌ها دربارهٔ کشته شدن سازمان‌یافتهٔ غیرنظامیان به دست نیروهای امنیتی جمهوری اسلامی ایران و شبه‌نظامیان خارجی تحت حمایت نظام، در جریان خیزش ۱۴۰۴ ایران اشاره دارد. این رویداد که از نظر شمار قربانیان به یکی از بزرگ‌ترین کشتارها در تاریخ معاصر ایران و حتی جهان تبدیل شده است، با دستور مستقیم علی خامنه‌ای، رهبر جمهوری اسلامی، در ۱۹ دی ۱۴۰۴ برای سرکوب اعتراضات «به هر وسیلهٔ لازم» آغاز شد. پس از این دستور، نیروهای امنیتی با استفاده گسترده از سلاح گرم (از جمله تفنگ‌های ساچمه‌ای، سلاح‌های جنگی، کلاشنیکف، تفنگ تک‌تیرانداز، و تیربارهای سنگین دوشکا) علیه معترضان وارد عمل شدند و گزارش‌ها حاکی از شلیک مستقیم و هدف قرار دادن عمدی سر، چشم‌ها و اندام حیاتی قربانیان برای کشتن یا ایجاد ناتوانی دائمی بود. تا تاریخ ۵ بهمن ۱۴۰۴، برآوردها از شمار جان‌باختگان از ۲۹۸۶ نفر (آمار دولتی) تا بیش از ۴۳,۰۰۰ نفر (تخمین گروه‌های حقوق بشری و برخی مقامات بهداشتی) متغیر بود، که شامل دست‌کم ۲۱۹ کودک زیر ۱۸ سال نیز می‌شد و این واقعه از نظر برخی منابع «نسل‌کشی زیر تاریکی دیجیتال» توصیف شده است. علاوه بر خشونت مستقیم، گزارش‌هایی از استفاده احتمالی از مواد شیمیایی سمی علیه معترضان، یورش نیروهای امنیتی به بیمارستان‌ها برای بازداشت یا اعدام مجروحان، شکنجه و تجاوز جنسی به بازداشت‌شدگان، و اخذ اعترافات اجباری تحت فشار منتشر شد. همچنین مداخله نیروهای شبه‌نظامی خارجی مانند حشد الشعبی عراق، حزب‌الله لبنان، لشکر زینبیون پاکستان و لشکر فاطمیون افغانستان در سرکوب اعتراضات گزارش شده است. رفتار با اجساد نیز با بی‌احترامی و خشونت همراه بود؛ خانواده‌ها برای تحویل گرفتن پیکر عزیزانشان مجبور به پرداخت هزینه گلوله‌ها یا موافقت با روایت‌های حکومتی می‌شدند و بسیاری از اجساد به صورت مخفیانه در گورهای دسته‌جمعی دفن شدند. اینترنت به طور گسترده‌ای قطع یا محدود شد تا مانع از انتشار اخبار و تصاویر کشتار شود. در واکنش‌های بین‌المللی، اتحادیه اروپا و بریتانیا سپاه پاسداران را در فهرست سازمان‌های تروریستی قرار دادند و بسیاری از کشورها سفیران ایران را احضار کردند. در داخل ایران نیز شخصیت‌هایی چون مهدی کروبی و میرحسین موسوی این کشتار را به شدت محکوم کرده و خواستار کناره‌گیری حاکمیت و برگزاری همه‌پرسی شدند. چندین بازیکن تیم ملی ورزش ایران نیز در اعتراض به این کشتار از تیم‌های ملی کناره‌گیری کردند.",
       "tags": [],
@@ -2692,7 +2876,10 @@
           "reign": "رهبر جمهوری اسلامی از ۱۳۶۸ (۱۹۸۹ م)",
           "note": "تأیید کشته شدن «چند هزار نفر» در اعتراضات گسترده دی ۱۴۰۴ و متهم کردن آمریکا به سازماندهی «فتنه»"
         }
-      ]
+      ],
+      "title_en": "Bloody Dey 1404 (December 2025 - January 2026)",
+      "summary_en": "The Dey 1404 (December 2025 - January 2026) massacres in Iran refer to a series of reports concerning the widespread killing of civilians by the security forces of the Islamic Republic of Iran and foreign militias supported by the Islamic Republic during the 1404 Iran Uprising. [1] As of Bahman 5, 1404 (January 25, 2026), estimates of the death toll ranged from 2,986 (Islamic Republic government statistics) to at least 6,488 and over 43,000, [2] which included 209 government-affiliated military and civilian personnel, [3] making these events one of the largest massacres in contemporary Iranian history.",
+      "description_en": "The Dey 1404 (December 2025 - January 2026) massacres in Iran refer to a widespread and unprecedented series of reports concerning the organized killing of civilians by the security forces of the Islamic Republic of Iran and foreign militias supported by the regime during the 1404 Iran Uprising. This event, which in terms of victim count has become one of the largest massacres in contemporary Iranian and even world history, began with a direct order from Ali Khamenei, the Leader of the Islamic Republic, on Dey 19, 1404 (January 9, 2026), to suppress the protests 'by any means necessary.' Following this order, security forces extensively used firearms (including shotguns, military rifles, Kalashnikovs, sniper rifles, and heavy DShK machine guns) against protesters, and reports indicated direct shooting and deliberate targeting of victims' heads, eyes, and vital organs to kill or cause permanent disability. As of Bahman 5, 1404 (January 25, 2026), estimates of the death toll varied from 2,986 (government statistics) to over 43,000 (estimates by human rights groups and some health officials), including at least 219 children under 18, and this incident has been described by some sources as 'digital dark age genocide.' In addition to direct violence, reports emerged of the potential use of toxic chemical agents against protesters, security forces raiding hospitals to arrest or execute the wounded, torture and sexual assault of detainees, and forced confessions obtained under duress. The intervention of foreign paramilitary forces such as Iraq's Popular Mobilization Forces (Hashd al-Shaabi), Lebanon's Hezbollah, Pakistan's Zainabiyoun Brigade, and Afghanistan's Fatemiyoun Division in suppressing the protests was also reported. The treatment of bodies was also marked by disrespect and violence; families were forced to pay for bullets or agree to government narratives to retrieve the bodies of their loved ones, and many bodies were secretly buried in mass graves. The internet was widely cut off or restricted to prevent the dissemination of news and images of the massacre. In international reactions, the European Union and the United Kingdom listed the Islamic Revolutionary Guard Corps (IRGC) as a terrorist organization, and many countries summoned Iran's ambassadors. Inside Iran, figures such as Mehdi Karroubi and Mir-Hossein Mousavi strongly condemned the massacre, demanding the resignation of the government and the holding of a referendum. Several players from Iran's national sports teams also withdrew from their national teams in protest of the massacre."
     }
   ]
 }

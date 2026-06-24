@@ -27,6 +27,10 @@
           <input type="search" id="search-input" class="search-input" placeholder="جستجو..." aria-label="جستجو در رویدادها" />
           <span class="search-icon">🔍</span>
         </div>
+        <!-- Language Switcher -->
+        <a href="/en/" class="btn-lang-fa" id="btn-lang" title="Switch to English">
+          🇬🇧 <span>English</span>
+        </a>
         <button class="btn-admin" id="btn-open-admin" aria-label="پنل مدیریت">
           <span>✏️</span> ادمین
         </button>
@@ -223,14 +227,138 @@
         </form>
       </div>
 
-      <!-- Tab: Edit -->
+      <!-- Tab: Edit (Pro Editor) -->
       <div class="admin-tab-panel" id="panel-edit" role="tabpanel" aria-labelledby="tab-edit">
-        <div class="edit-search-wrapper">
-          <input type="search" id="admin-search" class="form-control" placeholder="جستجوی رویداد برای ویرایش..." />
-        </div>
-        <div class="edit-list" id="edit-list">
-          <!-- populated by JS -->
-        </div>
+        <div class="pro-editor-layout">
+          <!-- Left: Event list -->
+          <div class="pro-editor-list">
+            <div class="edit-search-wrapper">
+              <input type="search" id="admin-search" class="form-control" placeholder="جستجوی رویداد..." />
+            </div>
+            <div class="edit-list" id="edit-list"><!-- populated by JS --></div>
+          </div>
+          <!-- Right: Editor form -->
+          <div class="pro-editor-form" id="pro-editor-form">
+            <div class="pro-editor-empty" id="pro-editor-empty">
+              <span style="font-size:3rem">✏️</span>
+              <p>یک رویداد از لیست سمت راست انتخاب کنید تا ویرایش شود</p>
+            </div>
+            <div class="pro-editor-fields hidden" id="pro-editor-fields">
+              <div class="pro-editor-header">
+                <h3 class="pro-editor-event-name" id="pro-editor-event-name"></h3>
+                <button class="btn-pro-delete" id="btn-pro-delete" title="حذف این رویداد">🗑 حذف رویداد</button>
+              </div>
+
+              <!-- Editor sub-tabs -->
+              <div class="editor-subtabs">
+                <button class="editor-subtab active" data-subtab="basic">📝 اطلاعات پایه</button>
+                <button class="editor-subtab" data-subtab="rulers">👑 حاکمان</button>
+                <button class="editor-subtab" data-subtab="refs">📚 منابع</button>
+              </div>
+
+              <!-- Sub-panel: Basic info -->
+              <div class="editor-subpanel active" id="subpanel-basic">
+                <div class="form-group">
+                  <label>عنوان رویداد *</label>
+                  <input type="text" id="pro-ev-title" class="form-control" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>بازه زمانی *</label>
+                    <input type="text" id="pro-ev-date" class="form-control" placeholder="مثلاً: ۲۲۴ – ۶۵۱ م" />
+                  </div>
+                  <div class="form-group">
+                    <label>سال مرتب‌سازی</label>
+                    <input type="number" id="pro-ev-datesort" class="form-control" placeholder="عدد منفی = ق.م" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>دوره تاریخی *</label>
+                  <select id="pro-ev-era" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                  <label>خلاصه *</label>
+                  <textarea id="pro-ev-summary" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>توضیحات کامل</label>
+                  <textarea id="pro-ev-description" class="form-control" rows="6"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>برچسب‌ها (با کاما جدا کنید)</label>
+                  <input type="text" id="pro-ev-tags" class="form-control" placeholder="هخامنشی، کوروش، پارسی" />
+                </div>
+                <div class="form-actions">
+                  <button class="btn-primary" id="btn-pro-save">💾 ذخیره تغییرات</button>
+                  <span class="pro-save-status" id="pro-save-status"></span>
+                </div>
+              </div>
+
+              <!-- Sub-panel: Rulers -->
+              <div class="editor-subpanel" id="subpanel-rulers">
+                <div class="rulers-editor-list" id="rulers-editor-list"></div>
+                <div class="ruler-add-form">
+                  <h4>افزودن حاکم جدید</h4>
+                  <div class="form-group">
+                    <label>نام حاکم *</label>
+                    <input type="text" id="ruler-name-input" class="form-control" placeholder="کوروش بزرگ" />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>دوره حکومت</label>
+                      <input type="text" id="ruler-reign-input" class="form-control" placeholder="۵۵۰ – ۵۳۰ ق.م" />
+                    </div>
+                    <div class="form-group">
+                      <label>یادداشت</label>
+                      <input type="text" id="ruler-note-input" class="form-control" placeholder="توضیح کوتاه..." />
+                    </div>
+                  </div>
+                  <button class="btn-secondary" id="btn-add-ruler">➕ افزودن حاکم</button>
+                </div>
+              </div>
+
+              <!-- Sub-panel: References -->
+              <div class="editor-subpanel" id="subpanel-refs">
+                <div class="refs-editor-list" id="refs-editor-list"></div>
+                <div class="ref-add-form">
+                  <h4>افزودن منبع جدید</h4>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>نوع منبع</label>
+                      <select id="pro-ref-type" class="form-control">
+                        <option value="website">🌐 وب‌سایت</option>
+                        <option value="book">📚 کتاب</option>
+                        <option value="video">🎬 ویدیو</option>
+                        <option value="article">📄 مقاله</option>
+                        <option value="image">🖼 تصویر</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>عنوان منبع *</label>
+                      <input type="text" id="pro-ref-title" class="form-control" placeholder="نام کتاب / عنوان مقاله" />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>نویسنده / منبع</label>
+                      <input type="text" id="pro-ref-author" class="form-control" placeholder="نام نویسنده" />
+                    </div>
+                    <div class="form-group">
+                      <label>سال انتشار</label>
+                      <input type="text" id="pro-ref-year" class="form-control" placeholder="۱۴۰۰" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>لینک (URL)</label>
+                    <input type="url" id="pro-ref-url" class="form-control" placeholder="https://..." dir="ltr" />
+                  </div>
+                  <button class="btn-secondary" id="btn-add-pro-ref">➕ افزودن منبع</button>
+                </div>
+              </div>
+
+            </div><!-- /pro-editor-fields -->
+          </div><!-- /pro-editor-form -->
+        </div><!-- /pro-editor-layout -->
       </div>
 
       <!-- Tab: Export -->
@@ -339,6 +467,19 @@
     </div>
   </dialog>
 
+  <!-- ===== DELETE CONFIRM DIALOG ===== -->
+  <dialog id="confirm-delete-dialog" aria-modal="true" aria-labelledby="confirm-delete-title">
+    <div class="confirm-dialog-inner">
+      <span class="confirm-dialog-icon">🗑️</span>
+      <h2 class="confirm-dialog-title" id="confirm-delete-title">حذف رویداد</h2>
+      <p class="confirm-dialog-msg">آیا مطمئن هستید که میخواهید رویداد<br>«<span class="confirm-dialog-event-name" id="confirm-delete-event-name"></span>»<br>را برای همیشه حذف کنید؟<br><small style="color:var(--text-muted)">این عمل قابل بازگشت نیست.</small></p>
+      <div class="confirm-dialog-actions">
+        <button class="btn-confirm-cancel" id="btn-confirm-cancel">انصراف</button>
+        <button class="btn-confirm-delete" id="btn-confirm-delete">بله، حذف کن</button>
+      </div>
+    </div>
+  </dialog>
+
   <!-- ===== FLOATING FEEDBACK BUTTON ===== -->
   <button class="btn-floating-feedback" id="btn-open-feedback" aria-label="پیشنهاد و فیدبک">
     <span>💬</span> پیشنهاد و فیدبک
@@ -385,6 +526,7 @@
     <div class="footer-links">
       <a href="about-developer.html" class="footer-link">👨‍💻 درباره توسعه‌دهنده</a>
       <a href="about-project.html" class="footer-link">ℹ️ درباره پروژه</a>
+      <a href="iran.html" class="footer-link">🦁 ایران</a>
     </div>
   </footer>
 

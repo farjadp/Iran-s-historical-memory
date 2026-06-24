@@ -203,7 +203,12 @@ function getFilteredEvents() {
     );
   }
 
-  return events.sort((a, b) => (a.dateSort || 0) - (b.dateSort || 0));
+  // Sort a copy so allData.events original order is never mutated
+  return [...events].sort((a, b) => {
+    const da = (a.dateSort != null) ? a.dateSort : 99999;
+    const db = (b.dateSort != null) ? b.dateSort : 99999;
+    return da - db;
+  });
 }
 
 function renderTimeline() {
@@ -620,9 +625,15 @@ function saveNewRef() {
 
 // ── Admin Panel ────────────────────────────────────────────
 function populateAdminEraSelect() {
+  const eraOptions = allData.eras.map(e => `<option value="${e.id}">${e.title}</option>`).join('');
   const sel = $('ev-era');
-  sel.innerHTML = allData.eras.map(e => `<option value="${e.id}">${e.title}</option>`).join('');
+  if (sel) sel.innerHTML = eraOptions;
+  const proSel = $('pro-ev-era');
+  if (proSel) proSel.innerHTML = eraOptions;
 }
+
+// ── Pro Editor State ───────────────────────────────────────
+let proEditorEventId = null;
 
 function renderEditList(filter = '') {
   const editList = $('edit-list');
@@ -637,37 +648,202 @@ function renderEditList(filter = '') {
 
   editList.innerHTML = events.map(ev => {
     const era = allData.eras.find(e => e.id === ev.era);
+    const isSelected = ev.id === proEditorEventId;
     return `
-      <div class="edit-list-item" data-id="${ev.id}">
+      <div class="edit-list-item${isSelected ? ' selected' : ''}" data-id="${ev.id}">
         <div class="edit-item-info">
           <div class="edit-item-title">${escHtml(ev.title)}</div>
-          <div class="edit-item-date">${escHtml(ev.date)} ${era ? '— ' + era.title : ''}</div>
+          <div class="edit-item-date">${escHtml(ev.date)}${era ? ' — ' + era.title : ''}</div>
         </div>
-        <button class="btn-edit-item" data-id="${ev.id}">ویرایش</button>
-        <button class="btn-delete-item" data-id="${ev.id}">حذف</button>
+        <button class="btn-edit-item" data-id="${ev.id}" style="display:none">v</button>
+        <button class="btn-delete-item" data-id="${ev.id}" style="display:none">x</button>
       </div>`;
   }).join('');
 }
 
-function loadEventForEdit(eventId) {
+function loadEventIntoProEditor(eventId) {
   const ev = allData.events.find(e => e.id === eventId);
   if (!ev) return;
 
-  // Switch to add tab (reuse form)
-  switchAdminTab('add');
-  $('ev-title').value        = ev.title;
-  $('ev-date').value         = ev.date;
-  $('ev-era').value          = ev.era;
-  $('ev-datesort').value     = ev.dateSort || '';
-  $('ev-summary').value      = ev.summary;
-  $('ev-description').value  = ev.description || '';
-  $('ev-tags').value         = (ev.tags || []).join(', ');
+  proEditorEventId = eventId;
+  renderEditList($('admin-search')?.value || '');
 
-  // Mark form as editing
-  eventForm.dataset.editingId = eventId;
-  formFeedback.textContent = `در حال ویرایش: "${ev.title}"`;
-  formFeedback.className = 'form-feedback success';
-  formFeedback.classList.remove('hidden');
+  $('pro-editor-empty').classList.add('hidden');
+  $('pro-editor-fields').classList.remove('hidden');
+  $('pro-editor-event-name').textContent = ev.title;
+
+  $('pro-ev-title').value       = ev.title;
+  $('pro-ev-date').value        = ev.date;
+  $('pro-ev-datesort').value    = ev.dateSort || '';
+  $('pro-ev-era').value         = ev.era;
+  $('pro-ev-summary').value     = ev.summary;
+  $('pro-ev-description').value = ev.description || '';
+  $('pro-ev-tags').value        = (ev.tags || []).join(', ');
+
+  const statusEl = $('pro-save-status');
+  statusEl.textContent = '';
+  statusEl.className = 'pro-save-status';
+
+  renderProRulers(ev);
+  renderProRefs(ev);
+  switchEditorSubtab('basic');
+}
+
+function renderProRulers(ev) {
+  const list = $('rulers-editor-list');
+  const rulers = ev.rulers || [];
+  if (rulers.length === 0) {
+    list.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem">هیچ حاکمی ثبت نشده.</p>';
+    return;
+  }
+  list.innerHTML = rulers.map((r, i) => `
+    <div class="ruler-editor-item">
+      <div class="ruler-editor-item-info">
+        <div class="ruler-editor-item-name">${escHtml(r.name)}</div>
+        ${r.reign ? `<div class="ruler-editor-item-reign">${escHtml(r.reign)}</div>` : ''}
+        ${r.note  ? `<div class="ruler-editor-item-note">${escHtml(r.note)}</div>` : ''}
+      </div>
+      <button class="btn-ruler-delete" data-ruler-index="${i}" title="حذف حاکم">✕</button>
+    </div>`).join('');
+}
+
+function renderProRefs(ev) {
+  const list = $('refs-editor-list');
+  const refs = [...(ev.references || []), ...(extraRefs[ev.id] || [])];
+  if (refs.length === 0) {
+    list.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem">هیچ منبعی ثبت نشده.</p>';
+    return;
+  }
+  list.innerHTML = refs.map((r, i) => {
+    const icon = getRefIcon(r.type);
+    const meta = [r.author, r.year].filter(Boolean).join(' · ');
+    return `
+      <div class="ref-editor-item">
+        <span style="font-size:1.2rem;flex-shrink:0">${icon}</span>
+        <div class="ref-editor-item-info">
+          <div class="ref-editor-item-title">${escHtml(r.title)}</div>
+          ${meta ? `<div class="ref-editor-item-meta">${escHtml(meta)}</div>` : ''}
+          ${r.url ? `<a class="ref-editor-item-link" href="${escHtml(r.url)}" target="_blank" rel="noopener">🔗 ${escHtml(r.url)}</a>` : ''}
+        </div>
+        <button class="btn-ref-delete" data-ref-index="${i}" title="حذف منبع">✕</button>
+      </div>`;
+  }).join('');
+}
+
+function switchEditorSubtab(subtabId) {
+  document.querySelectorAll('.editor-subtab').forEach(t => {
+    t.classList.toggle('active', t.dataset.subtab === subtabId);
+  });
+  document.querySelectorAll('.editor-subpanel').forEach(p => {
+    p.classList.toggle('active', p.id === 'subpanel-' + subtabId);
+  });
+}
+
+async function proSaveEvent() {
+  if (!proEditorEventId) return;
+  const ev = allData.events.find(e => e.id === proEditorEventId);
+  if (!ev) return;
+
+  const statusEl = $('pro-save-status');
+  statusEl.textContent = 'در حال ذخیره...';
+  statusEl.className = 'pro-save-status saving';
+
+  const updated = {
+    ...ev,
+    title:       $('pro-ev-title').value.trim(),
+    date:        $('pro-ev-date').value.trim(),
+    dateSort:    parseInt($('pro-ev-datesort').value) || ev.dateSort || 9999,
+    era:         $('pro-ev-era').value,
+    summary:     $('pro-ev-summary').value.trim(),
+    description: $('pro-ev-description').value.trim(),
+    tags:        $('pro-ev-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+  };
+
+  try {
+    const res = await fetch(`/api/events/${proEditorEventId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer admin-session-token'
+      },
+      body: JSON.stringify({ event: updated })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'خطا در ذخیره');
+
+    const idx = allData.events.findIndex(e => e.id === proEditorEventId);
+    if (idx !== -1) allData.events[idx] = data.event || updated;
+
+    renderTimeline();
+    renderEditList($('admin-search')?.value || '');
+    updateStats();
+    $('pro-editor-event-name').textContent = updated.title;
+
+    statusEl.textContent = '✅ ذخیره شد';
+    statusEl.className = 'pro-save-status saved';
+    setTimeout(() => { statusEl.textContent = ''; statusEl.className = 'pro-save-status'; }, 3000);
+    showToast('✅ رویداد با موفقیت ویرایش شد');
+  } catch (err) {
+    statusEl.textContent = '❌ خطا';
+    statusEl.className = 'pro-save-status error';
+    showToast('❌ ' + err.message, 'error');
+  }
+}
+
+function showDeleteConfirm(eventId) {
+  const ev = allData.events.find(e => e.id === eventId);
+  if (!ev) return;
+  $('confirm-delete-event-name').textContent = ev.title;
+  const dialog = $('confirm-delete-dialog');
+  dialog.dataset.targetId = eventId;
+  dialog.showModal();
+}
+
+async function executeDeleteEvent(eventId) {
+  const btn = $('btn-confirm-delete');
+  btn.disabled = true;
+  btn.textContent = 'در حال حذف...';
+
+  try {
+    const res = await fetch(`/api/events/${eventId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer admin-session-token' }
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'خطا در حذف');
+
+    const idx = allData.events.findIndex(e => e.id === eventId);
+    if (idx !== -1) allData.events.splice(idx, 1);
+    extraEvents = extraEvents.filter(e => e.id !== eventId);
+
+    $('confirm-delete-dialog').close();
+    showToast('🗑 رویداد با موفقیت حذف شد');
+
+    if (proEditorEventId === eventId) {
+      proEditorEventId = null;
+      $('pro-editor-empty').classList.remove('hidden');
+      $('pro-editor-fields').classList.add('hidden');
+    }
+    if (sidePanelEl.classList.contains('open') && activeEventId === eventId) closePanel();
+    renderTimeline();
+    renderEditList();
+    updateStats();
+  } catch (err) {
+    showToast('❌ ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'بله، حذف کن';
+  }
+}
+
+function deleteEvent(eventId) {
+  showDeleteConfirm(eventId);
+}
+
+function loadEventForEdit(eventId) {
+  // Route to pro editor
+  switchAdminTab('edit');
+  loadEventIntoProEditor(eventId);
 }
 
 function deleteEvent(eventId) {
@@ -973,12 +1149,106 @@ function setupEventListeners() {
   // Admin search (edit tab)
   $('admin-search').addEventListener('input', e => renderEditList(e.target.value));
 
-  // Edit list delegation
+  // Edit list delegation — pro editor
   $('edit-list').addEventListener('click', e => {
-    const editBtn   = e.target.closest('.btn-edit-item');
-    const deleteBtn = e.target.closest('.btn-delete-item');
-    if (editBtn)   loadEventForEdit(editBtn.dataset.id);
-    if (deleteBtn) deleteEvent(deleteBtn.dataset.id);
+    const item = e.target.closest('.edit-list-item');
+    if (item && item.dataset.id) {
+      loadEventIntoProEditor(item.dataset.id);
+    }
+  });
+
+  // Pro editor save button
+  $('btn-pro-save')?.addEventListener('click', proSaveEvent);
+
+  // Pro editor delete button
+  $('btn-pro-delete')?.addEventListener('click', () => {
+    if (proEditorEventId) showDeleteConfirm(proEditorEventId);
+  });
+
+  // Delete confirmation dialog buttons
+  $('btn-confirm-cancel').addEventListener('click', () => $('confirm-delete-dialog').close());
+  $('btn-confirm-delete').addEventListener('click', () => {
+    const targetId = $('confirm-delete-dialog').dataset.targetId;
+    if (targetId) executeDeleteEvent(targetId);
+  });
+  $('confirm-delete-dialog').addEventListener('click', e => {
+    if (e.target === $('confirm-delete-dialog')) $('confirm-delete-dialog').close();
+  });
+
+  // Editor sub-tabs
+  document.querySelectorAll('.editor-subtab').forEach(tab => {
+    tab.addEventListener('click', () => switchEditorSubtab(tab.dataset.subtab));
+  });
+
+  // Rulers editor
+  $('rulers-editor-list')?.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-ruler-delete');
+    if (!btn || !proEditorEventId) return;
+    const idx = parseInt(btn.dataset.rulerIndex);
+    const ev = allData.events.find(e => e.id === proEditorEventId);
+    if (!ev || !ev.rulers) return;
+    ev.rulers.splice(idx, 1);
+    renderProRulers(ev);
+    showToast('حاکم حذف شد — ذخیره کنید');
+  });
+
+  $('btn-add-ruler')?.addEventListener('click', () => {
+    if (!proEditorEventId) return;
+    const name  = $('ruler-name-input').value.trim();
+    const reign = $('ruler-reign-input').value.trim();
+    const note  = $('ruler-note-input').value.trim();
+    if (!name) { showToast('نام حاکم الزامی است', 'error'); return; }
+    const ev = allData.events.find(e => e.id === proEditorEventId);
+    if (!ev) return;
+    if (!ev.rulers) ev.rulers = [];
+    ev.rulers.push({ name, reign, note });
+    renderProRulers(ev);
+    $('ruler-name-input').value = '';
+    $('ruler-reign-input').value = '';
+    $('ruler-note-input').value = '';
+    showToast('حاکم اضافه شد — ذخیره کنید');
+  });
+
+  // Refs editor
+  $('refs-editor-list')?.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-ref-delete');
+    if (!btn || !proEditorEventId) return;
+    const idx = parseInt(btn.dataset.refIndex);
+    const ev = allData.events.find(e => e.id === proEditorEventId);
+    if (!ev) return;
+    const totalBase = (ev.references || []).length;
+    if (idx < totalBase) {
+      ev.references.splice(idx, 1);
+    } else {
+      const localIdx = idx - totalBase;
+      if (!extraRefs[proEditorEventId]) extraRefs[proEditorEventId] = [];
+      extraRefs[proEditorEventId].splice(localIdx, 1);
+    }
+    renderProRefs(ev);
+    showToast('منبع حذف شد — ذخیره کنید');
+  });
+
+  $('btn-add-pro-ref')?.addEventListener('click', () => {
+    if (!proEditorEventId) return;
+    const title = $('pro-ref-title').value.trim();
+    if (!title) { showToast('عنوان منبع الزامی است', 'error'); return; }
+    const ref = {
+      type:   $('pro-ref-type').value,
+      title,
+      author: $('pro-ref-author').value.trim() || undefined,
+      year:   $('pro-ref-year').value.trim() || undefined,
+      url:    $('pro-ref-url').value.trim() || undefined,
+    };
+    const ev = allData.events.find(e => e.id === proEditorEventId);
+    if (!ev) return;
+    if (!ev.references) ev.references = [];
+    ev.references.push(ref);
+    renderProRefs(ev);
+    $('pro-ref-title').value = '';
+    $('pro-ref-author').value = '';
+    $('pro-ref-year').value = '';
+    $('pro-ref-url').value = '';
+    showToast('منبع اضافه شد — ذخیره کنید');
   });
 
   // Add ref toggle

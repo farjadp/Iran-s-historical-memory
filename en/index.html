@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iran History Timeline — From Ancient Times to Today</title>
+  <meta name="description" content="An interactive visual journey through Iran's history from prehistoric times to the modern era. Click any event to explore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="en-style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="header-logo">🦁</div>
+        <div>
+          <h1 class="header-title">Iran History</h1>
+          <p class="header-subtitle">From Ancient Times to Today</p>
+        </div>
+      </div>
+      <nav class="header-controls">
+        <div class="search-wrapper">
+          <input type="search" id="search-input" class="search-input" placeholder="Search events..." aria-label="Search events" />
+          <span class="search-icon">🔍</span>
+        </div>
+        <!-- Language Switcher -->
+        <a href="/" class="btn-lang" id="btn-lang" title="Switch to Persian">
+          <img src="../data/images/iranflag.png" alt="Persian flag" class="lang-flag" />
+          <span>فارسی</span>
+        </a>
+        <button class="btn-theme" id="btn-theme" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+      </nav>
+    </div>
+    <!-- Era Filter Bar -->
+    <div class="era-filter-bar" id="era-filter-bar" role="group" aria-label="Filter by historical era">
+      <button class="era-btn active" data-era="all">All Eras</button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-section" aria-label="Introduction">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Over 2,700 years of history</p>
+      <h2 class="hero-heading">A Journey Through Time</h2>
+      <p class="hero-desc">Click any event to explore its summary, full description, and sources.</p>
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat-item"><span class="stat-num" id="stat-events">0</span><span class="stat-label">Events</span></div>
+        <div class="stat-item"><span class="stat-num" id="stat-eras">7</span><span class="stat-label">Eras</span></div>
+        <div class="stat-item"><span class="stat-num" id="stat-refs">0</span><span class="stat-label">Sources</span></div>
+      </div>
+    </div>
+    <div class="hero-decoration" aria-hidden="true">
+      <div class="deco-ring ring-1"></div>
+      <div class="deco-ring ring-2"></div>
+      <div class="deco-ring ring-3"></div>
+      <div class="deco-lion">🦁</div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <main class="timeline-section" id="timeline-main">
+    <div class="timeline-axis" aria-hidden="true"></div>
+    <div class="timeline-container" id="timeline-container" role="list" aria-label="Historical events">
+      <!-- Events rendered by JS -->
+    </div>
+    <div class="no-results hidden" id="no-results">
+      <span>🔍</span>
+      <p>No events found</p>
+    </div>
+  </main>
+
+  <!-- ===== SIDE PANEL ===== -->
+  <aside class="side-panel" id="side-panel" role="complementary" aria-label="Event details" aria-hidden="true">
+    <div class="panel-backdrop" id="panel-backdrop"></div>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div class="panel-header-left">
+          <div class="panel-era-badge" id="panel-era-badge"></div>
+          <img class="panel-flag" id="panel-flag" src="" alt="" loading="lazy" />
+        </div>
+        <button class="panel-close" id="panel-close" aria-label="Close panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <!-- Date calendar grid -->
+        <div class="date-calendars" id="date-calendars" aria-label="Date in different calendars">
+          <div class="cal-item">
+            <span class="cal-label">Gregorian</span>
+            <span class="cal-value" id="cal-miladi"></span>
+          </div>
+          <div class="cal-item">
+            <span class="cal-label">Solar Hijri</span>
+            <span class="cal-value" id="cal-shamsi"></span>
+          </div>
+          <div class="cal-item">
+            <span class="cal-label">Imperial</span>
+            <span class="cal-value" id="cal-shahanshahi"></span>
+          </div>
+        </div>
+        <h2 class="panel-title" id="panel-title"></h2>
+        <p class="panel-summary" id="panel-summary"></p>
+        <div class="panel-divider"></div>
+        <div class="panel-description" id="panel-description"></div>
+        <div class="panel-tags" id="panel-tags"></div>
+
+        <!-- Dynasty / Rulers Tree -->
+        <div class="dynasty-section hidden" id="dynasty-section">
+          <div class="dynasty-header">
+            <span class="dynasty-icon">👑</span>
+            <h3 class="dynasty-title">Rulers & Dynasty</h3>
+          </div>
+          <ol class="dynasty-tree" id="dynasty-tree" aria-label="List of rulers"></ol>
+        </div>
+
+        <!-- References -->
+        <div class="panel-section">
+          <div class="section-header">
+            <h3 class="section-title">Sources</h3>
+          </div>
+          <ul class="ref-list" id="ref-list" aria-label="Sources list"></ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Iran History Timeline · Data stored in <code>data/history.json</code></p>
+    <div class="footer-links">
+      <a href="about-developer.html" class="footer-link">👨‍💻 About the Developer</a>
+      <a href="about-project.html" class="footer-link">ℹ️ About the Project</a>
+      <a href="iran.html" class="footer-link">🦁 About Iran</a>
+      <a href="/" class="footer-link">
+        <img src="../data/images/iranflag.png" alt="" style="height:14px;vertical-align:middle;margin-left:4px;" />
+        نسخه فارسی
+      </a>
+    </div>
+  </footer>
+
+  <script src="en-main.js"></script>
+</body>
+</html>

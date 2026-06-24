@@ -1,6 +1,11 @@
 import os
 import re
 import json
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv not installed; use system env vars
 import time
 import urllib.parse
 from typing import Optional
@@ -478,6 +483,62 @@ async def delete_feedback(feedback_id: int, authorization: Optional[str] = Heade
         return {"status": "success", "message": "پیشنهاد با موفقیت حذف شد"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"خطا در حذف پیشنهاد: {str(e)}")
+
+# ── Event CRUD Endpoints ───────────────────────────────────────
+
+class EventUpdateData(BaseModel):
+    event: dict
+    token: Optional[str] = None
+
+@app.delete("/api/events/{event_id}")
+async def delete_event(event_id: str, authorization: Optional[str] = Header(None)):
+    if not authorization or authorization.replace("Bearer ", "").strip() != "admin-session-token":
+        raise HTTPException(status_code=401, detail="عدم دسترسی: ادمین احراز هویت نشده است")
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"خطا در خواندن داده‌ها: {str(e)}")
+
+    original_count = len(data["events"])
+    data["events"] = [e for e in data["events"] if e.get("id") != event_id]
+
+    if len(data["events"]) == original_count:
+        raise HTTPException(status_code=404, detail="رویداد مورد نظر یافت نشد")
+
+    try:
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return {"status": "success", "message": "رویداد با موفقیت حذف شد"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"خطا در ذخیره‌سازی: {str(e)}")
+
+@app.put("/api/events/{event_id}")
+async def update_event(event_id: str, payload: EventUpdateData, authorization: Optional[str] = Header(None)):
+    if not authorization or authorization.replace("Bearer ", "").strip() != "admin-session-token":
+        raise HTTPException(status_code=401, detail="عدم دسترسی: ادمین احراز هویت نشده است")
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"خطا در خواندن داده‌ها: {str(e)}")
+
+    idx = next((i for i, e in enumerate(data["events"]) if e.get("id") == event_id), None)
+    if idx is None:
+        raise HTTPException(status_code=404, detail="رویداد مورد نظر یافت نشد")
+
+    # Preserve existing fields not in the update payload
+    existing = data["events"][idx]
+    updated = {**existing, **payload.event}
+    updated["id"] = event_id  # never change the ID
+    data["events"][idx] = updated
+
+    try:
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return {"status": "success", "message": "رویداد با موفقیت ویرایش شد", "event": updated}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"خطا در ذخیره‌سازی: {str(e)}")
 
 # Mount static files (serves index.html, style.css, main.js, and data/)
 app.mount("/", StaticFiles(directory=".", html=True), name="static")

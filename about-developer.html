@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>درباره توسعه‌دهنده — فرجاد پورمحمد</title>
-  <meta name="description" content="آشنایی با فرجاد پورمحمد، مشاور استارتاپ‌ها، معمار سیستم‌ها و توسعه‌دهنده تایم‌لاین تاریخ ایران." />
+  <meta name="description"
+    content="آشنایی با فرجاد پورمحمد، مشاور استارتاپ‌ها، معمار سیستم‌ها و توسعه‌دهنده تایم‌لاین تاریخ ایران." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script>
     const savedTheme = localStorage.getItem('iran_history_theme') || 'dark';
@@ -16,138 +20,187 @@
     }
   </script>
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column; background: var(--bg-base); color: var(--text-primary);">
+
+<body
+  style="min-height: 100vh; display: flex; flex-direction: column; background: var(--bg-base); color: var(--text-primary);">
 
   <!-- Header -->
   <header class="site-header" style="position: static; height: auto; padding: 20px 0;">
-    <div class="header-inner" style="max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="index.html" class="header-brand" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+    <div class="header-inner"
+      style="max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="header-brand"
+        style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
         <span style="font-size: 1.5rem;">🦁</span>
         <div>
           <span style="font-weight: 700; font-size: 1.2rem; color: var(--text-primary);">تاریخ ایران</span>
           <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">بازگشت به تایم‌لاین</p>
         </div>
       </a>
-      <button class="btn-theme" id="btn-theme-page" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 50%; color: var(--text-primary); cursor: pointer; width: 40px; height: 40px; font-size: 1.2rem;">🌙</button>
+      <button class="btn-theme" id="btn-theme-page"
+        style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 50%; color: var(--text-primary); cursor: pointer; width: 40px; height: 40px; font-size: 1.2rem;">🌙</button>
     </div>
   </header>
 
   <!-- Main Container -->
   <main style="flex: 1; padding: 40px 20px; max-width: 800px; margin: 0 auto; width: 100%;">
-    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-card); position: relative; overflow: hidden;">
-
-      <!-- Iran Map Background -->
-      <div style="position: absolute; inset: 0; pointer-events: none; z-index: 0;">
-        <img src="iran_map.png" alt="" aria-hidden="true"
-          style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); width: 85%; max-width: 600px; opacity: 0.055; filter: saturate(0.8);" />
-      </div>
+    <div
+      style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-card); position: relative; overflow: hidden;">
 
       <!-- Top Glow -->
-      <div style="position: absolute; top: -100px; left: -100px; width: 250px; height: 250px; background: rgba(200, 137, 58, 0.08); border-radius: 50%; filter: blur(50px); pointer-events: none;"></div>
-      <div style="position: absolute; bottom: -100px; right: -100px; width: 250px; height: 250px; background: rgba(92, 158, 106, 0.06); border-radius: 50%; filter: blur(50px); pointer-events: none;"></div>
+      <div
+        style="position: absolute; top: -100px; left: -100px; width: 250px; height: 250px; background: rgba(200, 137, 58, 0.08); border-radius: 50%; filter: blur(50px); pointer-events: none;">
+      </div>
+      <div
+        style="position: absolute; bottom: -100px; right: -100px; width: 250px; height: 250px; background: rgba(92, 158, 106, 0.06); border-radius: 50%; filter: blur(50px); pointer-events: none;">
+      </div>
 
-      <div style="text-align: center; margin-bottom: 30px; position: relative; z-index: 1;">
-        <!-- Flag -->
-        <div style="display: flex; justify-content: center; margin-bottom: 18px;">
-          <img src="iran_flag.png" alt="پرچم شیر و خورشید" title="پرچم شیر و خورشید"
-            style="width: 140px; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);" />
-        </div>
-        <span style="font-size: 3.5rem;">👨‍💻</span>
-        <h1 style="font-size: 2.2rem; font-weight: 800; margin: 10px 0 5px; color: var(--text-primary);">فرجاد پورمحمد</h1>
-        <p style="font-size: 1rem; color: var(--gold-light); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px;">❤️ عاشق وطن</p>
-        <p style="font-size: 1.1rem; color: var(--gold-light); font-weight: 600; margin-bottom: 0;">کارآفرین | استراتژیست استارتاپ | معمار سیستم‌های هوش مصنوعی</p>
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span style="font-size: 4rem;">👨‍💻</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin: 10px 0 5px; color: var(--text-primary);">فرجاد </h1>
+        <p
+          style="font-size: 1rem; color: var(--gold-light); font-weight: 700; margin-bottom: 4px; letter-spacing: 1px;">
+          ❤️ عاشق وطن</p>
+        <p style="font-size: 1.1rem; color: var(--gold-light); font-weight: 600; margin-bottom: 5px;">CTO، معمار
+          سیستم‌ها و استراتژیست محصول</p>
+
+
       </div>
 
       <div class="panel-divider" style="margin: 25px 0;"></div>
 
       <div style="font-size: 1rem; line-height: 1.8; color: var(--text-secondary); space-y: 20px;">
-        <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+        <h2
+          style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
           🚀 «ساخت نرم‌افزارهای مرده را متوقف کنید، شرکت‌های مقیاس‌پذیر بسازید»
         </h2>
         <p style="margin-bottom: 20px; text-align: justify;">
-          من به بنیان‌گذاران در مراحل اولیه کمک می‌کنم تا کسب‌وکار خود را از صفر لانچ کنند، به تیم‌های فنی و محصول مشاوره می‌دهم و سیستم‌های هوش مصنوعی و اتوماسیون سفارشی مهندسی می‌کنم که واقعاً خروجی درآمدی و عملیاتی داشته باشند.
+          من به بنیان‌گذاران در مراحل اولیه کمک می‌کنم تا کسب‌وکار خود را از صفر لانچ کنند، به تیم‌های فنی و محصول
+          مشاوره می‌دهم و سیستم‌های هوش مصنوعی و اتوماسیون سفارشی مهندسی می‌کنم که واقعاً خروجی درآمدی و عملیاتی داشته
+          باشند.
         </p>
 
-        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-top: 30px; margin-bottom: 15px;">💡 تخصص‌های کلیدی و سوابق کاربری</h3>
+        <h3
+          style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-top: 30px; margin-bottom: 15px;">
+          💡 تخصص‌های کلیدی و سوابق کاربری</h3>
         <ul style="padding-right: 20px; margin-bottom: 25px; list-style-type: none;">
           <li style="margin-bottom: 12px; display: flex; align-items: start; gap: 8px;">
             <span>🏗️</span>
             <div>
-              <strong>راه‌اندازی کسب‌وکار از صفر تا یک:</strong> همکاری استراتژیک و فنی به عنوان هم‌بنیان‌گذار برای طراحی ساختار اولیه محصول و استراتژی ورود به بازار (GTM).
+              <strong>راه‌اندازی کسب‌وکار از صفر تا یک:</strong> همکاری استراتژیک و فنی به عنوان هم‌بنیان‌گذار برای
+              طراحی ساختار اولیه محصول و استراتژی ورود به بازار (GTM).
             </div>
           </li>
           <li style="margin-bottom: 12px; display: flex; align-items: start; gap: 8px;">
             <span>🤖</span>
             <div>
-              <strong>طراحی سیستم‌های هوش مصنوعی و اتوماسیون اختصاصی:</strong> جایگزینی فرآیندهای سنتی و دستی با سیستم‌های نرم‌افزاری خودکارآمد و مبتنی بر مدل‌های زبانی بزرگ (LLM).
+              <strong>طراحی سیستم‌های هوش مصنوعی و اتوماسیون اختصاصی:</strong> جایگزینی فرآیندهای سنتی و دستی با
+              سیستم‌های نرم‌افزاری خودکارآمد و مبتنی بر مدل‌های زبانی بزرگ (LLM).
             </div>
           </li>
-      <div style="font-size: 1rem; line-height: 1.8; color: var(--text-secondary);">
+          <div style="font-size: 1rem; line-height: 1.8; color: var(--text-secondary);">
 
-        <p style="margin-bottom: 20px; text-align: justify;">
-          بیش از ۲۰ سال است که در نقطه تلاقی فناوری، کسب‌وکار و رفتار انسان فعالیت می‌کنم.
-        </p>
-        <p style="margin-bottom: 20px; text-align: justify;">
-          مسیر حرفه‌ای من از برنامه‌نویسی و زیرساخت‌های فناوری آغاز شد، اما خیلی زود متوجه شدم که شکست یا موفقیت یک محصول، بیشتر از کدها به انسان‌ها، تصمیم‌ها و ساختارهای پشت آن وابسته است. به همین دلیل در کنار دنیای فناوری، مسیر مطالعاتی خود را در حوزه انسان‌شناسی دنبال کردم تا بتوانم فناوری را نه فقط از دید ماشین‌ها، بلکه از نگاه انسان‌ها درک کنم.
-        </p>
-        <p style="margin-bottom: 30px; text-align: justify;">
-          در طول این سال‌ها چندین شرکت و استارتاپ را بنیان‌گذاری کرده‌ام، تیم‌های فنی و محصول متعددی را ساخته‌ام و به صدها بنیان‌گذار، مدیر و کارآفرین برای تبدیل ایده به کسب‌وکار واقعی کمک کرده‌ام.
-        </p>
+            <p style="margin-bottom: 20px; text-align: justify;">
+              بیش از ۲۰ سال است که در نقطه تلاقی فناوری، کسب‌وکار و رفتار انسان فعالیت می‌کنم.
+            </p>
+            <p style="margin-bottom: 20px; text-align: justify;">
+              مسیر حرفه‌ای من از برنامه‌نویسی و زیرساخت‌های فناوری آغاز شد، اما خیلی زود متوجه شدم که شکست یا موفقیت یک
+              محصول، بیشتر از کدها به انسان‌ها، تصمیم‌ها و ساختارهای پشت آن وابسته است. به همین دلیل در کنار دنیای
+              فناوری، مسیر مطالعاتی خود را در حوزه انسان‌شناسی دنبال کردم تا بتوانم فناوری را نه فقط از دید ماشین‌ها،
+              بلکه از نگاه انسان‌ها درک کنم.
+            </p>
+            <p style="margin-bottom: 30px; text-align: justify;">
+              در طول این سال‌ها چندین شرکت و استارتاپ را بنیان‌گذاری کرده‌ام، تیم‌های فنی و محصول متعددی را ساخته‌ام و
+              به صدها بنیان‌گذار، مدیر و کارآفرین برای تبدیل ایده به کسب‌وکار واقعی کمک کرده‌ام.
+            </p>
 
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 18px;">امروز تمرکز اصلی من بر سه حوزه است:</h3>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 18px;">امروز
+              تمرکز اصلی من بر سه حوزه است:</h3>
 
-        <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 18px;">
-          <li style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;">
-            <span style="font-size: 1.6rem; flex-shrink: 0;">🚀</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 1rem;">ساخت و رشد استارتاپ‌ها</strong>
-              <p style="margin-top: 6px; font-size: 0.9rem; line-height: 1.7;">کمک به بنیان‌گذاران برای تبدیل ایده به محصول، محصول به بازار و بازار به کسب‌وکار مقیاس‌پذیر.</p>
+            <ul
+              style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 18px;">
+              <li
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;">
+                <span style="font-size: 1.6rem; flex-shrink: 0;">🚀</span>
+                <div>
+                  <strong style="color: var(--text-primary); font-size: 1rem;">ساخت و رشد استارتاپ‌ها</strong>
+                  <p style="margin-top: 6px; font-size: 0.9rem; line-height: 1.7;">کمک به بنیان‌گذاران برای تبدیل ایده
+                    به محصول، محصول به بازار و بازار به کسب‌وکار مقیاس‌پذیر.</p>
+                </div>
+              </li>
+              <li
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;">
+                <span style="font-size: 1.6rem; flex-shrink: 0;">🤖</span>
+                <div>
+                  <strong style="color: var(--text-primary); font-size: 1rem;">هوش مصنوعی و اتوماسیون</strong>
+                  <p style="margin-top: 6px; font-size: 0.9rem; line-height: 1.7;">طراحی و پیاده‌سازی سیستم‌های هوش
+                    مصنوعی، Agent ها و فرآیندهای خودکار که بتوانند بهره‌وری، فروش و تصمیم‌گیری را در سازمان‌ها متحول
+                    کنند.</p>
+                </div>
+              </li>
+              <li
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;">
+                <span style="font-size: 1.6rem; flex-shrink: 0;">🧠</span>
+                <div>
+                  <strong style="color: var(--text-primary); font-size: 1rem;">استراتژی محصول و کسب‌وکار</strong>
+                  <p style="margin-top: 6px; font-size: 0.9rem; line-height: 1.7;">هم‌راستا کردن فناوری، بازار و مدل
+                    درآمدی برای ساخت محصولاتی که واقعاً مسئله‌ای را حل می‌کنند و مشتری حاضر است برای آن‌ها پول پرداخت
+                    کند.</p>
+                </div>
+              </li>
+            </ul>
+
+            <p style="margin-bottom: 20px; text-align: justify;">
+              در طول مسیر حرفه‌ای خود با سازمان‌های بزرگ، شرکت‌های خصوصی، استارتاپ‌های نوپا، سرمایه‌گذاران و
+              شتاب‌دهنده‌ها همکاری داشته‌ام و تجربه فعالیت در حوزه‌هایی مانند سلامت دیجیتال، مهاجرت، فینتک، بلاکچین،
+              آموزش، هوش مصنوعی و نرم‌افزارهای سازمانی را کسب کرده‌ام.
+            </p>
+
+            <div
+              style="background: var(--bg-glass); border: 1px solid var(--border-active); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 30px; text-align: center;">
+              <p
+                style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); line-height: 1.8; font-style: italic;">
+                «بیشتر کسب‌وکارها به دلیل کمبود فناوری شکست نمی‌خورند؛ به این دلیل شکست می‌خورند که بین انسان، محصول و
+                بازار ارتباط درستی ایجاد نمی‌کنند.»
+              </p>
+              <p style="margin-top: 14px; font-size: 0.85rem; color: var(--gold-light); font-weight: 700;">مأموریت من
+                کمک به ساخت کسب‌وکارهایی است که این فاصله را از بین ببرند.</p>
             </div>
-          </li>
-          <li style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;">
-            <span style="font-size: 1.6rem; flex-shrink: 0;">🤖</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 1rem;">هوش مصنوعی و اتوماسیون</strong>
-              <p style="margin-top: 6px; font-size: 0.9rem; line-height: 1.7;">طراحی و پیاده‌سازی سیستم‌های هوش مصنوعی، Agent ها و فرآیندهای خودکار که بتوانند بهره‌وری، فروش و تصمیم‌گیری را در سازمان‌ها متحول کنند.</p>
-            </div>
-          </li>
-          <li style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;">
-            <span style="font-size: 1.6rem; flex-shrink: 0;">🧠</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 1rem;">استراتژی محصول و کسب‌وکار</strong>
-              <p style="margin-top: 6px; font-size: 0.9rem; line-height: 1.7;">هم‌راستا کردن فناوری، بازار و مدل درآمدی برای ساخت محصولاتی که واقعاً مسئله‌ای را حل می‌کنند و مشتری حاضر است برای آن‌ها پول پرداخت کند.</p>
-            </div>
-          </li>
-        </ul>
 
-        <p style="margin-bottom: 20px; text-align: justify;">
-          در طول مسیر حرفه‌ای خود با سازمان‌های بزرگ، شرکت‌های خصوصی، استارتاپ‌های نوپا، سرمایه‌گذاران و شتاب‌دهنده‌ها همکاری داشته‌ام و تجربه فعالیت در حوزه‌هایی مانند سلامت دیجیتال، مهاجرت، فینتک، بلاکچین، آموزش، هوش مصنوعی و نرم‌افزارهای سازمانی را کسب کرده‌ام.
-        </p>
+          </div>
 
-        <div style="background: var(--bg-glass); border: 1px solid var(--border-active); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 30px; text-align: center;">
-          <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); line-height: 1.8; font-style: italic;">
-            «بیشتر کسب‌وکارها به دلیل کمبود فناوری شکست نمی‌خورند؛ به این دلیل شکست می‌خورند که بین انسان، محصول و بازار ارتباط درستی ایجاد نمی‌کنند.»
-          </p>
-          <p style="margin-top: 14px; font-size: 0.85rem; color: var(--gold-light); font-weight: 700;">مأموریت من کمک به ساخت کسب‌وکارهایی است که این فاصله را از بین ببرند.</p>
-        </div>
+          <div class="panel-divider" style="margin: 30px 0;"></div>
+
+          <div style="text-align: center;">
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">🌐 راه‌های
+              ارتباطی و شبکه‌های اجتماعی</h3>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px;">
+              <a href="https://www.linkedin.com/in/farjadpourmohammad/" target="_blank"
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='var(--gold)'"
+                onmouseout="this.style.borderColor='var(--border-subtle)'">🔗 لینکدین</a>
+              <a href="https://t.me/FarjadTalks" target="_blank"
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='var(--gold)'"
+                onmouseout="this.style.borderColor='var(--border-subtle)'">✈️ تلگرام (FarjadTalks)</a>
+              <a href="https://t.me/Heros_Journey" target="_blank"
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='var(--gold)'"
+                onmouseout="this.style.borderColor='var(--border-subtle)'">✈️ کانال Hero's Journey</a>
+              <a href="https://instagram.com/FarjadTalks" target="_blank"
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='var(--gold)'"
+                onmouseout="this.style.borderColor='var(--border-subtle)'">📸 اینستاگرام</a>
+              <a href="https://youtube.com/@FarjadTalks" target="_blank"
+                style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='var(--gold)'"
+                onmouseout="this.style.borderColor='var(--border-subtle)'">🎥 یوتیوب</a>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">برای اطلاعات بیشتر و مقالات تخصصی، به وب‌سایت اصلی
+              مراجعه کنید: <a href="https://farjadp.com" target="_blank"
+                style="color: var(--gold-light); text-decoration: none;">farjadp.com</a></p>
+          </div>
 
       </div>
-
-      <div class="panel-divider" style="margin: 30px 0;"></div>
-
-      <div style="text-align: center;">
-        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">🌐 راه‌های ارتباطی و شبکه‌های اجتماعی</h3>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px;">
-          <a href="https://www.linkedin.com/in/farjadpourmohammad/" target="_blank" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border-subtle)'">🔗 لینکدین</a>
-          <a href="https://t.me/FarjadTalks" target="_blank" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border-subtle)'">✈️ تلگرام (FarjadTalks)</a>
-          <a href="https://t.me/Heros_Journey" target="_blank" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border-subtle)'">✈️ کانال Hero's Journey</a>
-          <a href="https://instagram.com/FarjadTalks" target="_blank" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border-subtle)'">📸 اینستاگرام</a>
-          <a href="https://youtube.com/@FarjadTalks" target="_blank" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); color: var(--text-primary); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border-subtle)'">🎥 یوتیوب</a>
-        </div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">برای اطلاعات بیشتر و مقالات تخصصی، به وب‌سایت اصلی مراجعه کنید: <a href="https://farjadp.com" target="_blank" style="color: var(--gold-light); text-decoration: none;">farjadp.com</a></p>
-      </div>
-
-    </div>
   </main>
 
   <!-- Footer -->
@@ -157,20 +210,21 @@
 
   <script>
     const themeBtn = document.getElementById('btn-theme-page');
-    
+
     function applyTheme(theme) {
       document.documentElement.dataset.theme = theme === 'light' ? 'light' : '';
       themeBtn.textContent = theme === 'light' ? '🌙' : '☀️';
       localStorage.setItem('iran_history_theme', theme);
     }
-    
+
     themeBtn.addEventListener('click', () => {
       const current = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
       applyTheme(current === 'dark' ? 'light' : 'dark');
     });
-    
+
     // Set initial text based on theme
     themeBtn.textContent = document.documentElement.dataset.theme === 'light' ? '🌙' : '☀️';
   </script>
 </body>
+
 </html>
