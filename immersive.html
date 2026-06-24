@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>روایت بصری تاریخ ایران — نمای نمایشگاهی</title>
+  <meta name="description" content="نمای نمایشگاهی تعاملی و غرق‌کننده تاریخ ایران از غارنشینی تا امروز" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="immersive.css" />
+  <script>
+    const savedTheme = localStorage.getItem('iran_history_theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="imm-header">
+    <div class="imm-logo">
+      <span class="imm-logo-icon">🦁</span>
+      <div>
+        <h1 class="imm-logo-title">تاریخ ایران</h1>
+        <p class="imm-logo-subtitle">روایت بصری و غرق‌کننده</p>
+      </div>
+    </div>
+    
+    <nav class="imm-controls">
+      <!-- Search -->
+      <div class="imm-search-wrapper">
+        <input type="search" id="imm-search" class="imm-search-input" placeholder="جستجو در رویدادها..." aria-label="جستجو در تاریخ" />
+        <span class="imm-search-icon">🔍</span>
+      </div>
+
+      <!-- Links -->
+      <a href="index.html" class="btn-nav-timeline">📋 نمای تایم‌لاین عمودی</a>
+      <button class="btn-theme" id="btn-theme-page" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 50%; color: var(--text-primary); cursor: pointer; width: 40px; height: 40px; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">🌙</button>
+    </nav>
+  </header>
+
+  <!-- Main Exhibition Layout -->
+  <div class="imm-showcase-container">
+    
+    <!-- Sidebar: Era Filters -->
+    <aside class="imm-sidebar">
+      <h3 class="imm-sidebar-title">دوره‌های تاریخی</h3>
+      <nav class="imm-filter-list" id="imm-era-filters">
+        <button class="imm-filter-btn active" data-era="all">
+          <span>همه دوره‌ها</span>
+          <span class="era-dot" style="background: var(--gold);"></span>
+        </button>
+        <!-- Populated via JS -->
+      </nav>
+    </aside>
+
+    <!-- Main Showcase Content -->
+    <main class="imm-showcase" id="imm-showcase-view">
+      <div class="imm-showcase-card imm-fade-element" id="imm-event-card">
+        <!-- Glow matching era -->
+        <div class="imm-showcase-glow" id="imm-card-glow"></div>
+        
+        <!-- Left Column: Details -->
+        <div class="imm-showcase-details">
+          <div class="imm-showcase-meta">
+            <span class="imm-era-badge" id="imm-era-badge"></span>
+            <span class="imm-date-label" id="imm-date-label"></span>
+          </div>
+          
+          <h2 class="imm-showcase-title" id="imm-event-title"></h2>
+          <p class="imm-showcase-summary" id="imm-event-summary"></p>
+          
+          <div style="border-top: 1px solid var(--border-subtle); margin: 10px 0;"></div>
+          
+          <p class="imm-showcase-desc" id="imm-event-desc"></p>
+          
+          <div class="imm-showcase-tags" id="imm-event-tags"></div>
+          
+          <!-- References in showcase card -->
+          <div class="imm-refs-section" id="imm-event-refs-section">
+            <h3 class="imm-section-title">📚 منابع و مستندات</h3>
+            <div class="imm-refs-grid" id="imm-event-refs"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Rulers & Flags -->
+        <div class="imm-showcase-aside">
+          <!-- Dynasty Flag -->
+          <div class="imm-flag-container" id="imm-flag-box">
+            <img src="" alt="پرچم سلسله" class="imm-flag-img" id="imm-flag-img" />
+          </div>
+          
+          <!-- Rulers -->
+          <div id="imm-rulers-box">
+            <h3 class="imm-section-title">👑 حاکمان برجسته</h3>
+            <div class="imm-rulers-list" id="imm-rulers-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Bottom Timeline Navigator Track -->
+  <div class="imm-timeline-navigator">
+    <button class="btn-track-scroll" id="btn-scroll-right" title="قبلی">➡️</button>
+    
+    <div class="imm-timeline-track" id="imm-timeline-track">
+      <!-- Populated dynamically via JS -->
+    </div>
+    
+    <button class="btn-track-scroll" id="btn-scroll-left" title="بعدی">⬅️</button>
+  </div>
+
+  <script src="immersive.js"></script>
+</body>
+</html>

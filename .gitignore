@@ -6,3 +6,6 @@ __pycache__/
 *.webp
 *.png
 *.mp4
+
+# Runtime data (ephemeral on Railway)
+data/feedback.json

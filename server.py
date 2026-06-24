@@ -13,6 +13,9 @@ from bs4 import BeautifulSoup
 
 app = FastAPI(title="Iran History Timeline API")
 
+# Ensure data directory exists (important for Railway deployment)
+os.makedirs("data", exist_ok=True)
+
 HISTORY_FILE = "data/history.json"
 FEEDBACK_FILE = "data/feedback.json"
 
