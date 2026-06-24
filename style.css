@@ -1230,11 +1230,11 @@ select.form-control {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.75);
   color: var(--text-primary);
-  max-height: 90dvh;
-  max-width: 680px;
-  width: calc(100% - 32px);
+  max-height: 92dvh;
+  max-width: min(1180px, calc(100vw - 32px));
+  width: calc(100vw - 32px);
   padding: 0;
   overflow: hidden;
   position: fixed;
@@ -1800,28 +1800,30 @@ select.form-control {
 }
 
 /* ── PRO EDITOR LAYOUT ─────────────────────────────────────── */
-.admin-dialog.wide { max-width: 980px; }
+.admin-dialog.wide { max-width: min(1180px, calc(100vw - 32px)); }
 
-#panel-edit.active { display: flex; padding: 0; overflow: hidden; height: calc(90dvh - 130px); }
+#panel-edit.active { display: flex; padding: 0; overflow: hidden; height: calc(92dvh - 130px); }
 
 .pro-editor-layout {
   display: grid;
-  grid-template-columns: 270px 1fr;
+  grid-template-columns: 320px 1fr;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  gap: 0;
 }
 
 .pro-editor-list {
-  border-left: 1px solid var(--border-subtle);
+  border-inline-start: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--bg-card);
-  padding: 12px 10px;
+  padding: 16px 12px;
+  min-width: 0;
 }
 
-.pro-editor-list .edit-search-wrapper { margin-bottom: 8px; flex-shrink: 0; }
+.pro-editor-list .edit-search-wrapper { margin-bottom: 12px; flex-shrink: 0; }
 
 .pro-editor-list .edit-list {
   flex: 1;
@@ -1830,14 +1832,28 @@ select.form-control {
   scrollbar-color: var(--border-subtle) transparent;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .pro-editor-list .edit-list-item {
-  padding: 8px 10px;
+  padding: 10px 12px;
   cursor: pointer;
   border-radius: var(--radius-sm);
-  justify-content: flex-start;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.pro-editor-list .edit-list-item .edit-item-title {
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 3px;
+}
+
+.pro-editor-list .edit-list-item .edit-item-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .pro-editor-list .edit-list-item .btn-edit-item,
@@ -1845,7 +1861,7 @@ select.form-control {
 
 .pro-editor-list .edit-list-item.selected {
   background: var(--gold-dim);
-  border-color: rgba(200,137,58,0.35);
+  border-color: rgba(200,137,58,0.4);
 }
 
 .pro-editor-list .edit-list-item:hover:not(.selected) {
@@ -1857,9 +1873,10 @@ select.form-control {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding: 20px 22px;
+  padding: 24px 32px;
   scrollbar-width: thin;
   scrollbar-color: var(--border-subtle) transparent;
+  gap: 0;
 }
 
 .pro-editor-empty {
@@ -1878,12 +1895,14 @@ select.form-control {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .pro-editor-event-name {
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
   flex: 1;
@@ -1913,9 +1932,9 @@ select.form-control {
 
 .editor-subtabs {
   display: flex;
-  gap: 2px;
+  gap: 4px;
   border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 16px;
+  margin-bottom: 22px;
   flex-shrink: 0;
 }
 
@@ -1926,22 +1945,32 @@ select.form-control {
   color: var(--text-muted);
   cursor: pointer;
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  padding: 7px 14px 10px;
+  padding: 8px 18px 12px;
   transition: all var(--transition-fast);
+  border-radius: 4px 4px 0 0;
 }
 
-.editor-subtab:hover { color: var(--text-secondary); }
+.editor-subtab:hover { color: var(--text-secondary); background: var(--bg-glass); }
 
 .editor-subtab.active {
   border-bottom-color: var(--gold);
   color: var(--gold-light);
   font-weight: 700;
+  background: var(--gold-dim);
 }
 
 .editor-subpanel { display: none; }
 .editor-subpanel.active { display: block; }
+
+/* Editor form groups — more breathing room */
+.pro-editor-form .form-group { margin-bottom: 18px; }
+.pro-editor-form .form-row { gap: 16px; margin-bottom: 0; }
+.pro-editor-form .form-row .form-group { margin-bottom: 18px; }
+.pro-editor-form textarea.form-control { min-height: 90px; line-height: 1.7; }
+.pro-editor-form #pro-ev-description { min-height: 150px; }
+.pro-editor-form .form-actions { margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
 
 .pro-save-status {
   font-size: 0.82rem;
