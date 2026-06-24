@@ -21,7 +21,7 @@ function getLangEraTitle(era) { return (LANG === 'en' && era.title_en) ? era.tit
 'use strict';
 
 // ── Constants ──────────────────────────────────────────────
-const DATA_URL        = 'data/history.json';
+const DATA_URL        = '/data/history.json';
 const STORAGE_KEY     = 'iran_history_extra';   // user-added refs
 const STORAGE_EVENTS  = 'iran_history_events';  // user-added events
 const STORAGE_THEME   = 'iran_history_theme';
@@ -87,9 +87,11 @@ const formFeedback    = $('form-feedback');
     render();
     setupEventListeners();
   } catch (err) {
-    console.error('خطا در بارگذاری داده:', err);
-    timelineContainer.innerHTML =
-      '<p style="text-align:center;padding:40px;color:var(--text-muted)">⚠️ خطا در بارگذاری داده‌ها. لطفاً از یک سرور محلی استفاده کنید.</p>';
+    console.error('Error loading data:', err);
+    if (!allData) {
+      timelineContainer.innerHTML =
+        '<p style="text-align:center;padding:40px;color:var(--text-muted)">⚠️ Error loading data. Please use a local server.</p>';
+    }
   }
 })();
 
@@ -167,13 +169,12 @@ function render() {
   buildEraFilterButtons();
   renderTimeline();
   updateStats();
-  populateAdminEraSelect();
-  renderEditList();
+  if ($('edit-list'))          populateAdminEraSelect(), renderEditList();
   setupScrollReveal();
 }
 
 function buildEraFilterButtons() {
-  eraFilterBar.innerHTML = '<button class="era-btn active" data-era="all">همه دوره‌ها</button>';
+  eraFilterBar.innerHTML = '<button class="era-btn active" data-era="all">All Eras</button>';
   allData.eras.forEach(era => {
     const btn = document.createElement('button');
     btn.className    = 'era-btn';
@@ -211,8 +212,8 @@ function getFilteredEvents() {
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     events = events.filter(e =>
-      e.title.toLowerCase().includes(q) ||
-      e.summary.toLowerCase().includes(q) ||
+      getLangTitle(e).toLowerCase().includes(q) ||
+      getLangSummary(e).toLowerCase().includes(q) ||
       (e.tags || []).some(t => t.toLowerCase().includes(q))
     );
   }
@@ -288,14 +289,14 @@ function createEventEl(event, index) {
 
   const cardHtml = `
     <div class="event-card" tabindex="0" data-id="${event.id}"
-         aria-label="${event.title}" role="button">
+         aria-label="${getLangTitle(event)}" role="button">
       <div class="card-meta">
         <span class="card-era-dot" style="background:${color}"></span>
         <span class="card-date">${event.date}</span>
         ${event.flagUrl ? `<img class="card-flag" src="${event.flagUrl}" alt="${escHtml(event.flagAlt || '')}" loading="lazy" onerror="this.style.display='none'" />` : ''}
       </div>
-      <h3 class="card-title">${event.title}</h3>
-      <p class="card-summary">${event.summary}</p>
+      <h3 class="card-title">${getLangTitle(event)}</h3>
+      <p class="card-summary">${getLangSummary(event)}</p>
       ${tags.length ? `<div class="card-tags">${tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>` : ''}
     </div>`;
 
@@ -365,7 +366,7 @@ function updateStats() {
 }
 
 function toFarsiNum(n) {
-  return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+  return String(n); // EN version: use regular digits
 }
 
 // ── Calendar Conversions ────────────────────────────────────
@@ -508,9 +509,9 @@ function openPanel(eventId) {
     flagEl.style.display = 'none';
   }
 
-  panelTitle.textContent   = event.title;
-  panelSummary.textContent = event.summary;
-  panelDesc.textContent    = event.description || '';
+  panelTitle.textContent   = getLangTitle(event);
+  panelSummary.textContent = getLangSummary(event);
+  panelDesc.textContent    = getLangDesc(event) || '';
 
   // Tags
   panelTagsEl.innerHTML = (event.tags || [])
@@ -544,7 +545,7 @@ function closePanel() {
   document.body.style.overflow = '';
 
   // Hide add-ref form
-  addRefForm.classList.add('hidden');
+  addRefForm?.classList.add('hidden');
 }
 
 // ── Dynasty Rulers Tree ──────────────────────────────────────
@@ -577,7 +578,7 @@ function renderRefs(event) {
   const allRefs   = [...baseRefs, ...localRefs];
 
   if (allRefs.length === 0) {
-    refList.innerHTML = '<li style="color:var(--text-muted);font-size:0.85rem;padding:8px 0">هنوز منبعی ثبت نشده.</li>';
+    refList.innerHTML = '<li style="color:var(--text-muted);font-size:0.85rem;padding:8px 0">No sources yet.</li>';
     return;
   }
 
@@ -590,7 +591,7 @@ function renderRefs(event) {
         <div class="ref-content">
           <div class="ref-title">${escHtml(ref.title)}</div>
           ${meta ? `<div class="ref-meta">${escHtml(meta)}</div>` : ''}
-          ${ref.url ? `<a class="ref-link" href="${escHtml(ref.url)}" target="_blank" rel="noopener noreferrer">🔗 باز کردن لینک</a>` : ''}
+          ${ref.url ? `<a class="ref-link" href="${escHtml(ref.url)}" target="_blank" rel="noopener noreferrer">🔗 Open Link</a>` : ''}
         </div>
         ${ref._local ? '<span class="ref-local-badge">جدید</span>' : ''}
       </li>`;
@@ -632,7 +633,7 @@ function saveNewRef() {
   refAuthorInput.value = '';
   refYearInput.value = '';
   refUrlInput.value = '';
-  addRefForm.classList.add('hidden');
+  addRefForm?.classList.add('hidden');
 
   showToast('✅ منبع با موفقیت اضافه شد');
 }
@@ -830,7 +831,7 @@ async function executeDeleteEvent(eventId) {
     if (idx !== -1) allData.events.splice(idx, 1);
     extraEvents = extraEvents.filter(e => e.id !== eventId);
 
-    $('confirm-delete-dialog').close();
+    $('confirm-delete-dialog')?.close();
     showToast('🗑 Event deleted successfully');
 
     if (proEditorEventId === eventId) {
@@ -886,7 +887,7 @@ function handleEventFormSubmit(e) {
   if (!title || !date || !era || !summary) {
     formFeedback.textContent = 'لطفاً تمام فیلدهای الزامی را پر کنید.';
     formFeedback.className = 'form-feedback error';
-    formFeedback.classList.remove('hidden');
+    formFeedback?.classList.remove('hidden');
     return;
   }
 
@@ -925,10 +926,10 @@ function handleEventFormSubmit(e) {
   delete eventForm.dataset.editingId;
   formFeedback.textContent = editingId ? '✅ رویداد ویرایش شد' : '✅ رویداد با موفقیت اضافه شد';
   formFeedback.className = 'form-feedback success';
-  formFeedback.classList.remove('hidden');
+  formFeedback?.classList.remove('hidden');
   showToast(editingId ? '✅ ویرایش انجام شد' : '✅ رویداد اضافه شد');
 
-  setTimeout(() => formFeedback.classList.add('hidden'), 3000);
+  setTimeout(() => formFeedback?.classList.add('hidden'), 3000);
 }
 
 // ── Export / Copy JSON ─────────────────────────────────────
@@ -1016,8 +1017,8 @@ function setupEventListeners() {
   });
 
   // Panel close
-  $('panel-close').addEventListener('click', closePanel);
-  $('panel-backdrop').addEventListener('click', closePanel);
+  $('panel-close')?.addEventListener('click', closePanel);
+  $('panel-backdrop')?.addEventListener('click', closePanel);
 
   // Escape closes panel or admin
   document.addEventListener('keydown', e => {
@@ -1027,35 +1028,35 @@ function setupEventListeners() {
   });
 
   // Search
-  searchInput.addEventListener('input', e => {
+  searchInput?.addEventListener('input', e => {
     searchQuery = e.target.value.trim();
     renderTimeline();
   });
 
   // Theme toggle
-  $('btn-theme').addEventListener('click', toggleTheme);
+  $('btn-theme')?.addEventListener('click', toggleTheme);
 
   // Admin open/close
-  $('btn-open-admin').addEventListener('click', () => {
+  $('btn-open-admin')?.addEventListener('click', () => {
     if (isAdminLoggedIn) {
-      adminDialog.showModal();
+      adminDialog?.showModal();
       refreshExportPreview();
     } else {
-      $('login-dialog').showModal();
+      $('login-dialog')?.showModal();
     }
   });
-  $('admin-close').addEventListener('click', () => adminDialog.close());
-  adminDialog.addEventListener('click', e => {
-    if (e.target === adminDialog) adminDialog.close();
+  $('admin-close')?.addEventListener('click', () => adminDialog?.close());
+  adminDialog?.addEventListener('click', e => {
+    if (e.target === adminDialog) adminDialog?.close();
   });
 
   // Login dialog handlers
-  $('login-close').addEventListener('click', () => $('login-dialog').close());
-  $('login-dialog').addEventListener('click', e => {
-    if (e.target === $('login-dialog')) $('login-dialog').close();
+  $('login-close')?.addEventListener('click', () => $('login-dialog')?.close());
+  $('login-dialog')?.addEventListener('click', e => {
+    if (e.target === $('login-dialog')) $('login-dialog')?.close();
   });
 
-  $('login-form').addEventListener('submit', async e => {
+  $('login-form')?.addEventListener('submit', async e => {
     e.preventDefault();
     const password = $('login-password').value;
     try {
@@ -1071,8 +1072,8 @@ function setupEventListeners() {
       sessionStorage.setItem('isAdminLoggedIn', 'true');
       showToast('🔓 ورود با موفقیت انجام شد');
       $('login-password').value = '';
-      $('login-dialog').close();
-      adminDialog.showModal();
+      $('login-dialog')?.close();
+      adminDialog?.showModal();
       refreshExportPreview();
       updateAdminUiState();
     } catch (err) {
@@ -1081,27 +1082,27 @@ function setupEventListeners() {
   });
 
   // Admin Logout
-  $('btn-admin-logout').addEventListener('click', () => {
+  $('btn-admin-logout')?.addEventListener('click', () => {
     isAdminLoggedIn = false;
     sessionStorage.removeItem('isAdminLoggedIn');
-    adminDialog.close();
+    adminDialog?.close();
     updateAdminUiState();
     showToast('🔒 خروج با موفقیت انجام شد');
   });
 
   // Detail panel Edit button click
-  $('btn-panel-edit-event').addEventListener('click', () => {
+  $('btn-panel-edit-event')?.addEventListener('click', () => {
     if (activeEventId) {
       const eventId = activeEventId;
       closePanel();
-      adminDialog.showModal();
+      adminDialog?.showModal();
       switchAdminTab('edit');
       loadEventForEdit(eventId);
     }
   });
 
   // Upload data form handler
-  $('admin-upload-form').addEventListener('submit', async e => {
+  $('admin-upload-form')?.addEventListener('submit', async e => {
     e.preventDefault();
     const fileInput = $('upload-file-input');
     if (!fileInput.files.length) {
@@ -1129,7 +1130,7 @@ function setupEventListeners() {
          if (!res.ok) throw new Error(resData.detail || 'خطا در آپلود');
          
          showToast('✅ داده‌ها با موفقیت بارگذاری و ذخیره شدند');
-         adminDialog.close();
+         adminDialog?.close();
          
          // Reload timeline
          const reloadRes = await fetch(DATA_URL + '?cb=' + Date.now());
@@ -1153,18 +1154,18 @@ function setupEventListeners() {
   });
 
   // Event form
-  eventForm.addEventListener('submit', handleEventFormSubmit);
-  $('btn-clear-form').addEventListener('click', () => {
+  eventForm?.addEventListener('submit', handleEventFormSubmit);
+  $('btn-clear-form')?.addEventListener('click', () => {
     eventForm.reset();
     delete eventForm.dataset.editingId;
-    formFeedback.classList.add('hidden');
+    formFeedback?.classList.add('hidden');
   });
 
   // Admin search (edit tab)
-  $('admin-search').addEventListener('input', e => renderEditList(e.target.value));
+  $('admin-search')?.addEventListener('input', e => renderEditList(e.target.value));
 
   // Edit list delegation — pro editor
-  $('edit-list').addEventListener('click', e => {
+  $('edit-list')?.addEventListener('click', e => {
     const item = e.target.closest('.edit-list-item');
     if (item && item.dataset.id) {
       loadEventIntoProEditor(item.dataset.id);
@@ -1180,13 +1181,13 @@ function setupEventListeners() {
   });
 
   // Delete confirmation dialog buttons
-  $('btn-confirm-cancel').addEventListener('click', () => $('confirm-delete-dialog').close());
-  $('btn-confirm-delete').addEventListener('click', () => {
+  $('btn-confirm-cancel')?.addEventListener('click', () => $('confirm-delete-dialog')?.close());
+  $('btn-confirm-delete')?.addEventListener('click', () => {
     const targetId = $('confirm-delete-dialog').dataset.targetId;
     if (targetId) executeDeleteEvent(targetId);
   });
-  $('confirm-delete-dialog').addEventListener('click', e => {
-    if (e.target === $('confirm-delete-dialog')) $('confirm-delete-dialog').close();
+  $('confirm-delete-dialog')?.addEventListener('click', e => {
+    if (e.target === $('confirm-delete-dialog')) $('confirm-delete-dialog')?.close();
   });
 
   // Editor sub-tabs
@@ -1266,32 +1267,32 @@ function setupEventListeners() {
   });
 
   // Add ref toggle
-  $('btn-add-ref').addEventListener('click', () => {
-    addRefForm.classList.toggle('hidden');
-    if (!addRefForm.classList.contains('hidden')) refTitleInput.focus();
+  $('btn-add-ref')?.addEventListener('click', () => {
+    addRefForm?.classList.toggle('hidden');
+    if (!addRefForm?.classList.contains('hidden')) refTitleInput.focus();
   });
 
-  $('btn-cancel-ref').addEventListener('click', () => addRefForm.classList.add('hidden'));
-  $('btn-save-ref').addEventListener('click', saveNewRef);
+  $('btn-cancel-ref')?.addEventListener('click', () => addRefForm?.classList.add('hidden'));
+  $('btn-save-ref')?.addEventListener('click', saveNewRef);
 
   // Ref type change — show/hide author/year
-  refTypeSelect.addEventListener('change', () => {
+  refTypeSelect?.addEventListener('change', () => {
     const showMeta = ['book','article'].includes(refTypeSelect.value);
     $('ref-author-group').style.display = showMeta ? '' : 'none';
     $('ref-year-group').style.display   = showMeta ? '' : 'none';
   });
   // Trigger once to set initial state
-  refTypeSelect.dispatchEvent(new Event('change'));
+  refTypeSelect?.dispatchEvent(new Event('change'));
 
   // Export buttons
-  $('btn-copy-json').addEventListener('click', copyJson);
-  $('btn-download-json').addEventListener('click', downloadJson);
+  $('btn-copy-json')?.addEventListener('click', copyJson);
+  $('btn-download-json')?.addEventListener('click', downloadJson);
 
   // Gemini API key toggle visibility
   const apiKeyInput = $('ai-gemini-key');
   if (apiKeyInput) {
     apiKeyInput.value = localStorage.getItem('GEMINI_API_KEY') || '';
-    $('btn-toggle-api-key').addEventListener('click', () => {
+    $('btn-toggle-api-key')?.addEventListener('click', () => {
       const isPass = apiKeyInput.type === 'password';
       apiKeyInput.type = isPass ? 'text' : 'password';
       $('btn-toggle-api-key').textContent = isPass ? '🔒' : '👁';
@@ -1311,7 +1312,7 @@ function setupEventListeners() {
   });
 
   // AI Ingest form submit
-  $('ai-ingest-form').addEventListener('submit', async (e) => {
+  $('ai-ingest-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const apiKey = apiKeyInput.value.trim();
     if (!apiKey) {
@@ -1391,19 +1392,19 @@ function setupEventListeners() {
   });
 
   // Feedback Dialog Open/Close
-  $('btn-open-feedback').addEventListener('click', () => {
-    $('feedback-dialog').showModal();
+  $('btn-open-feedback')?.addEventListener('click', () => {
+    $('feedback-dialog')?.showModal();
   });
   
-  $('feedback-close').addEventListener('click', () => $('feedback-dialog').close());
-  $('btn-cancel-feedback').addEventListener('click', () => $('feedback-dialog').close());
+  $('feedback-close')?.addEventListener('click', () => $('feedback-dialog')?.close());
+  $('btn-cancel-feedback')?.addEventListener('click', () => $('feedback-dialog')?.close());
   
-  $('feedback-dialog').addEventListener('click', e => {
-    if (e.target === $('feedback-dialog')) $('feedback-dialog').close();
+  $('feedback-dialog')?.addEventListener('click', e => {
+    if (e.target === $('feedback-dialog')) $('feedback-dialog')?.close();
   });
   
   // Feedback Submission
-  $('feedback-form').addEventListener('submit', async e => {
+  $('feedback-form')?.addEventListener('submit', async e => {
     e.preventDefault();
     const type = $('feedback-type').value;
     const text = $('feedback-text').value.trim();
@@ -1430,7 +1431,7 @@ function setupEventListeners() {
       
       showToast('✅ ' + data.message);
       $('feedback-form').reset();
-      $('feedback-dialog').close();
+      $('feedback-dialog')?.close();
     } catch (err) {
       showToast('❌ ' + err.message, 'error');
     } finally {
