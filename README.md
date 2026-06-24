@@ -6,6 +6,14 @@ This project offers a seamless blend of historical visualization, administrative
 
 ---
 
+## 🎯 Vision & Philosophy
+
+> "هدف من از این پروژه این بوده که تمام دیتاها رو یک جا داشته باشم و بتونم همه چیز رو برای آیندگان جمع کنم تا بعدا خودشون بتونن با خوندن وقایع بفهمن چه اتفاقی افراده و حق با کی بوده. این پروژه رو کم‌کم توسعه میدم؛ مثلاً عکس، فیلم و اسکرین‌شات از اخبار و وقایع میذارم تا برای همیشه باقی بمونه."
+> 
+> *— Farjad Pourmohammad, Project Developer*
+
+---
+
 ## ✨ Features
 
 - **Interactive Timeline**: Clean, responsive layout with glassmorphic aesthetic cards, smooth micro-interactions, dark/light theme, and dynamic era filters.
