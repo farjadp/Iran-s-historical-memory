@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>درباره پروژه — تایم‌لاین تعاملی تاریخ ایران</title>
+  <meta name="description" content="توضیحات فنی، معماری و ویژگی‌های پروژه تایم‌لاین تعاملی تاریخ ایران از آغاز تا امروز." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    const savedTheme = localStorage.getItem('iran_history_theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column; background: var(--bg-base); color: var(--text-primary);">
+
+  <!-- Header -->
+  <header class="site-header" style="position: static; height: auto; padding: 20px 0;">
+    <div class="header-inner" style="max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="header-brand" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 1.5rem;">🦁</span>
+        <div>
+          <span style="font-weight: 700; font-size: 1.2rem; color: var(--text-primary);">تاریخ ایران</span>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">بازگشت به تایم‌لاین</p>
+        </div>
+      </a>
+      <button class="btn-theme" id="btn-theme-page" style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 50%; color: var(--text-primary); cursor: pointer; width: 40px; height: 40px; font-size: 1.2rem;">🌙</button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main style="flex: 1; padding: 40px 20px; max-width: 800px; margin: 0 auto; width: 100%;">
+    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-card); position: relative; overflow: hidden;">
+      
+      <!-- Top Glow -->
+      <div style="position: absolute; top: -100px; right: -100px; width: 250px; height: 250px; background: rgba(92, 158, 106, 0.08); border-radius: 50%; filter: blur(50px); pointer-events: none;"></div>
+
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span style="font-size: 4rem;">ℹ️</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin: 10px 0 5px; color: var(--text-primary);">درباره پروژه</h1>
+        <p style="font-size: 1.1rem; color: var(--gold-light); font-weight: 600; margin-bottom: 5px;">تایم‌لاین تعاملی تاریخ ایران — از آغاز تا امروز</p>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">سفری در اعماق ۲۷۰۰ سال تمدن، تاریخ اساطیری و معاصر فلات ایران</p>
+      </div>
+
+      <div class="panel-divider" style="margin: 25px 0;"></div>
+
+      <div style="font-size: 1rem; line-height: 1.8; color: var(--text-secondary);">
+        <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 15px;">🔍 معرفی کلی پروژه</h2>
+        <p style="margin-bottom: 20px; text-align: justify;">
+          پروژه تایم‌لاین تعاملی تاریخ ایران، یک ابزار مرور بصری، مدرن و تعاملی است که رویدادهای تاریخی سرزمین ایران را از دوران پیش از تاریخ و غارنشینی تا جنگ‌های دوران معاصر و آینده فرضی سازماندهی می‌کند. این سیستم به پژوهشگران، علاقه‌مندان و معلمان امکان می‌دهد تا به سرعت دوره‌های تاریخی مختلف را فیلتر کرده، روابط بین حاکمان و وقایع را ردیابی کنند و منابع مرتبط را مطالعه نمایند.
+        </p>
+
+        <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-top: 30px; margin-bottom: 15px;">⚙️ معماری و پشته فنی (Tech Stack)</h2>
+        <p style="margin-bottom: 15px;">
+          این برنامه با تاکید بر کارایی بسیار بالا، سادگی توسعه، سرعت لود بالا و بدون نیاز به پلتفرم‌های پیچیده فرانت‌اند طراحی شده است:
+        </p>
+        <ul style="padding-right: 20px; margin-bottom: 25px; list-style-type: none;">
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>🐍</span>
+            <div>
+              <strong>بک‌اند (Python/FastAPI):</strong> تامین‌کننده APIهای ذخیره‌سازی داده، آپلود فایل‌های پشتیبان، احراز هویت ادمین، ثبت فیدبک کاربران و فراخوانی هوش مصنوعی.
+            </div>
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>🌐</span>
+            <div>
+              <strong>فرانت‌اند (Vanilla HTML5 / CSS3 / ES6 Javascript):</strong> عدم استفاده از فریمورک‌های سنگین فرانت‌اند به جهت دستیابی به حداکثر سرعت بارگذاری و پیاده‌سازی افکت‌های شیشه‌ای (Glassmorphic) مدرن، ریسپانسیو و تم‌های تیره/روشن پویا.
+            </div>
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>🤖</span>
+            <div>
+              <strong>هوش مصنوعی (Gemini 2.5 Flash):</strong> استفاده از API گوگل جمینای برای تحلیل وب‌سایت‌های خارجی، کتاب‌ها یا پیاده‌سازی رونوشت ویدیوهای یوتیوب (YouTube Transcript) و ادغام/به‌روزرسانی خودکار دیتابیس با مدل‌های پیشرفته تاریخ‌نگاری.
+            </div>
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>💾</span>
+            <div>
+              <strong>پایگاه داده (JSON-based):</strong> ذخیره‌سازی مستقیم اطلاعات بر روی هارد دیسک سرور در فایل‌های استاتیک JSON به منظور سادگی بکاپ‌گیری، ویرایش دستی مستقیم و سرعت خواندن بی‌نظیر.
+            </div>
+          </li>
+        </ul>
+
+        <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-top: 30px; margin-bottom: 15px;">⭐ ویژگی‌های کلیدی سیستم</h2>
+        <ul style="padding-right: 20px; margin-bottom: 25px; list-style-type: none;">
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>📆</span>
+            <div>
+              <strong>انطباق تقویم‌های سه‌گانه:</strong> نمایش تاریخ هر رویداد به سه تقویم میلادی، خورشیدی (شمسی) و تقویم شاهنشاهی.
+            </div>
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>👑</span>
+            <div>
+              <strong>شجره‌نامه حاکمان:</strong> نمایش لیست دقیق شاهان و حاکمان مربوط به هر سلسله همراه با سال‌های حکومت و نکات برجسته هر حاکم.
+            </div>
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>🔐</span>
+            <div>
+              <strong>پنل مدیریت ادمین:</strong> احراز هویت ادمین با قابلیت افزودن، ویرایش، حذف رویدادها، آپلود مجدد پایگاه داده یا خروجی مستقیم JSON.
+            </div>
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: start; gap: 8px;">
+            <span>💬</span>
+            <div>
+              <strong>سیستم فیدبک و پیشنهادهای عمومی:</strong> کاربران عادی می‌توانند پیشنهادات خود را جهت افزودن یا ویرایش رویدادها ثبت کنند؛ ادمین در پنل خود به این پیشنهادات دسترسی داشته و می‌تواند آن‌ها را مدیریت یا حذف کند.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="panel-divider" style="margin: 30px 0;"></div>
+
+      <div style="text-align: center;">
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px;">طراحی و اجرا شده در کارگاه طراحی نرم‌افزار ورک‌استودیو.</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">جهت کسب اطلاعات بیشتر یا ارتباط با توسعه‌دهنده به صفحه <a href="about-developer.html" style="color: var(--gold-light); text-decoration: none; font-weight: 600;">👨‍💻 درباره توسعه‌دهنده</a> مراجعه فرمایید.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="padding: 20px 0; margin-top: auto;">
+    <p>تایم‌لاین تاریخ ایران · توسعه داده شده با ❤️ توسط فرجاد پورمحمد</p>
+  </footer>
+
+  <script>
+    const themeBtn = document.getElementById('btn-theme-page');
+    
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme === 'light' ? 'light' : '';
+      themeBtn.textContent = theme === 'light' ? '🌙' : '☀️';
+      localStorage.setItem('iran_history_theme', theme);
+    }
+    
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    
+    // Set initial text based on theme
+    themeBtn.textContent = document.documentElement.dataset.theme === 'light' ? '🌙' : '☀️';
+  </script>
+</body>
+</html>

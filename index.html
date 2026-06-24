@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تایم‌لاین تاریخ ایران — از آغاز تا امروز</title>
+  <meta name="description" content="مروری بصری و تعاملی بر تاریخ ایران از دوران باستان تا معاصر. کلیک کنید و بیشتر بیاموزید." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="header-logo">🦁</div>
+        <div>
+          <h1 class="header-title">تاریخ ایران</h1>
+          <p class="header-subtitle">از آغاز تا امروز</p>
+        </div>
+      </div>
+      <nav class="header-controls">
+        <div class="search-wrapper">
+          <input type="search" id="search-input" class="search-input" placeholder="جستجو..." aria-label="جستجو در رویدادها" />
+          <span class="search-icon">🔍</span>
+        </div>
+        <button class="btn-admin" id="btn-open-admin" aria-label="پنل مدیریت">
+          <span>✏️</span> ادمین
+        </button>
+        <button class="btn-theme" id="btn-theme" aria-label="تغییر تم" title="تغییر تم">🌙</button>
+      </nav>
+    </div>
+    <!-- Era Filter Bar -->
+    <div class="era-filter-bar" id="era-filter-bar" role="group" aria-label="فیلتر دوره‌های تاریخی">
+      <button class="era-btn active" data-era="all">همه دوره‌ها</button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-section" aria-label="معرفی">
+    <div class="hero-content">
+      <p class="hero-eyebrow">بیش از ۲۷۰۰ سال تاریخ</p>
+      <h2 class="hero-heading">سفری در اعماق زمان</h2>
+      <p class="hero-desc">روی هر رویداد کلیک کنید تا خلاصه، توضیحات کامل و منابع را ببینید.</p>
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat-item"><span class="stat-num" id="stat-events">۰</span><span class="stat-label">رویداد</span></div>
+        <div class="stat-item"><span class="stat-num" id="stat-eras">۷</span><span class="stat-label">دوره</span></div>
+        <div class="stat-item"><span class="stat-num" id="stat-refs">۰</span><span class="stat-label">منبع</span></div>
+      </div>
+    </div>
+    <div class="hero-decoration" aria-hidden="true">
+      <div class="deco-ring ring-1"></div>
+      <div class="deco-ring ring-2"></div>
+      <div class="deco-ring ring-3"></div>
+      <div class="deco-lion">🦁</div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <main class="timeline-section" id="timeline-main">
+    <div class="timeline-axis" aria-hidden="true"></div>
+    <div class="timeline-container" id="timeline-container" role="list" aria-label="رویدادهای تاریخی">
+      <!-- Events rendered by JS -->
+    </div>
+    <div class="no-results hidden" id="no-results">
+      <span>🔍</span>
+      <p>هیچ رویدادی یافت نشد</p>
+    </div>
+  </main>
+
+  <!-- ===== SIDE PANEL ===== -->
+  <aside class="side-panel" id="side-panel" role="complementary" aria-label="جزئیات رویداد" aria-hidden="true">
+    <div class="panel-backdrop" id="panel-backdrop"></div>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div class="panel-header-left">
+          <div class="panel-era-badge" id="panel-era-badge"></div>
+          <img class="panel-flag" id="panel-flag" src="" alt="" loading="lazy" />
+          <button class="btn-edit-event hidden" id="btn-panel-edit-event" aria-label="ویرایش رویداد">✏️ ویرایش</button>
+        </div>
+        <button class="panel-close" id="panel-close" aria-label="بستن پنل">✕</button>
+      </div>
+      <div class="panel-body">
+        <!-- Date calendar grid -->
+        <div class="date-calendars" id="date-calendars" aria-label="تاریخ در تقویم‌های مختلف">
+          <div class="cal-item">
+            <span class="cal-label">میلادی</span>
+            <span class="cal-value" id="cal-miladi"></span>
+          </div>
+          <div class="cal-item">
+            <span class="cal-label">شمسی</span>
+            <span class="cal-value" id="cal-shamsi"></span>
+          </div>
+          <div class="cal-item">
+            <span class="cal-label">شاهنشاهی</span>
+            <span class="cal-value" id="cal-shahanshahi"></span>
+          </div>
+        </div>
+        <h2 class="panel-title" id="panel-title"></h2>
+        <p class="panel-summary" id="panel-summary"></p>
+        <div class="panel-divider"></div>
+        <div class="panel-description" id="panel-description"></div>
+        <div class="panel-tags" id="panel-tags"></div>
+
+        <!-- Dynasty / Rulers Tree -->
+        <div class="dynasty-section hidden" id="dynasty-section">
+          <div class="dynasty-header">
+            <span class="dynasty-icon">👑</span>
+            <h3 class="dynasty-title">حاکمان و سلسله</h3>
+          </div>
+          <ol class="dynasty-tree" id="dynasty-tree" aria-label="فهرست حاکمان"></ol>
+        </div>
+
+        <!-- References -->
+        <div class="panel-section">
+          <div class="section-header">
+            <h3 class="section-title">منابع</h3>
+            <button class="btn-add-ref" id="btn-add-ref" aria-label="افزودن منبع جدید">+ افزودن</button>
+          </div>
+          <ul class="ref-list" id="ref-list" aria-label="فهرست منابع"></ul>
+        </div>
+
+        <!-- Add Reference Form -->
+        <div class="add-ref-form hidden" id="add-ref-form">
+          <h4 class="form-title">افزودن منبع جدید</h4>
+          <div class="form-group">
+            <label for="ref-type-select">نوع منبع</label>
+            <select id="ref-type-select" class="form-control">
+              <option value="book">📚 کتاب</option>
+              <option value="video">🎬 ویدئو</option>
+              <option value="website">🌐 وب‌سایت</option>
+              <option value="image">🖼 تصویر</option>
+              <option value="article">📄 مقاله</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ref-title-input">عنوان *</label>
+            <input type="text" id="ref-title-input" class="form-control" placeholder="عنوان منبع" />
+          </div>
+          <div class="form-group" id="ref-author-group">
+            <label for="ref-author-input">نویسنده</label>
+            <input type="text" id="ref-author-input" class="form-control" placeholder="نام نویسنده" />
+          </div>
+          <div class="form-group" id="ref-year-group">
+            <label for="ref-year-input">سال</label>
+            <input type="text" id="ref-year-input" class="form-control" placeholder="مثلاً ۱۳۹۸" />
+          </div>
+          <div class="form-group">
+            <label for="ref-url-input">لینک (اختیاری)</label>
+            <input type="url" id="ref-url-input" class="form-control" placeholder="https://..." />
+          </div>
+          <div class="form-actions">
+            <button class="btn-save-ref" id="btn-save-ref">ذخیره</button>
+            <button class="btn-cancel-ref" id="btn-cancel-ref">انصراف</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== ADMIN PANEL ===== -->
+  <dialog class="admin-dialog" id="admin-dialog" aria-label="پنل مدیریت">
+    <div class="admin-inner">
+      <div class="admin-header">
+        <h2 class="admin-title">🛠 پنل مدیریت</h2>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button class="btn-secondary" id="btn-admin-logout" style="padding: 5px 12px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; border: 1px solid var(--border-subtle); background: var(--bg-card);">خروج</button>
+          <button class="admin-close" id="admin-close" aria-label="بستن">✕</button>
+        </div>
+      </div>
+      <div class="admin-tabs" role="tablist">
+        <button class="admin-tab active" role="tab" aria-selected="true" data-tab="add" id="tab-add">➕ افزودن رویداد</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-tab="edit" id="tab-edit">✏️ ویرایش</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-tab="export" id="tab-export">📥 خروجی JSON</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-tab="upload" id="tab-upload">📤 آپلود داده‌ها</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-tab="ai" id="tab-ai">🤖 هوش مصنوعی (AI)</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-tab="feedback" id="tab-feedback">💬 پیشنهادات</button>
+      </div>
+
+      <!-- Tab: Add Event -->
+      <div class="admin-tab-panel active" id="panel-add" role="tabpanel" aria-labelledby="tab-add">
+        <form class="event-form" id="event-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ev-title">عنوان رویداد *</label>
+              <input type="text" id="ev-title" class="form-control" required placeholder="مثلاً: شاهنشاهی ساسانی" />
+            </div>
+            <div class="form-group">
+              <label for="ev-date">بازه زمانی *</label>
+              <input type="text" id="ev-date" class="form-control" required placeholder="مثلاً: ۲۲۴ – ۶۵۱ م" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ev-era">دوره تاریخی *</label>
+              <select id="ev-era" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label for="ev-datesort">سال (برای مرتب‌سازی)</label>
+              <input type="number" id="ev-datesort" class="form-control" placeholder="عدد — منفی برای ق.م" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ev-summary">خلاصه *</label>
+            <textarea id="ev-summary" class="form-control" rows="2" required placeholder="یک‌خطی کوتاه..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ev-description">توضیحات کامل</label>
+            <textarea id="ev-description" class="form-control" rows="5" placeholder="توضیحات تفصیلی..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ev-tags">برچسب‌ها (با کاما جدا کنید)</label>
+            <input type="text" id="ev-tags" class="form-control" placeholder="هخامنشی، کوروش، پارسی" />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">ذخیره رویداد</button>
+            <button type="button" class="btn-secondary" id="btn-clear-form">پاک کردن</button>
+          </div>
+          <div class="form-feedback hidden" id="form-feedback"></div>
+        </form>
+      </div>
+
+      <!-- Tab: Edit -->
+      <div class="admin-tab-panel" id="panel-edit" role="tabpanel" aria-labelledby="tab-edit">
+        <div class="edit-search-wrapper">
+          <input type="search" id="admin-search" class="form-control" placeholder="جستجوی رویداد برای ویرایش..." />
+        </div>
+        <div class="edit-list" id="edit-list">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- Tab: Export -->
+      <div class="admin-tab-panel" id="panel-export" role="tabpanel" aria-labelledby="tab-export">
+        <p class="export-info">این JSON شامل تمام داده‌های پایه به‌علاوه منابع اضافه‌شده توسط شماست. می‌توانید آن را کپی کرده و در <code>data/history.json</code> جایگزین کنید.</p>
+        <div class="export-actions">
+          <button class="btn-primary" id="btn-copy-json">📋 کپی JSON</button>
+          <button class="btn-secondary" id="btn-download-json">💾 دانلود JSON</button>
+        </div>
+        <pre class="json-preview" id="json-preview" tabindex="0" aria-label="پیش‌نمایش JSON"></pre>
+      </div>
+
+      <!-- Tab: Upload -->
+      <div class="admin-tab-panel" id="panel-upload" role="tabpanel" aria-labelledby="tab-upload">
+        <p class="export-info">یک فایل <code>history.json</code> را انتخاب کنید تا تمام داده‌های تاریخچه تایم‌لاین در سرور بازنشانی و جایگزین شوند.</p>
+        <form class="event-form" id="admin-upload-form" novalidate style="padding-top: 10px;">
+          <div class="form-group" style="margin-bottom: 25px;">
+            <label for="upload-file-input" style="display: block; margin-bottom: 10px; font-weight: 500;">فایل JSON تاریخچه (مثلاً history.json)</label>
+            <input type="file" id="upload-file-input" class="form-control" accept=".json" required style="padding: 10px;" />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="btn-start-upload">📤 بارگذاری داده‌ها</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab: AI Ingest -->
+      <div class="admin-tab-panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai">
+        <p class="export-info">لینک وب‌سایت، ویدئوی یوتیوب، یا متن دستی یک کتاب را وارد کنید. سیستم محتوا را خوانده، تحلیل می‌کند و رویدادهای مرتبط را در فایل <code>history.json</code> به‌روزرسانی می‌کند یا رویداد جدید اضافه می‌کند.</p>
+        
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="ai-gemini-key">کلید API جمینای (Gemini API Key)</label>
+          <div class="api-key-wrapper" style="display: flex; gap: 10px;">
+            <input type="password" id="ai-gemini-key" class="form-control" placeholder="AIzaSy..." style="flex: 1;" />
+            <button type="button" class="btn-secondary" id="btn-toggle-api-key" style="padding: 0 15px;">👁</button>
+          </div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); margin-top: 5px; display: block;">کلید شما به صورت محلی در مرورگر ذخیره شده و مستقیماً به سرور ارسال می‌شود.</span>
+        </div>
+
+        <form class="event-form" id="ai-ingest-form" novalidate>
+          <div class="form-group">
+            <label>نوع منبع ورودی</label>
+            <div class="radio-group" style="display: flex; gap: 20px; margin: 10px 0;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="radio" name="ai-source-type" value="url" checked /> لینک وب‌سایت یا ویدئو یوتیوب
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="radio" name="ai-source-type" value="text" /> متن دستی یا کتاب
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="ai-url-group">
+            <label for="ai-url">آدرس اینترنتی (URL)</label>
+            <input type="url" id="ai-url" class="form-control" placeholder="https://fa.wikipedia.org/wiki/..." />
+          </div>
+
+          <div class="form-group hidden" id="ai-text-group">
+            <label for="ai-text">متن منبع یا کتاب</label>
+            <textarea id="ai-text" class="form-control" rows="6" placeholder="متن تاریخی مورد نظر خود را در اینجا کپی کنید..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="btn-start-ingest">🚀 شروع پردازش و به‌روزرسانی</button>
+          </div>
+        </form>
+
+        <div id="ai-status-container" class="ai-status-container hidden" style="margin-top: 20px;">
+          <div class="ai-status-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-weight: 500;">وضعیت پردازش:</span>
+            <span class="ai-spinner" id="ai-status-spinner">🔄</span>
+          </div>
+          <div class="ai-logs" id="ai-logs" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 15px; font-family: monospace; font-size: 0.8rem; height: 150px; overflow-y: auto; direction: ltr; text-align: left; color: #a5d6a7;">
+            <!-- Process logs will be printed here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Feedback -->
+      <div class="admin-tab-panel" id="panel-feedback" role="tabpanel" aria-labelledby="tab-feedback">
+        <p class="export-info">در این بخش می‌توانید پیشنهادها، اصلاحات و نظراتی که کاربران برای بهبود تایم‌لاین ارسال کرده‌اند را مشاهده و مدیریت کنید.</p>
+        <div class="feedback-list" id="feedback-list">
+          <!-- Populated by JS -->
+          <p style="text-align: center; color: var(--text-muted); padding: 20px;">در حال بارگذاری پیشنهادات...</p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== LOGIN DIALOG ===== -->
+  <dialog class="admin-dialog" id="login-dialog" aria-label="ورود به پنل مدیریت" style="max-width: 420px; border-radius: 12px;">
+    <div class="admin-inner" style="padding: 20px;">
+      <div class="admin-header" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 15px; margin-bottom: 20px;">
+        <h2 class="admin-title" style="font-size: 1.3rem;">🔑 ورود به پنل مدیریت</h2>
+        <button class="admin-close" id="login-close" aria-label="بستن">✕</button>
+      </div>
+      <form id="login-form" novalidate>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="login-password" style="display: block; margin-bottom: 8px; font-weight: 500;">رمز عبور مدیریت</label>
+          <input type="password" id="login-password" class="form-control" placeholder="رمز عبور را وارد کنید (پیش‌فرض: admin123)" required style="padding: 10px;" />
+        </div>
+        <div class="form-actions" style="margin-top: 25px;">
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; font-weight: 600;">ورود</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ===== FLOATING FEEDBACK BUTTON ===== -->
+  <button class="btn-floating-feedback" id="btn-open-feedback" aria-label="پیشنهاد و فیدبک">
+    <span>💬</span> پیشنهاد و فیدبک
+  </button>
+
+  <!-- ===== FEEDBACK DIALOG ===== -->
+  <dialog class="admin-dialog" id="feedback-dialog" aria-label="ثبت پیشنهاد و فیدبک" style="max-width: 500px; border-radius: 12px;">
+    <div class="admin-inner" style="padding: 20px;">
+      <div class="admin-header" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 15px; margin-bottom: 20px;">
+        <h2 class="admin-title" style="font-size: 1.3rem;">💬 ثبت پیشنهاد و فیدبک</h2>
+        <button class="admin-close" id="feedback-close" aria-label="بستن">✕</button>
+      </div>
+      <form id="feedback-form" novalidate>
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="feedback-type" style="display: block; margin-bottom: 8px; font-weight: 500;">نوع پیشنهاد</label>
+          <select id="feedback-type" class="form-control" style="padding: 10px; width: 100%;">
+            <option value="add">➕ پیشنهاد افزودن رویداد جدید</option>
+            <option value="remove">➖ پیشنهاد حذف یا اصلاح رویداد موجود</option>
+            <option value="other">💡 سایر انتقادات و پیشنهادات</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="feedback-text" style="display: block; margin-bottom: 8px; font-weight: 500;">توضیحات شما *</label>
+          <textarea id="feedback-text" class="form-control" rows="4" placeholder="توضیح دهید چه چیزی باید اضافه، حذف یا اصلاح شود..." required style="padding: 10px; width: 100%; resize: vertical;"></textarea>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="feedback-author" style="display: block; margin-bottom: 8px; font-weight: 500;">نام یا ایمیل شما (اختیاری)</label>
+          <input type="text" id="feedback-author" class="form-control" placeholder="مثلاً: فرداد (اختیاری)" style="padding: 10px; width: 100%;" />
+        </div>
+        <div class="form-actions" style="display: flex; gap: 10px;">
+          <button type="submit" class="btn-primary" style="flex: 1; padding: 12px; font-weight: 600;">ارسال فیدبک</button>
+          <button type="button" class="btn-secondary" id="btn-cancel-feedback" style="padding: 12px; font-weight: 600;">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>تایم‌لاین تاریخ ایران · داده‌ها در <code>data/history.json</code> ذخیره می‌شوند</p>
+    <div class="footer-links">
+      <a href="about-developer.html" class="footer-link">👨‍💻 درباره توسعه‌دهنده</a>
+      <a href="about-project.html" class="footer-link">ℹ️ درباره پروژه</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
